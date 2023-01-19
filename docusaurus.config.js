@@ -4,13 +4,15 @@ const katex = require('rehype-katex')
 module.exports = {
   title: 'Maia Ecosystem',
   tagline: 'Documentation and Guides',
-  url: 'https://v2-maian-ecosystem-docs.vercel.app/',
+  url: 'https://maia-dao.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
   organizationName: 'Maia-DAO', // Usually your GitHub org/user name.
-  projectName: 'maian-ecosystem-docs', // Usually your repo name.
+  projectName: 'maia-dao.github.io', // Usually your repo name.
+  deploymentBranch: 'Maia-DAO',
+  trailingSlash: false,
   themeConfig: {
     image: 'img/twitter_card_bg.png',
     prism: {
