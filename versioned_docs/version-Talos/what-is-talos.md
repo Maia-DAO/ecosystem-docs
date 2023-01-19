@@ -6,7 +6,7 @@ sidebar_position: 1
 
 [//]: # (TODO: Add links to Uniswap V3 specific information)
 
-Welcome to Hermes Protocol 👋
+Welcome to TALOS 👋
 
 Transparent Automated Liquidity Omnichain Strategies (TALOS) is a peer-to-peer[^1] system that was built to reduce the current huge barrier of entry for adoption of concentrated liquidity and elevate the current user experience, specifically for Uniswap V3.
 
