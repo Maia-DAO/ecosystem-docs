@@ -7,8 +7,6 @@ sidebar_position: 1
 [//]: # (TODO: Description of goals/mechanics of ve3,3 and main b3,3 takeaways)
 [//]: # (TODO: Explain how/why Hermes is a "Omnichain Yield and Liquidity Marketplace")
 
-## Protocol, Interface, Labs
-
 Welcome to Hermes Protocol 👋
 
 Hermes Protocol V2 is a complete revamp of V1, with the codebase having been fully re-written, packed with new and improved features, and fully audited. This major upgrade to the previous version of the protocol introduces new and improved features to enhance the user experience in the DeFi space. The protocol is decentralized and permissionless, meaning anyone can use it without the need for permission from a central authority.
