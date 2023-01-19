@@ -1,0 +1,66 @@
+{{h}} {{name}}
+
+
+{{#if natspec.title}}
+### {{{natspec.title}}}
+{{/if}}
+{{{natspec.user}}}
+{{{natspec.dev}}}
+
+{{#if functions}}
+## Functions
+{{/if}}
+{{#functions}}
+### {{name}}
+```solidity
+  function {{name}}(
+    {{#each params}}
+    {{formatVariable this}}{{#if @last}}{{else}},{{/if}}
+    {{/each}}
+  ) {{visibility}}{{#if returns}} returns ({{#each returns}}{{type}} {{#if name}}{{name}}{{else}}[{{@index}}]{{/if}}{{#if @last}}{{else}}, {{/if}}{{/each}}){{/if}}
+```
+{{#if natspec.user}}{{natspec.user}}{{/if}}
+{{#if natspec.dev}}{{natspec.dev}}{{/if}}
+
+{{#if natspec.params}}
+#### Parameters:
+| Name | Type | Description                                                          |
+| :--- | :--- | :------------------------------------------------------------------- |
+{{#each params}}
+| {{name}} | {{type}} | {{{joinLines natspec}}} |
+{{/each}}
+{{/if}}
+
+{{#if natspec.returns}}
+#### Return Values:
+| Name                           | Type          | Description                                                                  |
+| :----------------------------- | :------------ | :--------------------------------------------------------------------------- |
+{{#each returns}}
+| {{#if name}}`{{name}}`{{else}}`[{{@index}}]`{{/if}} | {{type}} | {{{joinLines natspec}}} |
+{{/each}}
+{{/if}}
+{{/functions}}
+
+{{#if natspec.events}}
+## Events
+{{/if}}
+{{#events}}
+### {{name}}
+```solidity
+  event {{name}}(
+    {{#each params}}
+    {{formatVariable this}}{{#if @last}}{{else}},{{/if}}
+    {{/each}}
+  )
+```
+{{#if natspec.user}}{{natspec.user}}{{/if}}
+{{#if natspec.dev}}{{natspec.dev}}{{/if}}
+{{#if params}}
+#### Parameters:
+| Name                           | Type          | Description                                    |
+| :----------------------------- | :------------ | :--------------------------------------------- |
+{{#each params}}
+| {{name}} | {{type}} | {{{joinLines natspec}}} |
+{{/each}}
+{{/if}}
+{{/events}}
