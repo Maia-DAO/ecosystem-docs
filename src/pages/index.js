@@ -35,7 +35,7 @@ export const actions = [
     href: '#',
     icon: InformationCircleIcon,
     to: './protocols/Hermes/introduction',
-    text: `Learn about the core concepts of Hermes and what is a Yield and Liquidity Marketplace.`,
+    text: `Learn about the core concepts of Hermes and what is Concentrated Liquidity and a Yield and Liquidity Marketplace.`,
   },
   {
     title: 'What is Talos',
