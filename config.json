@@ -1,7 +1,7 @@
 {
-  "index_name": "maia-ecosystem-docs",
-  "start_urls": ["https://v2-maian-ecosystem-docs.vercel.app/"],
-  "sitemap_urls": ["https://v2-maian-ecosystem-docs.vercel.app/sitemap.xml"],
+  "index_name": "ecosystem-docs",
+  "start_urls": ["https://v2-docs.maiadao.io/"],
+  "sitemap_urls": ["https://v2-docs.maiadao.io/sitemap.xml"],
   "sitemap_alternate_links": true,
   "stop_urls": [],
   "selectors": {
