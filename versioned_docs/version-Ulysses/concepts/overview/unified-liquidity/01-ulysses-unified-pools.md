@@ -7,7 +7,7 @@ title: Ulysses Unified Pools
 
 Ulysses Unified Pools are single-sided staking liquidity pools that allow the trading of assets with any number of other Ulysses Pools. The main difference between a Delta Algorithm LP presented in the paper mentioned above is that all Ulysses LPs reside in Arbitrum. This makes the trade-off between composability outside of Arbitrum with inside of Arbitrum.
 
-This means that when transactions are executed in Arbtrum, the protocol guarantees finality but not when trading from other chains. In additon to this, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls. Making arbitrage cheaper to execute inside our system.
+This means that when transactions are executed in Arbitrum, the protocol guarantees finality but not when trading from other chains. In additon to this, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls. Making arbitrage cheaper to execute inside our system.
 
 Each Unified Liquidity LP handles only a single token from a specific chain and is connected to one or more Unified Liquidity LPs. Liquidity is available to trade between each of this LPs according to set weights. 
 
