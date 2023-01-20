@@ -20,7 +20,7 @@ module.exports = {
     },
     algolia: {
       apiKey: '215a980d267cf35cc81fa49332092a8b',
-      indexName: 'maia-ecosystem-docs',
+      indexName: 'ecosystem-docs',
       appId: 'HUFIQABVG5',
     },
     navbar: {
