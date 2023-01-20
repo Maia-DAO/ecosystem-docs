@@ -11,7 +11,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'Maia-DAO', // Usually your GitHub org/user name.
   projectName: 'maia-dao.github.io', // Usually your repo name.
-  deploymentBranch: 'gh-pages',
+  deploymentBranch: 'main',
   trailingSlash: false,
   themeConfig: {
     image: 'img/twitter_card_bg.png',
