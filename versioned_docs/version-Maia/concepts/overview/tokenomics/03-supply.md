@@ -25,9 +25,9 @@ The initial distribution/bootstrap phase was the second phase of the Maian ecosy
 This phase constitutes the V2 iteration of the Maian Ecosystem where the key difference is the pivot from an emissions-based rewards system to a Decentralized Strategy Vault Platform (Yield Aggregator). This change aims to provide 'Real Yield' which is distributed from a share of treasury revenue to MAIA lockers as dividends.
 
 During this phase, the platform focuses on three main participants:
-- [Vaults](../vaults) Liquidity Providers
+- [Vaults](../vaults/strategies) Liquidity Providers
 - [vMaia](./vMaia) Lockers
-- [Hermes](../../../protocols/Hermes/introduction) Bribers
+- [Hermes](../../../Hermes/introduction) Bribers
 
 The liquidity providers deposit their assets into the vaults and earn yield on their deposited assets, the vMaia Lockers lock their MAIA tokens and earn dividends from the platform's revenue, and the Hermes Bribers, protocols that are looking to rent liquidity in Hermes Protocol.
 
