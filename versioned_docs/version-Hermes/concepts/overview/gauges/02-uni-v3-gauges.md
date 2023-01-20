@@ -13,7 +13,7 @@ Uniswap V3 [Gauge](./introduction) are a new tool for liquidity mining on the Un
 Liquidity mining incentives are a key feature of Uniswap V3 Gauges. These incentives are distributed according to each Uni V3 NFT position's liquidity per seconds inside traded ticks. This means that the more active liquidity a position provides to the pool, the more incentives it will receive. This encourages users to provide more efficient liquidity to the pool, which in turn improves the overall depth of the pool.
 
 :::caution
-LPs will loose new rewards between the moment a new [gauge cycle](./introduction/#gauge-cycle) starts until they re-stake again! Additionally, staked positions will give up any fees until they unstake.
+LPs will lose new rewards between the moment a new [gauge cycle](./introduction/#gauge-cycle) starts until they re-stake again! Additionally, staked positions will give up any fees until they unstake.
 :::
 
 The staker also takes into account all of a pool's liquidity, even if a pools is not staked, their respective rewards will be refunded to the minter and not distributed to others. This means that if a pool is not staked, the rewards will be returned to Hermes Minter.

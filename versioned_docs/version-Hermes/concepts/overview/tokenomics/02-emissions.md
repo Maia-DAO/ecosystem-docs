@@ -11,6 +11,6 @@ Emissions are determined by the Minter contract according to the burned HERMES s
 
 ## Distribution
 
-In this process, 95% of the weekly distribution is allocated depending on votes from bHERMES holders. The remaining 5% is pledged to assure stable HERMES liquidity, essential to the well-functioning of the protocol. This system ensures that the protocol remains profitable and sustainable in the long term, as well as providing an incentive for bHERMES holders to participate in the governance of the platform.
+In this process, 95% of the weekly distribution is allocated depending on votes from bHERMES holders. The remaining 5% is pledged to assure stable HERMES liquidity, essential to the optimal functionality of the protocol. This system ensures that the protocol remains profitable and sustainable in the long term, as well as providing an incentive for bHERMES holders to participate in the governance of the platform.
 
 It's important to note that Emissions are decided at the end of each epoch and are linearly distributed throughout the whole epoch. This allows for a more smooth distribution of emissions and less volatility for the users and liquidity providers.
