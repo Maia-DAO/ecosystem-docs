@@ -1,5 +1,5 @@
 {
-  "index_name": "ecosystem_docs",
+  "index_name": "ecosystem-docs",
   "start_urls": ["https://v2-docs.maiadao.io/"],
   "sitemap_urls": ["https://v2-docs.maiadao.io/sitemap.xml"],
   "sitemap_alternate_links": true,
