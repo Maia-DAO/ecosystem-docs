@@ -10,7 +10,7 @@ module.exports = {
   onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
   organizationName: 'Maia-DAO', // Usually your GitHub org/user name.
-  projectName: 'maia-dao.github.io', // Usually your repo name.
+  projectName: 'ecosystem-docs', // Usually your repo name.
   deploymentBranch: 'main',
   trailingSlash: false,
   themeConfig: {
