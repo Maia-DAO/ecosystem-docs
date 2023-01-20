@@ -315,7 +315,7 @@ module.exports = {
           rehypePlugins: [katex],
           routeBasePath: 'protocols/',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/Maia-DAO/Maia-DAO.github.io/tree/main/',
+          editUrl: 'https://github.com/Maia-DAO/ecosystem-docs/tree/main/',
           includeCurrentVersion: false,
           versions: {
             Maia: {
