@@ -50,7 +50,7 @@ The Uniswap V3 Staker distributes rewards based on the time spent in range. This
 
 The equation used to calculate the boost is as follows:
 
-$$Rewards received = min(Position Rewards, Position Rewards * 40\% + (Total Rewards For Duration Staked * User bHermes / Total bHermes Supply) * 60\%)$$
+$Rewards Received = min(Position Rewards, Position Rewards * 40\% + (Total Rewards For Duration Staked * User bHermes / Total bHermes Supply) * 60\%)$
 
 The formula calculates the rewards received by a user, based on their position rewards, and their stake in the bHermes token. The rewards received is determined by taking the minimum value between the position rewards and a combination of two other factors: the position rewards multiplied by 40%, and the total rewards for the duration staked multiplied by the user's bHermes stake divided by the total bHermes supply, multiplied by 60%. This formula ensures that users are rewarded for both their position in the liquidity pool and their stake in the bHermes token, but the rewards will be capped at the position rewards.
 

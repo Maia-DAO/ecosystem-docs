@@ -15,7 +15,7 @@ Please note that in order to prevent gaming of the boost system, users are able 
 
 The formula to calculate the boost is:
 
-$$min(UserLiquidity, (40\%*UserLiquidity)+(60\%*TotalLiquidity*VotingBalance/VotingTotal))$$
+$min(UserLiquidity,(40\%*UserLiquidity)+(60\%*TotalLiquidity*VotingBalance/VotingTotal))$
 
 Where:
 - UserLiquidity is the total liquidity provided by the user.
@@ -25,7 +25,7 @@ Where:
 
 For example, if a user provides 100 of liquidity to a gauge and holds 1% of the total bHERMES supply, the boost earned on their liquidity would be:
 
-$$min(100, (40\%*100)+(60\%*100*1/100)) = 40+(0.6*1) = 40+0.6 = 40.6$$
+$min(100,(40\%*100)+(60\%*100*1/100))=40+(0.6*1)=40+0.6=40.6$
 
 It's important to note that the boost earned on a user's liquidity is in addition to the standard rewards earned on the HERMES platform. This makes Boost in Hermes gauges an attractive feature for users looking to maximize their returns on liquidity provided.
 

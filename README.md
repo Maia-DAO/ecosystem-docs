@@ -4,7 +4,7 @@ This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern 
 
 # Contributing to Maia Ecosystem Docs
 
-Contributing to the docs site is a great way to get involved in the dev community and help other devs along the way! Check out our guidelines [here](https://github.com/Uniswap/uniswap-docs/blob/main/CONTRIBUTING.md).
+Contributing to the docs site is a great way to get involved in the dev community and help other devs along the way! Check out our guidelines [here](https://github.com/Maia-DAO/Maia-DAO.github.io/blob/main/CONTRIBUTING.md).
 
 # How to generate markdown files from solidity Natspec comments
 

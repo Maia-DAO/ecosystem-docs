@@ -4,14 +4,14 @@ const katex = require('rehype-katex')
 module.exports = {
   title: 'Maia Ecosystem',
   tagline: 'Documentation and Guides',
-  url: 'https://maia-dao.github.io/',
+  url: 'https://v2-docs.maiadao.io/',
   baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'ignore',
   favicon: 'img/favicon.ico',
   organizationName: 'Maia-DAO', // Usually your GitHub org/user name.
   projectName: 'maia-dao.github.io', // Usually your repo name.
-  deploymentBranch: 'Maia-DAO',
+  deploymentBranch: 'gh-pages',
   trailingSlash: false,
   themeConfig: {
     image: 'img/twitter_card_bg.png',
