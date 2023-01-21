@@ -16,10 +16,10 @@ In short, a Port is in play whenever assets are deposited into or withdrawn from
 There are two types of Ports:
 
 ### 1. Branch Ports
-For each chain there must be one Branch Port which serves all the Branch Routers which may there be present, in response to both user requests and system responses a Router performs calls to the Port requesting the withdrawal, depositing or as well as interacting with the virtualized token contracts accordingly.
+For each chain there must be one Branch Port which serves all the Branch Routers which may be present there, in response to both user requests and system responses a Router performs calls to the Port requesting the withdrawal, depositing or as well as interacting with the virtualized token contracts accordingly.
 
 ### 2. Root Port
-Is present in the Root Chain and communicates with all connected Root Routers. This Port is responsible for maintaining the global state of the Virtualized Tokens, having a registry of all the mappings from underlying to local addresses,as well as from local to global addresses. Any action that envolves the addition, removal or verification of tokens and their balances has to go thorugh this contract.
+The Root Port is present in the Root Chain and communicates with all connected Root Routers. This Port is responsible for maintaining the global state of the Virtualized Tokens, having a registry of all the mappings from underlying to local addresses,as well as from local to global addresses. Any action that envolves the addition, removal or verification of tokens and their balances has to go thorugh this contract.
 
 ## Architecture Overview
 
