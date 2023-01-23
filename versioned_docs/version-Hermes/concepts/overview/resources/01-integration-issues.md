@@ -11,4 +11,4 @@ Fee-on-transfer tokens will not function with our contracts. As a workaround, th
 
 ## Rebasing Tokens
 
-Rebasing tokens will succeed in pool creation, swapping abd bribing, but the protocol and liquidity providers will bear the loss of a negative rebase when their position becomes active, with no way to recover the loss.
+Rebasing tokens will succeed in pool creation, swapping and bribing, but the protocol and liquidity providers will bear the loss of a negative rebase when their position becomes active, with no way to recover the loss.
