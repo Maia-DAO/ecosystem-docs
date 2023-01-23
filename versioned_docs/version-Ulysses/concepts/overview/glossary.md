@@ -5,7 +5,7 @@ title: Glossary
 
 ## Automated Market Maker
 
-An automated market maker is a smart contract on Ethereum that holds liquidity reserves. Users can trade against these reserves at prices determined by a fixed formula. Anyone may contribute liquidity to these smart contracts, earning pro-rata trading fees in return.
+An automated market maker is a smart contract on Ethereum that holds liquidity reserves. Users can trade against these reserves at prices determined by a fixed formula. Anyone may contribute liquidity to these smart contracts, earning pro rata trading fees in return.
 
 ## Asset
 
@@ -21,7 +21,7 @@ The automated market making algorithm used by Uniswap. In v1 and v2, this was x\
 
 ## Core
 
-Smart contracts that are considered foundational, and are essential for Uniswap to exist. Upgrading to a new version of core would require deploying an entirely new set of smart contracts on Ethereum and would be considered a new version of the Uniswap Protocol.
+Smart contracts that are considered foundational, and are essential for Uniswap to exist. Upgrading to a new version of core would require deploying an entirely new set of smart contracts on Ethereum, and would be considered a new version of the Uniswap Protocol.
 
 ## Deposits
 
@@ -97,7 +97,7 @@ The liquidity available within a pair. This was more commonly referenced before 
 
 ## Settlements
 
-Represents a token deposit from Root chain to the Branch chain. 
+Represents a token deposit from the Root chain to the Branch chain. 
 
 ## Slippage
 
