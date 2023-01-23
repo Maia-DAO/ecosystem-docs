@@ -6,7 +6,7 @@ title: Uniswap V3 Gauges
 [//]: # (TODO:  Add examples)
 [//]: # (TODO:  Link how Talos helps or users can take advantage of it's staked positions)
 
-Uniswap V3 [Gauge](./introduction) are a new tool for liquidity mining on the Uniswap V3 protocol. They utilize an improved version of the [Uniswap V3 Staker](https://docs.uniswap.org/contracts/v3/guides/liquidity-mining/overview), which is optimized for layer 2 by reducing calldata. This allows for faster and cheaper transactions while still maintaining the integrity of the liquidity pool.
+Uniswap V3 [Gauges](./introduction) are a new tool for liquidity mining on the Uniswap V3 protocol. They utilize an improved version of the [Uniswap V3 Staker](https://docs.uniswap.org/contracts/v3/guides/liquidity-mining/overview), which is optimized for layer 2 by reducing calldata. This allows for faster and cheaper transactions while still maintaining the integrity of the liquidity pool.
 
 ## Liquidity Mining
 
@@ -16,7 +16,7 @@ Liquidity mining incentives are a key feature of Uniswap V3 Gauges. These incent
 LPs will lose new rewards between the moment a new [gauge cycle](./introduction/#gauge-cycle) starts until they re-stake again! Additionally, staked positions will give up any fees until they unstake.
 :::
 
-The staker also takes into account all of a pool's liquidity, even if a pools is not staked, their respective rewards will be refunded to the minter and not distributed to others. This means that if a pool is not staked, the rewards will be returned to Hermes Minter.
+The Staker also takes into account all of a pool's liquidity, even if a pools is not staked, their respective rewards will be refunded to the minter and not distributed to others. This means that if a pool is not staked, the rewards will be returned to Hermes Minter.
 
 ## Minimum Range
 
@@ -26,7 +26,7 @@ Every gauge has a minimum range for staked Uniswap V3 NFT positions that is dete
 
 ### Customized Incentives
 
-This solution allows each pool to have its depth customly incentivized, with pools of highly correlated assets (stable pools) having a small range possibly one tick and loosely correlated assets (volatile pools) having wide minimum range.
+This solution allows each pool to have its depth custom incentivized, with pools of highly correlated assets (stable pools) having a small range (possibly as low as one tick), and loosely correlated assets (volatile pools) having a wide minimum range.
 
 The custom incentives will depend on the correlation of the assets in the pool. This means that pools with highly correlated assets will have a smaller minimum range, while pools with loosely correlated assets will have a wider minimum range. The idea behind this approach is that the assets in a pool with a high correlation will be less likely to move away from the equilibrium point, and therefore, a smaller range is needed. On the other hand, pools with low correlation are more likely to move away from the equilibrium point, so a wider range is needed to keep them in check.
 
@@ -41,7 +41,7 @@ Uniswap V3 Gauges also allow for different fee tiers to be set for different tok
 ## Calculating Boost
 
 :::info
-Please note that in order to prevent gaming of the boost system, users are can have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.
+Please note that in order to prevent gaming of the boost system, users can have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.
 :::
 
 Calculating boost is an important aspect of managing liquidity pools on the Uniswap V3 protocol. The boost is used to determine the rewards received by liquidity providers for their staked positions in the pool. The equation used to calculate the boost is equivalent to the boosting in Hermes V1.
@@ -50,8 +50,8 @@ The Uniswap V3 Staker distributes rewards based on the time spent in range. This
 
 The equation used to calculate the boost is as follows:
 
-$Rewards Received = min(Position Rewards, Position Rewards * 40\% + (Total Rewards For Duration Staked * User bHermes / Total bHermes Supply) * 60\%)$
+$Rewards Received = min(Position Rewards, Position Rewards * 40\% + (Total Rewards For Duration Staked * User bHERMES / Total bHERMES Supply) * 60\%)$
 
-The formula calculates the rewards received by a user, based on their position rewards, and their stake in the bHermes token. The rewards received is determined by taking the minimum value between the position rewards and a combination of two other factors: the position rewards multiplied by 40%, and the total rewards for the duration staked multiplied by the user's bHermes stake divided by the total bHermes supply, multiplied by 60%. This formula ensures that users are rewarded for both their position in the liquidity pool and their stake in the bHermes token, but the rewards will be capped at the position rewards.
+The formula calculates the rewards received by a user, based on their position rewards, and their stake in the bHERMES token. The rewards received is determined by taking the minimum value between the position rewards and a combination of two other factors: the position rewards multiplied by 40%, and the total rewards for the duration staked multiplied by the user's bHERMES stake divided by the total bHERMES supply, multiplied by 60%. This formula ensures that users are rewarded for both their position in the liquidity pool and their stake in the bHERMES token, but the rewards will be capped at the position rewards.
 
 Calculating boost is an important aspect of managing liquidity pools on the Uniswap V3 protocol. The equation used to calculate the boost is equivalent to the boosting in Hermes V1 and takes into account the time spent in range and the total rewards that could have been earned during that time. This allows for a fair distribution of rewards among liquidity providers in the pool.
