@@ -10,6 +10,6 @@ title: Virtual Liquidity
 
 This allows for the underlying assets to remain locked in their respective chains while still being able to provide liquidity and earn revenue from activity in different chains.
 
-The Branch Tokens can then be used to provide liquidity in different pools and protocols, such as Uniswap V3, Aave, and other AMMs. This enables liquidity providers to earn revenue from activities across multiple chains, while also reducing the negative effects of impermanent loss and increasing capital efficiency.
+The Branch hTokens can then be used to provide liquidity in different pools and protocols, such as Uniswap V3, Aave, and other AMMs. This enables liquidity providers to earn revenue from activities across multiple chains, while also reducing the negative effects of impermanent loss and increasing capital efficiency.
 
 Furthermore, Virtualized Liquidity also enables protocols to lower their operational and management costs by incentivizing liquidity for a single unified liquidity token instead of managing incentives for pools scattered across different AMMs and chains.
