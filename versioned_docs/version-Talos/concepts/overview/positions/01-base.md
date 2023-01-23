@@ -16,11 +16,11 @@ There exists 2 types of base positions:
 1. **[Staked](./staked)**: Represent a share of one or more UNI V3 NFT positions that are all staked in [Hermes Uniswap V3 Gauges](base).
 2. **[Vanilla](./vanilla)**: Represent a share of one or more UNI V3 NFT positions.
 
-The deployer of each positions chooses the type, without being possible to change it in the future.
+The deployer of each position selects the type, with no possibility of changing it in the future.
 
 Creating a Position
 
-Creating a new position on Talos is simple and straightforward. First, select the type of position you want to create (Staked or Vanilla). Next, select the underlying Uniswap V3 NFTs that you want to include in the position according with the rebalancing and/or reranging strategy. 
+Creating a new position on Talos is simple and straightforward. First, select the type of position you want to create (Staked or Vanilla). Next, select the underlying Uniswap V3 NFTs that you want to include in the position according to the rebalancing and/or rearranging strategy. 
 
 Strategies
 
