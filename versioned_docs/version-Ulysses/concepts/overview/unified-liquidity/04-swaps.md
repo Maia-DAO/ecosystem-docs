@@ -7,7 +7,7 @@ title: Swaps
 [//]: # (TODO: Adding multiple swaps examples)
 [//]: # (TODO: Adding adding LP, swapping and adding liq to Ulysses Token)
 
-To swap assets between pools they need to have an active bandwidth, when this is the case, the user can deposit or use deposited assets in the initial pool. The user can then swap it's deposit to another pool by removing bandwidth in the destination LP from the source LP.
+To swap assets between pools they need to have an active bandwidth — when this is the case, the user can deposit or use deposited assets in the initial pool. The user can then swap their deposit to another pool by removing bandwidth in the destination LP from the source LP.
 
 The full process is shown below in the Unified Liquidity Algorithm.
 
