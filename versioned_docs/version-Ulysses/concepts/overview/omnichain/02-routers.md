@@ -22,7 +22,7 @@ Root Routers are present in the Root Chain and communicate with all the connecte
 Lets take a look at a practical example of a swap and see how the user interacts (indirectly) with the Branch and Root Routers. 
 
 ### 1. User Request
-User starts off by sending a request to the Branch Router providing the necessary to execute a swap.
+User starts off by sending a request to the Branch Router providing the necessary parameters to execute a swap.
 
 ### 2. Deposit Assets 
 Source Branch Router, from whichever chain the user is connected to, receives the request for the swap, transferring and locking the necessary balance from user. A request is then sent with the essential data, via Anycall messaging layer, to its corresponding Root Router.
