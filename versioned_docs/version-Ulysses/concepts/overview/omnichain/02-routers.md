@@ -25,7 +25,7 @@ Lets take a look at a practical example of a swap and see how the user interacts
 User starts off by sending a request to the Branch Router providing the necessary parameters to execute a swap.
 
 ### 2. Deposit Assets 
-Source Branch Router, from whichever chain the user is connected to, receives the request for the swap, transferring and locking the necessary balance from user. A request is then sent with the essential data, via Anycall messaging layer, to its corresponding Root Router.
+The Source Branch Router, from whichever chain the user is connected to, receives the request for the swap, transferring and locking the necessary balance from the user. A request is then sent with the essential data, via Anycall messaging layer, to its corresponding Root Router.
 
 ### 3. Receive Request
 Root Router receives the Branch Router data and validates the authenticity of the request and deposit data.
