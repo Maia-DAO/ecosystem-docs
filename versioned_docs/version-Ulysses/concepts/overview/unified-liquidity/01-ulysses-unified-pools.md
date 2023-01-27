@@ -7,11 +7,11 @@ title: Ulysses Unified Pools
 
 Ulysses Unified Pools are single-sided staking liquidity pools that allow the trading of assets with any number of other Ulysses Pools. The main difference between a Delta Algorithm LP presented in the paper mentioned above is that all Ulysses LPs reside in Arbitrum. This makes the trade-off between composability outside of Arbitrum with inside of Arbitrum.
 
-This means that when transactions are executed in Arbitrum, the protocol guarantees finality but not when trading from other chains. In additon to this, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls. Making arbitrage cheaper to execute inside our system.
+This means that when transactions are executed in Arbitrum, the protocol guarantees finality but not when trading from other chains. Additionally, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls, thereby making arbitrage cheaper to execute inside our system.
 
-Each Unified Liquidity LP handles only a single token from a specific chain and is connected to one or more Unified Liquidity LPs. Liquidity is available to trade between each of this LPs according to set weights. 
+Each Unified Liquidity LP handles only a single token from a specific chain and is connected to one or more Unified Liquidity LPs. Liquidity is available to trade between each of these LPs, according to set weights. 
 
-To ensure liquidity availability between chains, we implemented a [rebalancing fee](./fees/#rebalancing-fees) that can be zero, positive or negative depending on the action and bandwidth (available liquidity on the receiving chain) of the pool. There is also a [protocol fee](./fees/#protocol-fees) to be deposited in each token respective gauge.
+To ensure liquidity availability between chains, we implemented a [rebalancing fee](./fees/#rebalancing-fees) that can be zero, positive or negative, depending on the action and bandwidth (available liquidity on the receiving chain) of the pool. There is also a [protocol fee](./fees/#protocol-fees) to be deposited in each token respective gauge.
 
 To ease integrations, every Ulysses LP total supply is exactly equal to the total withdrawable assets when the pool is balanced (without rebalancing fees).
 
@@ -25,28 +25,28 @@ Swapping LPs and assets between Ulysses pools is detailed [here](./swaps).
 
 ## Depositing Assets
 
-When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest apart from their [target bandwidth](.). Users can occur in a positive slippage when doing this action.
+When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may occur in positive slippage when performing this action.
 
-Let's look at a couple of examples of interacting with 10 tokens to an LP with a total supply of 100 and two destinations with equal weights:
+Let's look at some examples of depositing 10 tokens to an LP with two destinations chains with the same weight:
 
-### Pool's bandwidths are at or higher than their target bandwidth
+### Both pools' bandwidths are equal or greater than their target (50):
 
-When depositing assets in this scenario, the transfered amount will be distributed evenly between them. So 5 tokens for each bandwidth.
+When depositing assets in this scenario, the transferred amount will be distributed evenly between both bandwidths. So 5 tokens for each bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
 |  1 | 50 | 55 |
 |  2 | 50 | 55 |
 
-### Pool's has a bandwidth that is not at it's target bandwidth
-When depositing assets in this scenario, the transfered amount will be distributed to the bandwidth until it's target balance, then evenly between them. So 2 tokens for destination 2's bandwidth and then 4 for each bandwidth.
+### One pool's bandwidth is below its target:
+When depositing assets in this scenario, the transferred amount will be distributed to the deficient bandwidth until it meets the target balance, then evenly between them. So 2 tokens for destination 2's bandwidth and then 4 for each bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
 |  1 | 52 | 56 |
 |  2 | 48 | 54 |
 
-### Pool's bandwidths are not at their target bandwidth
+### Both Pools' bandwidths are below their targets:
 When depositing assets in this scenario, the transfered amount will be distributed to the lowest bandwidth until they are equal, then evenly between them. So 2 tokens for destination 2's bandwidth and then 4 for each bandwidth.
 
 | Destination | Initial State  | Final State |
@@ -54,8 +54,8 @@ When depositing assets in this scenario, the transfered amount will be distribut
 |  1 | 30 | 34 |
 |  2 | 28 | 34 |
 
-### Pool's has one bandwidth significantly more depleted than others
-When depositing assets in this scenario, the transfered amount will be distributed to the lowest bandwidth. So all the 10 tokens will be deposited in destination 2's bandwidth.
+### One pool's bandwidth is significantly lower than the other's:
+When depositing assets in this scenario, the transferred amount will be entirely distributed to the lowest bandwidth. So all 10 tokens will be deposited in destination 2's bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
@@ -91,28 +91,28 @@ Input: t
 
 ## Withdrawing Assets
 
-Withdrawing assets is the exact opposite of [depositing](#depositing-assets). Liquidity is removed from the bandwidths that are larger or closer to the target/ideal bandwith. Users can occur in a negative slippage when doing this action.
+Withdrawing assets is the exact opposite of [depositing](#depositing-assets). Liquidity is removed from the bandwidths that are larger or closer to the target/ideal bandwidth. Users may incur negative slippage when performing this action.
 
-Let's look at a couple of examples of interacting with 10 tokens to an LP with a total supply of 100 and two destinations with equal weights:
+Let's look at some examples of withdrawing 10 tokens from an LP with two destinations chains with the same weight:
 
-### Pool's bandwidths are at or lower than their target bandwidth
+### Both pools' bandwidths are less than or equal to their target (50):
 
-When withdrawing assets in this scenario, the transfered amount will be removed evenly between them. So 5 tokens from each bandwidth.
+When withdrawing assets in this scenario, the transferred amount will be removed evenly between them. So 5 tokens from each bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
 |  1 | 50 | 45 |
 |  2 | 50 | 45 |
 
-### Pool's has a bandwidth that is not at it's target bandwidth
-When withdrawing assets in this scenario, the transfered amount will be removed from the bandwidth until it's target balance, then evenly between them. So 2 tokens from destination 1's bandwidth and then 4 from each bandwidth.
+### One pool's bandwidth is below its target:
+When withdrawing assets in this scenario, the transferred amount will be removed from the greater bandwidth until it meets the target balance, then evenly between them. So 2 tokens from destination 1's bandwidth and then 4 from each bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
 |  1 | 52 | 46 |
 |  2 | 48 | 44 |
 
-### Pool's bandwidths are over their target bandwidth
+### Both pools' bandwidths exceed their targets:
 When withdrawing assets in this scenario, the transfered amount will be removed from the highest bandwidth until they are equal, then evenly between them. So 2 tokens from destination 2's bandwidth and then 4 from each bandwidth.
 
 | Destination | Initial State  | Final State |
@@ -120,8 +120,8 @@ When withdrawing assets in this scenario, the transfered amount will be removed 
 |  1 | 80 | 74 |
 |  2 | 78 | 74 |
 
-### Pool's bandwidths are at their target bandwidth, one has significantly more liquidity
-When withdrawing assets in this scenario, the transfered amount will be removed from the highest bandwidth. So all the 10 tokens will be withdrawn from the destination 2's bandwidth.
+### Both pools' bandwidths exceed their targets and one is significantly greater than the other's:
+When withdrawing assets in this scenario, all of the transferred amount will be removed from the highest bandwidth. So all 10 tokens will be withdrawn from destination 2's bandwidth.
 
 | Destination | Initial State  | Final State |
 |-------------|----------------|-------------|
