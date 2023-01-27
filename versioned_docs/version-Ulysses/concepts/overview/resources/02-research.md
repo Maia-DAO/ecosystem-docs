@@ -3,7 +3,7 @@ id: research
 title: Research
 ---
 
-In this page you will find relevant research to learn more about Ullyses concepts.
+In this page you will find relevant research to learn more about Ulysses concepts.
 
 # ∆: Solving the Bridging Trilemma
 
