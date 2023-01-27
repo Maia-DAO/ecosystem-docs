@@ -7,17 +7,17 @@ title: Ulysses Unified Pools
 
 Ulysses Unified Pools are single-sided staking liquidity pools that allow the trading of assets with any number of other Ulysses Pools. The main difference between a Delta Algorithm LP presented in the paper mentioned above is that all Ulysses LPs reside in Arbitrum. This makes the trade-off between composability outside of Arbitrum with inside of Arbitrum.
 
-This means that when transactions are executed in Arbitrum, the protocol guarantees finality but not when trading from other chains. Additionally, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls; thereby making arbitrage cheaper to execute inside our system.
+This means that when transactions are executed in Arbitrum, the protocol guarantees finality but not when trading from other chains. Additionally, anyone can route trades between multiple Ulysses LPs from different chains in the same execution environment, without any cross-chain calls, thereby making arbitrage cheaper to execute inside our system.
 
 Each Unified Liquidity LP handles only a single token from a specific chain and is connected to one or more Unified Liquidity LPs. Liquidity is available to trade between each of these LPs, according to set weights. 
 
-To ensure liquidity availability between chains, we implemented a [rebalancing fee](./fees/#rebalancing-fees) that can be zero, positive, or negative, depending on the action and bandwidth (available liquidity on the receiving chain) of the pool. There is also a [protocol fee](./fees/#protocol-fees) to be deposited in each token respective gauge.
+To ensure liquidity availability between chains, we implemented a [rebalancing fee](./fees/#rebalancing-fees) that can be zero, positive or negative, depending on the action and bandwidth (available liquidity on the receiving chain) of the pool. There is also a [protocol fee](./fees/#protocol-fees) to be deposited in each token respective gauge.
 
 To ease integrations, every Ulysses LP total supply is exactly equal to the total withdrawable assets when the pool is balanced (without rebalancing fees).
 
 # How does an Ulysses Pool work?
 
-To fully understand an Ulysses Pool it is necessary to know the three actions possible that users can make to alter the pool's state: depositing, withdrawing, and swapping assets.
+To fully understand an Ulysses Pool it is necessary to know the three actions possible that users can make to alter the pool's state: depositing, withdrawing and swapping assets.
 
 ## Swapping Assets
 
@@ -25,11 +25,11 @@ Swapping LPs and assets between Ulysses pools is detailed [here](./swaps).
 
 ## Depositing Assets
 
-When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may incur positive slippage when performing this action.
+When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may occur in positive slippage when performing this action.
 
-Let's look at some examples of depositing 10 tokens to an LP with two destinations:
+Let's look at some examples of depositing 10 tokens to an LP with two destinations chains with the same weight:
 
-### Both pools' bandwidths are greater than or equal to their target (50):
+### Both pools' bandwidths are equal or greater than their target (50):
 
 When depositing assets in this scenario, the transferred amount will be distributed evenly between both bandwidths. So 5 tokens for each bandwidth.
 
@@ -46,7 +46,7 @@ When depositing assets in this scenario, the transferred amount will be distribu
 |  1 | 52 | 56 |
 |  2 | 48 | 54 |
 
-### Both pools' bandwidths are below their targets:
+### Both Pools' bandwidths are below their targets:
 When depositing assets in this scenario, the transfered amount will be distributed to the lowest bandwidth until they are equal, then evenly between them. So 2 tokens for destination 2's bandwidth and then 4 for each bandwidth.
 
 | Destination | Initial State  | Final State |
@@ -93,7 +93,7 @@ Input: t
 
 Withdrawing assets is the exact opposite of [depositing](#depositing-assets). Liquidity is removed from the bandwidths that are larger or closer to the target/ideal bandwidth. Users may incur negative slippage when performing this action.
 
-Let's look at some examples of withdrawing 10 tokens from an LP with two destinations:
+Let's look at some examples of withdrawing 10 tokens from an LP with two destinations chains with the same weight:
 
 ### Both pools' bandwidths are less than or equal to their target (50):
 
@@ -120,7 +120,7 @@ When withdrawing assets in this scenario, the transfered amount will be removed 
 |  1 | 80 | 74 |
 |  2 | 78 | 74 |
 
-### One pool's bandwidth is significantly greater than the other's:
+### Both pools' bandwidths exceed their targets and one is significantly greater than the other's:
 When withdrawing assets in this scenario, all of the transferred amount will be removed from the highest bandwidth. So all 10 tokens will be withdrawn from destination 2's bandwidth.
 
 | Destination | Initial State  | Final State |
