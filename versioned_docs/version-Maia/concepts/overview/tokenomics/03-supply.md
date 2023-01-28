@@ -26,13 +26,13 @@ This phase constitutes the V2 iteration of the Maian Ecosystem where the key dif
 
 During this phase, the platform focuses on three main participants:
 - [Vaults](../vaults/strategies) Liquidity Providers
-- [vMaia](./vMaia) Lockers
+- [vMAIA](./vMaia) Lockers
 - [Hermes](../../../Hermes/introduction) Bribers
 
-The liquidity providers deposit their assets into the vaults and earn yield on their deposited assets, the vMaia Lockers lock their MAIA tokens and earn dividends from the platform's revenue, and the Hermes Bribers, protocols that are looking to rent liquidity in Hermes Protocol.
+The liquidity providers deposit their assets into the vaults and earn yield on their deposited assets, the vMAIA Lockers lock their MAIA tokens and earn dividends from the platform's revenue, and the Hermes Bribers, protocols that are looking to rent liquidity in Hermes Protocol.
 
 Overall, the Maian ecosystem is designed to be sustainable in the long-term by continuously evolving and adapting to the needs of the community and the market, while providing real yield to its participants.
 
 ### Bonds
 
-In this phase, new bonds can only be emitted after the approval of proposals that thoroughly assess the true extent of the value added to the DAO. This approach aims to ensure that the supply expansion aligns with the value brought to the platform by new partners, protocols or individuals. We're confident that without a clear vision on that value-add the DAO will self-regulate its dialogue in a way that weeds off subpar suggestions.
+In this phase, new bonds can only be emitted after the approval of proposals that thoroughly assess the true extent of the value added to the DAO. This approach aims to ensure that the supply expansion aligns with the value brought to the platform by new partners, protocols, or individuals. We're confident that without a clear vision on that value-addition the DAO will self-regulate its dialogue in a way that weeds off subpar suggestions.
