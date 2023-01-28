@@ -5,7 +5,7 @@ title: Vanilla
 
 [//]: # (TODO: protocol fee)
 
-Transparent Automated Liquidity Omnichain Strategies (TALOS) Vanilla Positions are a type of liquidity pool that allows users to hold UNI V3 NFTs without staking them in the Hermes Uniswap V3 gauge. These Vanilla Positions are built on the Ethereum blockchain, providing liquidity and composability to the underlying assets. They can also be used to build complex positions and strategies.
+Transparent Automated Liquidity Omnichain Strategies (TALOS) Vanilla Positions is a type of liquidity pool that allows users to hold UNI V3 NFTs without staking them in the Hermes Uniswap V3 gauge. These Vanilla Positions are built on the Ethereum blockchain, providing liquidity and composability to the underlying assets. They can also be used to build complex positions and strategies.
 
 ## Benefits
 
