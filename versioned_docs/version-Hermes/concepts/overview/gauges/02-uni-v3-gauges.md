@@ -26,7 +26,7 @@ Every gauge has a minimum range for staked Uniswap V3 NFT positions that is dete
 
 ### Customized Incentives
 
-This solution allows each pool to have its depth custom incentivized, with pools of highly correlated assets (stable pools) having a small range (possibly as low as one tick), and loosely correlated assets (volatile pools) having a wide minimum range.
+This solution allows each pool to have its depth customly incentivized, with pools of highly correlated assets (stable pools) having a small range (possibly as low as one tick), and loosely correlated assets (volatile pools) having a wide minimum range.
 
 The custom incentives will depend on the correlation of the assets in the pool. This means that pools with highly correlated assets will have a smaller minimum range, while pools with loosely correlated assets will have a wider minimum range. The idea behind this approach is that the assets in a pool with a high correlation will be less likely to move away from the equilibrium point, and therefore, a smaller range is needed. On the other hand, pools with low correlation are more likely to move away from the equilibrium point, so a wider range is needed to keep them in check.
 
