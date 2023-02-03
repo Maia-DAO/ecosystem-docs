@@ -173,7 +173,7 @@ module.exports = {
         //   className: 'persistent',
         // },
         {
-          href: 'https://github.com/Maia-DAO/v2-maia-ecosystem-docs',
+          href: 'https://github.com/Maia-DAO/ecosystem-docs',
           label: 'GitHub',
           position: 'right',
           className: 'persistent',
