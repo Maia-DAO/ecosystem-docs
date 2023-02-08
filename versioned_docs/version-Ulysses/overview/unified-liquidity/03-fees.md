@@ -20,19 +20,19 @@ The purpose of rebalancing fees, similar to slippage in a regular AMM, is to ens
 
 The rebalancing fee function can be calculated with the current bandwidth $b$, the target bandwidth $B$, and the transaction size $t$. Assuming the pool starts at an equilibrium:
 
-| Rebalancing Fee                                             | Condition                               |
-|-------------------------------------------------------------|-----------------------------------------|
-| 0                                                           | $b−t \leq \delta _1B$                   |
-| $ \frac{\lambda_1}{(\delta_1−\delta_2​)B​​}(\delta_1 B−b+t)$   | $ \delta _2​B \leq b−t \lt \delta _1​B​$   |
-| $ \lambda_1+\frac{\lambda_2}{\delta_2​B​​}(\delta_2​B−b+t)$     | $ b−t \lt \delta _2 ​B​​$                  |
+| Rebalancing Fee                                            | Condition                              |
+|------------------------------------------------------------|----------------------------------------|
+| 0                                                          | $b−t \leq \delta _1B$                  |
+| $\frac{\lambda_1}{(\delta_1−\delta_2)B}(\delta_1 B−b+t)$   | $\delta _2B \leq b−t \lt \delta _1B$   |
+| $\lambda_1+\frac{\lambda_2}{\delta_2B}(\delta_2B−b+t)$     | $b−t \lt \delta _2 B$                  |
 
 ### Fee Parameters
 
 | Parameter      | Value  |
 |----------------|--------|
-| $ \lambda_1$   | 0.40%  |
-| $ \lambda_2$   | 99.54% |
-| $ \delta_1$    | 60%    |
-| $ \delta_2$    | 5%     |
+| $\lambda_1$   | 0.40%  |
+| $\lambda_2$   | 99.54% |
+| $\delta_1$    | 60%    |
+| $\delta_2$    | 5%     |
 
 You can find a desmos demonstrating the fee in [other resources](../resources/other).
