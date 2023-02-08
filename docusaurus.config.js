@@ -173,7 +173,7 @@ module.exports = {
         //   className: 'persistent',
         // },
         {
-          href: 'https://github.com/Maia-DAO/v2-maia-ecosystem-docs',
+          href: 'https://github.com/Maia-DAO/ecosystem-docs',
           label: 'GitHub',
           position: 'right',
           className: 'persistent',
@@ -302,7 +302,7 @@ module.exports = {
 
       // Should we use the prefers-color-scheme media-query,
       // using user system preferences, instead of the hardcoded defaultMode
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
     },
   },
   presets: [
