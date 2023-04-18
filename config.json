@@ -1,5 +1,5 @@
 {
-  "index_name": "ecosystem-docs",
+  "index_name": "ecosystem_docs",
   "start_urls": ["https://v2-docs.maiadao.io/"],
   "sitemap_urls": ["https://v2-docs.maiadao.io/sitemap.xml"],
   "sitemap_alternate_links": true,
@@ -19,6 +19,8 @@
     "lvl6": "article h6",
     "text": "article p, article li, article td:last-child"
   },
+  "js_render": true,
+  "js_wait": 1,
   "strip_chars": " .,;:#",
   "custom_settings": {
     "separatorsToIndex": "_",

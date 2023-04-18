@@ -20,7 +20,7 @@ module.exports = {
     },
     algolia: {
       apiKey: 'feec8d3ebb219a69c27e6e675015127f',
-      indexName: 'ecosystem-docs',
+      indexName: 'ecosystem_docs',
       appId: 'KP5MH8H1FE',
     },
     navbar: {

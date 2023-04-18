@@ -145,7 +145,7 @@ export const quick = [
   },
   {
     title: 'Medium',
-    text: 'Read Maia DAO\'s articles',
+    text: "Read Maia DAO's articles",
     to: 'https://uniswap.org/whitepaper-v3.pdf',
   },
 ]
@@ -339,6 +339,12 @@ const HideMedium = styled.div`
 export default function Home() {
   return (
     <Layout title={`Maia Ecosystem Docs`} description="Technical Documentation For The Maia Ecosytem">
+      <StyledTitleImage
+        sources={{
+          light: useBaseUrl('/img/grow.png'),
+          dark: useBaseUrl('/img/grow2.png'),
+        }}
+      />
       <Container>
         <DocsHeader>
           <div
@@ -354,39 +360,7 @@ export default function Home() {
             <HideMedium>
               <SearchBar />{' '}
             </HideMedium>
-            {/* <p
-              style={{
-                maxWidth: "640px",
-                margin: "1rem ",
-                fontWeight: 500,
-              }}
-            >
-              The pages that follow contain comprehensive documentation of the
-              Uniswap ecosystem. If you are new to Uniswap, you might want to
-              check out the{" "}
-              <Link
-                style={{ color: "#ff007a" }}
-                to="https://docs.uniswap.org/protocol/introduction"
-              >
-                Protocol Overview
-              </Link>{" "}
-              or{" "}
-              <Link
-                style={{ color: "#ff007a" }}
-                to="https://help.uniswap.org/en/collections/3033722-faq"
-              >
-                FAQ
-              </Link>{" "}
-              first.
-            </p> */}
           </div>
-          <StyledTitleImage
-            alt="Docusaurus themed image"
-            sources={{
-              light: useBaseUrl('/img/grow.png'),
-              dark: useBaseUrl('/img/grow2.png'),
-            }}
-          />
           <CardRow>
             {actions.map((action) => (
               <Link style={{ textDecoration: 'none' }} to={action.to}>
@@ -422,12 +396,11 @@ export default function Home() {
           <div>
             <h2>Getting Started</h2>
             <p>
-              Explore these docs to get started integrating the Maia Ecosytem in your dApp, smart contract or
-              project.
+              Explore these docs to get started integrating the Maia Ecosytem in your dApp, smart contract or project.
             </p>
             <p>
-              We do not have any guides public yet, we are working on it. In the meantime, you can check out
-              the rest of the docs.
+              We do not have any guides public yet, we are working on it. In the meantime, you can check out the rest of
+              the docs.
             </p>
             <div>
               {Guides.map((action) => (
