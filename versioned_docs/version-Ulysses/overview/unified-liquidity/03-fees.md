@@ -4,7 +4,7 @@ title: Fees
 ---
 
 [//]: # (TODO: Add visuals examples)
-[//]: # (TODO: Explain positive/negative fee situations and how arbitrageurs can take of advantagement of it)
+[//]: # (TODO: Explain positive/negative fee situations and how arbitrageurs can take of advantage of it)
 
 Ulysses Unified Liquidity fees only apply to Ulysses Unified Pools, they are split into [protocol fees](#protocol-fees) and [rebalancing fees](#rebalancing-fees).
 
