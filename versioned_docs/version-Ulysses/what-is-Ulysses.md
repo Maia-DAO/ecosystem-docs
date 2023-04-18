@@ -14,9 +14,9 @@ In addition, offering a way for DeFi protocols to lower their operational and ma
 
 Ulysses Protocol has two major components, the Virtualized and the Unified Liquidity Management. The latter being inspired by the [Delta Algorithm](https://www.dropbox.com/s/gf3606jedromp61/Delta-Solving.The.Bridging-Trilemma.pdf?dl=0) put forward by Layer 0. We take this idea one step further by having a single token which represents a basket of Ulysses LPs of the same token from different chains; this unlocks full composability enabling anyone to use this token as they wish, for example in other AMMs like Uniswap V3, Money Markets like Aave, and so on. 
 
-An understanding of the concepts of Ulysses [Ports](./concepts/overview/omnichain/ports) and [Virtualized Liquidity](./concepts/overview/omnichain/virtual-liquidity) is necessary to fully grasp the mechanics of Ulysses Virtualized Liquidity Management. This is achieved through the use of [anycall V7](https://docs.multichain.org/developer-guide/anycall-v7) for cross-chain messaging.
+An understanding of the concepts of Ulysses [Ports](./overview/omnichain/ports) and [Virtualized Liquidity](./overview/omnichain/virtual-liquidity) is necessary to fully grasp the mechanics of Ulysses Virtualized Liquidity Management. This is achieved through the use of [anycall V7](https://docs.multichain.org/developer-guide/anycall-v7) for cross-chain messaging.
 
-To understand Ulysses Unified Liquidity Solution, it is necessary to first understand the difference between [Ulysses Unified Pools](./concepts/overview/unified-liquidity/pools) and [Ulysses Unified Tokens](./concepts/overview/unified-liquidity/tokens).
+To understand Ulysses Unified Liquidity Solution, it is necessary to first understand the difference between [Ulysses Unified Pools](./overview/unified-liquidity/pools) and [Ulysses Unified Tokens](./overview/unified-liquidity/tokens).
 
 ## Where can I find more information about ecosystem products
 

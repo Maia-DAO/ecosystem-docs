@@ -14,7 +14,7 @@ The Maia DAO holds a position in bHermes, which allows users to leverage the ben
 MaiaDAO's vision: providing the user with the most utility with the least input materialized in meaningful partnerships with protocols that complement
 our product. That way our users' DeFi experience is less fragmented and more akin to the experience in a multiservice CEX, of course without the custody counterparty risks.
 
-Both the Hermes V2 architecture using [Uniswap V3 pools](../../../Hermes/concepts/overview/gauges/uni-v3) under the hood and Maia's strategy vaults will be a prime example of those synergies.
+Both the Hermes V2 architecture using [Uniswap V3 pools](/protocols/Hermes/overview/gauges/uni-v3) under the hood and Maia's strategy vaults will be a prime example of those synergies.
 
 ## Upcoming Features
 

@@ -19,9 +19,9 @@ module.exports = {
       additionalLanguages: ['solidity'],
     },
     algolia: {
-      apiKey: '215a980d267cf35cc81fa49332092a8b',
+      apiKey: 'feec8d3ebb219a69c27e6e675015127f',
       indexName: 'ecosystem-docs',
-      appId: 'HUFIQABVG5',
+      appId: 'KP5MH8H1FE',
     },
     navbar: {
       title: 'Maia Ecosystem Docs',
@@ -131,25 +131,25 @@ module.exports = {
         //   className: 'persistent',
         // },
         {
-          to: '/protocols/concepts/governance/overview',
+          to: '/protocols/governance/overview',
           label: 'Governance',
           position: 'left',
           className: 'Maia_active',
         },
         {
-          to: '/protocols/Hermes/concepts/governance/overview',
+          to: '/protocols/Hermes/governance/overview',
           label: 'Governance',
           position: 'left',
           className: 'Hermes_active',
         },
         {
-          to: '/protocols/Talos/concepts/governance/overview',
+          to: '/protocols/Talos/governance/overview',
           label: 'Governance',
           position: 'left',
           className: 'Talos_active',
         },
         {
-          to: '/protocols/Ulysses/concepts/governance/overview',
+          to: '/protocols/Ulysses/governance/overview',
           label: 'Governance',
           position: 'left',
           className: 'Ulysses_active',
@@ -346,23 +346,5 @@ module.exports = {
       integrity: 'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
       crossorigin: 'anonymous',
     },
-  ],
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'SDK',
-        path: 'sdk',
-        routeBasePath: 'sdk/',
-        sidebarPath: require.resolve('./sdkSidebars.js'),
-        remarkPlugins: [[require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]],
-        includeCurrentVersion: false,
-        versions: {
-          'Maia': {
-            banner: 'none',
-          }
-        },
-      },
-    ],
   ],
 }

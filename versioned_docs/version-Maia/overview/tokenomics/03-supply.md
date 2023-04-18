@@ -27,7 +27,7 @@ This phase constitutes the V2 iteration of the Maian Ecosystem where the key dif
 During this phase, the platform focuses on three main participants:
 - [Vaults](../vaults/strategies) Liquidity Providers
 - [vMAIA](./vMaia) Lockers
-- [Hermes](../../../Hermes/introduction) Bribers
+- [Hermes](/protocols/Hermes/introduction) Bribers
 
 The liquidity providers deposit their assets into the vaults and earn yield on their deposited assets, the vMAIA Lockers lock their MAIA tokens and earn dividends from the platform's revenue, and the Hermes Bribers, protocols that are looking to rent liquidity in Hermes Protocol.
 

@@ -30,7 +30,7 @@ Direct emissions to different Gauges to earn a share of the Gauge's revenue.
 ### Partners
 Bribe voters to attract TVL.
 
-Gauges will receive as bribes the [protocol fees](../../../../Ulysses/concepts/overview/unified-liquidity/fees#protocol-fees) of their underlying asset's Ulysses [Unified Liquidity Pools](../../../../Ulysses/concepts/overview/unified-liquidity/pools).
+Gauges will receive as bribes the [protocol fees](/protocols/Ulysses/overview/unified-liquidity/fees#protocol-fees) of their underlying asset's Ulysses [Unified Liquidity Pools](/protocols/Ulysses/overview/unified-liquidity/pools).
 
 ## Practical Example
 
