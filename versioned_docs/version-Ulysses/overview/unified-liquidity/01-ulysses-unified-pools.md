@@ -25,7 +25,7 @@ Swapping LPs and assets between Ulysses pools is detailed [here](./swaps).
 
 ## Depositing Assets
 
-When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may occur in positive slippage when performing this action.
+When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may incur positive slippage when performing this action.
 
 Let's look at some examples of depositing 10 tokens to an LP with two destinations chains with the same weight:
 
