@@ -15,7 +15,7 @@ To ensure liquidity availability between chains, we implemented a [rebalancing f
 
 To ease integrations, every Ulysses LP total supply is exactly equal to the total withdrawable assets when the pool is balanced (without rebalancing fees).
 
-# How does an Ulysses Pool work?
+# How does a Ulysses Pool work?
 
 To fully understand an Ulysses Pool it is necessary to know the three actions possible that users can make to alter the pool's state: depositing, withdrawing and swapping assets.
 
