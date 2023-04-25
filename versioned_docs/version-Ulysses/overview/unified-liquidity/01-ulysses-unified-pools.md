@@ -15,7 +15,7 @@ To ensure liquidity availability between chains, we implemented a [rebalancing f
 
 To ease integrations, every Ulysses LP total supply is exactly equal to the total withdrawable assets when the pool is balanced (without rebalancing fees).
 
-# How does an Ulysses Pool work?
+# How does a Ulysses Pool work?
 
 To fully understand an Ulysses Pool it is necessary to know the three actions possible that users can make to alter the pool's state: depositing, withdrawing and swapping assets.
 
@@ -25,7 +25,7 @@ Swapping LPs and assets between Ulysses pools is detailed [here](./swaps).
 
 ## Depositing Assets
 
-When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may occur in positive slippage when performing this action.
+When you deposit an asset in a Unified Liquidity Pool, you are replenishing the bandwidths that are furthest from their [target bandwidth](.). Users may incur positive slippage when performing this action.
 
 Let's look at some examples of depositing 10 tokens to an LP with two destinations chains with the same weight:
 
