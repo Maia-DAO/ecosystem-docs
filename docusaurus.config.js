@@ -13,6 +13,10 @@ module.exports = {
   projectName: 'ecosystem-docs', // Usually your repo name.
   deploymentBranch: 'main',
   trailingSlash: false,
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
   themeConfig: {
     image: 'img/twitter_card_bg.png',
     prism: {

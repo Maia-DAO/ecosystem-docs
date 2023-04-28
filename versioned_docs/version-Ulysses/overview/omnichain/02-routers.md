@@ -21,25 +21,28 @@ Root Routers are present in the Root Chain and communicate with all the connecte
 
 Lets take a look at a practical example of a swap and see how the user interacts (indirectly) with the Branch and Root Routers. 
 
-### 1. User Request
+**1. User Request**
+
 User starts off by sending a request to the Branch Router providing the necessary parameters to execute a swap.
 
-### 2. Deposit Assets 
+**2. Deposit Assets**
+
 The Source Branch Router, from whichever chain the user is connected to, receives the request for the swap, transferring and locking the necessary balance from the user. A request is then sent with the essential data, via Anycall messaging layer, to its corresponding Root Router.
 
-### 3. Receive Request
+**3. Receive Request**
+
 Root Router receives the Branch Router data and validates the authenticity of the request and deposit data.
 
-### 4. Perform Swap
+**4. Perform Swap**
+
 Root Router performs call for the requested user swap.
 
-### 5. Create Settlement and Send Response
+**5. Create Settlement and Send Response**
+
 Root Router creates settlement for the user token output and sends token clearance request to the exit chain's Branch Router.
 
-### 6. Receive Request and Clear Tokens
+**6. Receive Request and Clear Tokens**
+
 Destination Branch Router receives Root Router communication and requests token clearance for user withdrawal from the local Port.
 
 ![Omnichain Flow](./images/Ulysses_Omnichain_Flow.png)
-
-
-

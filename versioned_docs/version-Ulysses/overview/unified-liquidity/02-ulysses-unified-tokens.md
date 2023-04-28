@@ -21,6 +21,103 @@ Ulysses Unified Tokens can be utilized for trading and providing liquidity to ot
 
 Ulysses Unified Tokens can serve as a foundation for other applications. A lending platform might use them as collateral, allowing users to borrow against their assets across multiple chains. Similarly, a stablecoin issuer could leverage Ulysses Unified Tokens to create a multichain stablecoin pegged to the value of multiple underlying assets.
 
-## Conclusion
+## Summary and Key Takeaways
 
 Ulysses Unified Tokens are an innovative token type that enables users to access liquidity pools from multiple chains through a single, unified token. They offer flexibility, control, and simplified asset value tracking for users. These tokens can be used for trading, adding liquidity, and as building blocks for other applications, such as lending and stablecoin issuance. By allowing users to manage digital assets across various chains, Ulysses Unified Tokens help reduce fragmented liquidity and increase capital efficiency.
+
+
+## Interaction Flow of a Swap Using Unified Liquidity Tokens
+In this example, Ulysses USDC Token and Ulysses ETH Token have the same weights: (60% mainnet, 30% arb, 10% OP) 
+
+| Step | Action | Deposit | Return | Platform | Chain |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Deposit and Bridge | 10 USDC |  | Ulysses Branch Port | OP |
+| 2 | Send Anycall Request |  |  |  |  |
+| 3 | Receive |  | 10 op-hUSDC | Ulysses Root Port | ARB |
+| 4 | Deposit | 1 op-hUSDC | 1 op-ulysses-LP of USDC | Ulysses AMM | ARB |
+| 5 | Swap | 3 op-hUSDC | 3 arb-hUSDC | Ulysses AMM | ARB |
+| 6 | Deposit | 3 arb-hUSDC | 3 arb-ulysses-LP of USDC | Ulysses AMM | ARB |
+| 7 | Swap | 6 op-hUSDC | 6 mainnet-hUSDC | Ulysses AMM | ARB |
+| 8 | Deposit | 6 mainnet-hUSDC | 6 mainnet-ulysses-LP of USDC | Ulysses AMM | ARB |
+| 9 | Deposit | 1 op-ulysses-LP of USDC <br />3 arb-ulysses-LP of USDC <br />6 mainnet-ulysses-LP of USDC | 10 Ulysses USDC Token | Ulysses Token | ARB |
+| 10 | Swap | 10 Ulysses USDC Token | 1 Ulysses ETH Token | Uniswap V3 | ARB |
+| 11 | Withdraw | 1 Ulysses ETH Token | 0.1 op-ulysses-LP of ETH <br />0.3 arb-ulysses-LP of ETH <br />0.6 mainnet-ulysses-LP of ETH | Ulysses Token | ARB |
+| 12 | Withdraw | 0.1 op-ulysses-LP of ETH | 0.1 op-hETH | Ulysses AMM | ARB |
+| 14 | Withdraw | 0.3 arb-ulysses-LP of ETH | 0.3 arb-hETH | Ulysses AMM | ARB |
+| 15 | Swap | 0.3 arb-hETH | 0.3 op-hETH | Ulysses AMM | ARB |
+| 16 | Withdraw | 0.6 mainnet-ulysses-LP of ETH | 0.6 mainnet-hETH | Ulysses AMM | ARB |
+| 17 | Swap | 0.6 mainnet-hETH | 0.6 op-hETH | Ulysses AMM | ARB |
+| 18 | Bridge and Withdraw | 1 op-hETH |  | Ulysses Root Port | ARB |
+| 19 | Send Anycall Request |  |  |  |  |
+| 20 | Withdraw |  | 1 ETH | Ulysses Branch Port | OP |
+
+This table represents a series of actions performed on the Ulysses platform, which involves deposits, swaps, and withdrawals across different chains. The process begins with depositing USDC in the Ulysses Branch Port on the OP chain, and ends with the withdrawal of ETH from the same port. The steps are as follows:
+
+1. Deposit 10 USDC in the Ulysses Branch Port on the OP chain.
+2. Send an Anycall request.
+3. Receive 10 op-hUSDC in the Ulysses Root Port on the Arbitrum (ARB) chain.
+4. Deposit 1 op-hUSDC in the Ulysses AMM on the ARB chain and receive 1 op-ulysses-LP of USDC.
+5. Swap 3 op-hUSDC for 3 arb-hUSDC using the Ulysses AMM on the ARB chain.
+6. Deposit 3 arb-hUSDC in the Ulysses AMM on the ARB chain and receive 3 arb-ulysses-LP of USDC.
+7. Swap 6 op-hUSDC for 6 mainnet-hUSDC using the Ulysses AMM on the ARB chain.
+8. Deposit 6 mainnet-hUSDC in the Ulysses AMM on the ARB chain and receive 6 mainnet-ulysses-LP of USDC.
+9. Deposit a combination of LP tokens (1 op, 3 arb, and 6 mainnet) in the Ulysses Token on the ARB chain and receive 10 Ulysses USDC Tokens.
+10. Swap 10 Ulysses USDC Tokens for 1 Ulysses ETH Token using Uniswap V3 on the ARB chain.
+11. Withdraw LP tokens of ETH (0.1 op, 0.3 arb, and 0.6 mainnet) from the Ulysses Token on the ARB chain using 1 Ulysses ETH Token.
+12. Withdraw 0.1 op-hETH from the Ulysses AMM on the ARB chain using 0.1 op-ulysses-LP of ETH.
+13. Withdraw 0.3 arb-hETH from the Ulysses AMM on the ARB chain using 0.3 arb-ulysses-LP of ETH.
+14. Swap 0.3 arb-hETH for 0.3 op-hETH using the Ulysses AMM on the ARB chain.
+15. Withdraw 0.6 mainnet-hETH from the Ulysses AMM on the ARB chain using 0.6 mainnet-ulysses-LP of ETH.
+16. Swap 0.6 mainnet-hETH for 0.6 op-hETH using the Ulysses AMM on the ARB chain.
+17. Bridge and withdraw 1 op-hETH using the Ulysses Root Port on the ARB chain.
+18. Send an Anycall request.
+19. Withdraw 1 ETH from the Ulysses Branch Port on the OP chain.
+
+### FlowChart
+
+```mermaid
+graph TD
+	style A fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style B fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style C fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style E fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style G fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style I fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style F1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style H1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style R1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style R2 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style J fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
+    style L fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
+    style M fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
+    style R4 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
+    style R5 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
+    style R6 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
+    style Q fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style T fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style V fill:#E74C3C,stroke:#333,stroke-width:2px,color:#000;
+    A[Start: Deposit 10 USDC]
+    A --> B[Ulysses Branch Port OP Chain]
+    B -->|Send Anycall Request| C[Ulysses Root Port ARB Chain]
+    C -->|Deposit 1 op-hUSDC| E[1 op-ulysses-LP of USDC]
+    F1[3 arb-hUSDC] -->|Deposit 3 arb-hUSDC| G[3 arb-ulysses-LP of USDC]
+    H1[6 mainnet-hUSDC] -->|Deposit 6 mainnet-hUSDC| I[6 mainnet-ulysses-LP of USDC]
+    C -->|Swap 3 op-hUSDC| F1
+    C -->|Swap 6 op-hUSDC| H1
+    E -.-> J[Ulysses Unified USDC Token ARB Chain]
+    G -.-> J
+    I -.-> J
+    J -->|10 Ulysses USDC Token| L[Uniswap V3 ARB Chain]
+    L -->|1 Ulysses ETH Token| M[Ulysses Unified ETH Token ARB Chain]
+    M -->|Withdraw 0.1 op-ulysses-LP of ETH| R4[0.1 op-hETH]
+    M -->|Withdraw 0.3 arb-ulysses-LP of ETH| R1[0.3 arb-hETH]
+    M -->|Withdraw 0.6 mainnet-ulysses-LP of ETH| R2[0.6 mainnet-hETH]
+    R1 -->|Swap 0.3 arb-hETH| R5[0.3 op-hETH]
+    R2 -->|Swap 0.6 mainnet-hETH| R6[0.6 op-hETH]
+    R4 -.-> Q[Ulysses Root Port ARB Chain]
+    R5 -.-> Q
+    R6 -.-> Q
+    Q -->|Send Anycall Request| T[Ulysses Branch Port OP Chain]
+    T -->  V[End: Withdraw 1 ETH]
+```
+

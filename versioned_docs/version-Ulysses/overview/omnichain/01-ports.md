@@ -24,5 +24,3 @@ The Root Port is present in the Root Chain and communicates with all connected R
 ## Architecture Overview
 
 ![Omnichain_Architecture](./images/Ulysses_Omnichain_Layout.png)
-
-
