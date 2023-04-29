@@ -1,6 +1,6 @@
 ---
 id: supply
-title: Maia's Supply
+title: Supply
 ---
 
 The Maian ecosystem has undergone several phases in its development, each with its own unique goals and objectives.
