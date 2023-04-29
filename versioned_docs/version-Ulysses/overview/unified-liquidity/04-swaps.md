@@ -32,7 +32,7 @@ Input: t, d
 # On the source LP:
  1: aₛ ← aₛ + t
  3: for x != s do
- 4:     diffₓ,ₛ ← max(0, lpₛ * wₓ,ₛ − bₓ,ₛ))
+ 4:     diffₓ,ₛ ← max(0, lpₛ * wₓ,ₛ − bₓ,ₛ)
  5: end for
  6: Total ← ∑ₓ diffₓ,ₛ
  7: for x != s do
