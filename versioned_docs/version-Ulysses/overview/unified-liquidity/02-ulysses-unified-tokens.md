@@ -83,48 +83,53 @@ This table represents a series of actions performed on the Ulysses platform, whi
 
 ```mermaid
 graph TD
-    style A fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style B fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style A fill:#45C1E9,stroke:#333,stroke-width:2px,color:#000;
     style C fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
     style E fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
     style G fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
     style I fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
     style F1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
     style H1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style R1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style R2 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
     style J fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
-    style L fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
+    style L fill:#FF69B4,stroke:#333,stroke-width:2px,color:#000;
     style M fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
-    style R4 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style R5 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style R6 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style Q fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
-    style T fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style Q2 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style Q3 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style R1 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style R2 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style R3 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style S fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
     style V fill:#E74C3C,stroke:#333,stroke-width:2px,color:#000;
-    A[Start: Deposit 10 USDC]
-    A --> B[Ulysses Branch Port OP Chain]
-    B -->|Send Anycall Request| C[Ulysses Root Port ARB Chain]
-    C -->|Deposit 1 op-hUSDC| E[1 op-ulysses-LP of USDC]
-    F1[3 arb-hUSDC] -->|Deposit 3 arb-hUSDC| G[3 arb-ulysses-LP of USDC]
-    H1[6 mainnet-hUSDC] -->|Deposit 6 mainnet-hUSDC| I[6 mainnet-ulysses-LP of USDC]
-    C -->|Swap 3 op-hUSDC| F1
-    C -->|Swap 6 op-hUSDC| H1
-    E -.-> J[Ulysses Unified USDC Token ARB Chain]
-    G -.-> J
-    I -.-> J
-    J -->|10 Ulysses USDC Token| L[Uniswap V3 ARB Chain]
-    L -->|1 Ulysses ETH Token| M[Ulysses Unified ETH Token ARB Chain]
-    M -->|Withdraw 0.1 op-ulysses-LP of ETH| R4[0.1 op-hETH]
-    M -->|Withdraw 0.3 arb-ulysses-LP of ETH| R1[0.3 arb-hETH]
-    M -->|Withdraw 0.6 mainnet-ulysses-LP of ETH| R2[0.6 mainnet-hETH]
-    R1 -->|Swap 0.3 arb-hETH| R5[0.3 op-hETH]
-    R2 -->|Swap 0.6 mainnet-hETH| R6[0.6 op-hETH]
-    R4 -.-> Q[Ulysses Root Port ARB Chain]
-    R5 -.-> Q
-    R6 -.-> Q
-    Q -->|Send Anycall Request| T[Ulysses Branch Port OP Chain]
-    T -->  V[End: Withdraw 1 ETH]
+
+    subgraph OP Chain
+        A[Start: Deposit 10 USDC]
+    end
+
+    subgraph ARB Chain
+        A -->|Anycall Request| C[10 op-hUSDC]
+        C -->|Deposit| E[1 op-ulysses-LP of USDC]
+        F1[3 arb-hUSDC] -->|Deposit| G[3 arb-ulysses-LP of USDC]
+        H1[6 mainnet-hUSDC] -->|Deposit| I[6 mainnet-ulysses-LP of USDC]
+        C -->|Swap| F1
+        C -->|Swap| H1
+        E --> J[10 Ulysses USDC Token]
+        G --> J
+        I --> J
+        J --> L[Uniswap V3 Swap]
+        L --> M[1 Ulysses ETH Token]
+        M --> R1[0.1 op-ulysses-LP of ETH]
+        M --> R2[0.3 arb-ulysses-LP of ETH]
+        M --> R3[0.6 mainnet-ulysses-LP of ETH]
+        R2 -->|Withdraw| Q2[0.3 arb-hETH]
+        R3 -->|Withdraw| Q3[0.6 mainnet-hETH]
+        R1 --> |Withdraw| S[1 op-hETH]
+        Q2 -->|Swap| S
+        Q3 -->|Swap| S
+    end
+
+    subgraph OP Chain
+    S -->|Anycall Request| V[End: Withdraw 1 ETH]
+    end
 ```
 
   </TabItem>
@@ -132,8 +137,7 @@ graph TD
 
 ```mermaid
 graph LR
-	style A fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style B fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+	style A fill:#45C1E9,stroke:#333,stroke-width:2px,color:#000;
     style C fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
     style E fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
     style G fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
@@ -141,46 +145,55 @@ graph LR
     style F1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
     style H1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
     style J fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
-    style L fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
-    A[Start: Deposit 10 USDC]
-    A --> B[Ulysses Branch Port OP Chain]
-    B -->|Send Anycall Request| C[Ulysses Root Port ARB Chain]
-    C -->|Deposit 1 op-hUSDC| E[1 op-ulysses-LP of USDC]
-    F1[3 arb-hUSDC] -->|Deposit 3 arb-hUSDC| G[3 arb-ulysses-LP of USDC]
-    H1[6 mainnet-hUSDC] -->|Deposit 6 mainnet-hUSDC| I[6 mainnet-ulysses-LP of USDC]
-    C -->|Swap 3 op-hUSDC| F1
-    C -->|Swap 6 op-hUSDC| H1
-    E -.-> J[Ulysses Unified USDC Token ARB Chain]
-    G -.-> J
-    I -.-> J
-    J -->|10 Ulysses USDC Token| L[Uniswap V3 ARB Chain]
+    style L fill:#FF69B4,stroke:#333,stroke-width:2px,color:#000;
+
+    subgraph OP Chain
+        A[Start: Deposit 10 USDC]
+    end
+
+    subgraph ARB Chain
+        A -->|Anycall Request| C[10 op-hUSDC]
+        C -->|Deposit| E[1 op-ulysses-LP of USDC]
+        F1[3 arb-hUSDC] -->|Deposit| G[3 arb-ulysses-LP of USDC]
+        H1[6 mainnet-hUSDC] -->|Deposit| I[6 mainnet-ulysses-LP of USDC]
+        C -->|Swap| F1
+        C -->|Swap| H1
+        E --> J[10 Ulysses USDC Token]
+        G --> J
+        I --> J
+        J --> L[Uniswap V3 Swap]
+    end
 ```
 
 
 ```mermaid
 graph LR
-    style R1 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style R2 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
-    style L fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
+    style Q2 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style Q3 fill:#85C1E9,stroke:#333,stroke-width:2px,color:#000;
+    style R1 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style R2 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style R3 fill:#F7DC6F,stroke:#333,stroke-width:2px,color:#000;
+    style L fill:#FF69B4,stroke:#333,stroke-width:2px,color:#000;
     style M fill:#AED6F1,stroke:#333,stroke-width:2px,color:#000;
-    style R4 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style R5 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style R6 fill:#F1948A,stroke:#333,stroke-width:2px,color:#000;
-    style Q fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
-    style T fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
+    style S fill:#ABEBC6,stroke:#333,stroke-width:2px,color:#000;
     style V fill:#E74C3C,stroke:#333,stroke-width:2px,color:#000;
-    L[Uniswap V3 ARB Chain]
-    L -->|1 Ulysses ETH Token| M[Ulysses Unified ETH Token ARB Chain]
-    M -->|Withdraw 0.1 op-ulysses-LP of ETH| R4[0.1 op-hETH]
-    M -->|Withdraw 0.3 arb-ulysses-LP of ETH| R1[0.3 arb-hETH]
-    M -->|Withdraw 0.6 mainnet-ulysses-LP of ETH| R2[0.6 mainnet-hETH]
-    R1 -->|Swap 0.3 arb-hETH| R5[0.3 op-hETH]
-    R2 -->|Swap 0.6 mainnet-hETH| R6[0.6 op-hETH]
-    R4 -.-> Q[Ulysses Root Port ARB Chain]
-    R5 -.-> Q
-    R6 -.-> Q
-    Q -->|Send Anycall Request| T[Ulysses Branch Port OP Chain]
-    T -->  V[End: Withdraw 1 ETH]
+
+    subgraph ARB Chain
+        L[Uniswap V3 Swap]
+        L --> M[1 Ulysses ETH Token]
+        M --> R1[0.1 op-ulysses-LP of ETH]
+        M --> R2[0.3 arb-ulysses-LP of ETH]
+        M --> R3[0.6 mainnet-ulysses-LP of ETH]
+        R2 -->|Withdraw| Q2[0.3 arb-hETH]
+        R3 -->|Withdraw| Q3[0.6 mainnet-hETH]
+        R1 --> |Withdraw| S[1 op-hETH]
+        Q2 -->|Swap| S
+        Q3 -->|Swap| S
+    end
+
+    subgraph OP Chain
+        S -->|Anycall Request| V[End: Withdraw 1 ETH]
+    end
 ```
 
   </TabItem>
