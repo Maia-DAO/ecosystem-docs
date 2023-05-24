@@ -7,7 +7,7 @@ sidebar_position: 2
 - [Home](./introduction)
 
 ## Technical Reference
-  - [❱ erc-20](erc-20/README.md)
+  - ❱ erc-20
     - [❱ interfaces](erc-20/interfaces/README.md)
       - [Errors](erc-20/interfaces/Errors.sol/interface.Errors.md)
       - [IERC20Boost](erc-20/interfaces/IERC20Boost.sol/interface.IERC20Boost.md)
@@ -15,7 +15,7 @@ sidebar_position: 2
       - [IERC20MultiVotes](erc-20/interfaces/IERC20MultiVotes.sol/interface.IERC20MultiVotes.md)
     - [ERC20Boost](erc-20/ERC20Boost.sol/abstract.ERC20Boost.md)
     - [ERC20Gauges](erc-20/ERC20Gauges.sol/abstract.ERC20Gauges.md)
-    - [ERC20MultiVotes](erc-20/ERC20MultiVotes.sol/abstract.ERC20MultiVotes.md)
+    - [ERC20MultiVotes](erc-20/ERC20MultiVotes)
   - [❱ erc-4626](erc-4626/README.md)
     - [❱ interfaces](erc-4626/interfaces/README.md)
       - [IERC4626](erc-4626/interfaces/IERC4626.sol/interface.IERC4626.md)

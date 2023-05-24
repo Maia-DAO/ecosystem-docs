@@ -452,6 +452,10 @@ html[data-theme='dark'] .DocSearch-Hit a {
   display: inline-block;
 }
 
+.navbar__item.Contracts_active.Contracts {
+  display: inline-block;
+}
+
 .navbar__item.Talos_active.Talos {
   display: inline-block;
 }
@@ -467,7 +471,8 @@ html[data-theme='dark'] .DocSearch-Hit a {
 .Maia_active,
 .Hermes_active,
 .Talos_active,
-.Ulysses_active {
+.Ulysses_active,
+.Contracts_active {
   display: none;
 }
 
@@ -480,6 +485,10 @@ html[data-theme='dark'] .DocSearch-Hit a {
 }
 
 .menu__link.Ulysses_active.Ulysses {
+  display: flex;
+}
+
+.menu__link.Contracts_active.Contracts {
   display: flex;
 }
 

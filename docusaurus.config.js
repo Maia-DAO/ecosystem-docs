@@ -141,25 +141,25 @@ module.exports = {
           className: 'persistent',
         },
         {
-          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          to: '/protocols/Contracts/introduction',
           label: 'Contracts',
           position: 'left',
           className: 'Maia_active',
         },
         {
-          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          to: '/protocols/Contracts/introduction',
           label: 'Contracts',
           position: 'left',
           className: 'Hermes_active',
         },
         {
-          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          to: '/protocols/Contracts/introduction',
           label: 'Contracts',
           position: 'left',
           className: 'Talos_active',
         },
         {
-          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          to: '/protocols/Contracts/introduction',
           label: 'Contracts',
           position: 'left',
           className: 'Ulysses_active',
@@ -249,6 +249,10 @@ module.exports = {
             {
               label: 'Hermes',
               href: 'https://hermes.maiadao.io/',
+            },
+            {
+              label: 'Uni Maia',
+              href: 'https://uni.maiadao.io/',
             },
             // {
             //   label: 'Analytics',

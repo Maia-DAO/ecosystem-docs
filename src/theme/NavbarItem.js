@@ -18,6 +18,9 @@ export default function NavbarItem(props) {
     case 'Ulysses':
       activeNav = 'Ulysses'
       break;
+    case 'Contracts':
+      activeNav = 'Contracts'
+      break;
     default:
       activeNav = 'Maia'
 }
