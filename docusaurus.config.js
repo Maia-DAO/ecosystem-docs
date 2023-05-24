@@ -92,30 +92,6 @@ module.exports = {
           position: 'left',
           className: 'Ulysses_active',
         },
-        {
-          to: '/protocols/technical/reference/smart-contracts',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Maia_active',
-        },
-        {
-          to: '/protocols/Hermes/technical/reference/smart-contracts',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Hermes_active',
-        },
-        {
-          to: '/protocols/Talos/technical/reference/smart-contracts',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Talos_active',
-        },
-        {
-          to: '/protocols/Ulysses/technical/reference/smart-contracts',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Ulysses_active',
-        },
         // {
         //   to: '/sdk/introduction',
         //   label: 'SDK',
@@ -163,6 +139,30 @@ module.exports = {
           label: 'Hermes Partners',
           position: 'left',
           className: 'persistent',
+        },
+        {
+          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          label: 'Contracts',
+          position: 'left',
+          className: 'Maia_active',
+        },
+        {
+          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          label: 'Contracts',
+          position: 'left',
+          className: 'Hermes_active',
+        },
+        {
+          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          label: 'Contracts',
+          position: 'left',
+          className: 'Talos_active',
+        },
+        {
+          to: '/protocols/Contracts/technical/reference/smart-contracts',
+          label: 'Contracts',
+          position: 'left',
+          className: 'Ulysses_active',
         },
         // {
         //   label: 'Give Feedback',
@@ -332,6 +332,9 @@ module.exports = {
               banner: 'none',
             },
             Ulysses: {
+              banner: 'none',
+            },
+            Contracts: {
               banner: 'none',
             }
           },
