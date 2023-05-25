@@ -4,9 +4,9 @@ title: Introduction
 sidebar_position: 1
 ---
 
-Maia DAO V2 Ecossytem docs that explains the business logic and technical references, can be found [here](https://v2-docs.maiadao.io/). Docs are split into 4 protocols, in which you will find relevant information about how each of these protocols work in the system.
+Maia DAO V2 Ecossytem Technical References, the rest of our documentation can be found [here](https://v2-docs.maiadao.io/). Docs are split into 4 protocols, in which you will find relevant information about how each of these protocols work in the system.
 
-Maia DAO Ecosystem is made to be a significant increase in capital efficiency and utility for the Maia DAO community from the V1 ecosystem. The V2 ecosystem is made up of 4 protocols: Hermes, Maia, Talos and Ulysses.
+The Maia DAO Ecosystem is designed to significantly enhance capital efficiency and utility for the Maia DAO community compared to the previous V1 . The V2 ecosystem is made up of 4 protocols: Hermes, Maia, Talos and Ulysses.
 
 Previous Audits by Zellic can be found in our [Github](https://github.com/Maia-DAO/maia-ecosystem-monorepo/tree/main). There are two audits, each for different parts of the codebase:
 
