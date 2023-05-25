@@ -21,7 +21,7 @@ If you are reading this, the contest has not ended yet! Go over to https://disco
 
 ## Hermes
 
-The new iteration of [Hermes](versioned_docs/version-Hermes/what-is-hermes.md) provides significant improvements over V1, which is a soldily fork. There are three ideas behind the revamped model:
+The new iteration of [Hermes](versioned_docs/version-Hermes/what-is-hermes.md) provides significant improvements over V1, which is a Solidly fork. There are three ideas behind the revamped model:
 
 - Lockers direct emissions to gauges and receive the revenue of each gauge they vote for, proportional to the amount of votes for that gauge
 - Lockers can boost their liquidity farming rewards from gauges by up to 2.5x

@@ -4,12 +4,11 @@ title: CoreBranchRouter
 ---
 
 **Inherits:**
-[BaseBranchRouter](/ulysses-omnichain/BaseBranchRouter.sol/contract.BaseBranchRouter.md)
+[BaseBranchRouter](./BaseBranchRouter)
 
 
 ## State Variables
 ### hTokenFactoryAddress
-hToken Factory Address.
 
 
 ```solidity
@@ -18,7 +17,6 @@ address public hTokenFactoryAddress;
 
 
 ### localPortAddress
-Local Port Address.
 
 
 ```solidity
@@ -98,11 +96,9 @@ function _receiveAddGlobalToken(
 
 ### _receiveAddBridgeAgent
 
-Function to deploy/add a token already active in the global environment in the Root Chain. Must be called from another chain.
+Add a new Branch Bridge Agent and respective Router to a Root Bridge Agent.
 
 *FUNC ID: 2*
-
-*all hTokens have 18 decimals.*
 
 
 ```solidity
@@ -206,7 +202,6 @@ function _managePortStrategy(
 
 Function responsible of executing a branch router response.
 
-
 ```solidity
 function anyExecuteNoSettlement(bytes calldata _data)
     external
@@ -223,15 +218,6 @@ function anyExecuteNoSettlement(bytes calldata _data)
 
 
 ### fallback
-
-_receiveAddGlobalToken
-_receiveAddBridgeAgent
-_toggleBranchBridgeAgentFactory
-_removeBranchBridgeAgent
-_manageStrategyToken
-_managePortStrategy
-Unrecognized Function Selector
-
 
 ```solidity
 fallback() external payable;
