@@ -1,4 +1,7 @@
-# NFTPositionInfo
+---
+id: NFTPositionInfo
+title: NFTPositionInfo
+---
 
 
 ## Functions

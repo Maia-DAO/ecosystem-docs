@@ -1,4 +1,7 @@
-# AnycallFlags
+---
+id: AnycallFlags
+title: AnycallFlags
+---
 
 
 ## State Variables

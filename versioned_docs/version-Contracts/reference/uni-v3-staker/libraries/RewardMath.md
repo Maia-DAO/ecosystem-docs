@@ -1,4 +1,7 @@
-# RewardMath
+---
+id: RewardMath
+title: RewardMath
+---
 
 Allows computing rewards given some parameters of boost, stakes and incentives
 

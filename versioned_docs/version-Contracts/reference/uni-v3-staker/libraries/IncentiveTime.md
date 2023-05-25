@@ -1,4 +1,7 @@
-# IncentiveTime
+---
+id: IncentiveTime
+title: IncentiveTime
+---
 
 **Author:**
 Maia DAO (https://github.com/Maia-DAO)

@@ -1,4 +1,7 @@
-# PoolVariables
+---
+id: PoolVariables
+title: PoolVariables
+---
 
 Provides functions for computing liquidity and ticks for token amounts and prices
 

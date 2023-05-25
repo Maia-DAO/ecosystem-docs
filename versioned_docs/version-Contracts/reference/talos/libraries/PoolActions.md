@@ -1,4 +1,7 @@
-# PoolActions
+---
+id: PoolActions
+title: PoolActions
+---
 
 **Author:**
 MaiaDAO

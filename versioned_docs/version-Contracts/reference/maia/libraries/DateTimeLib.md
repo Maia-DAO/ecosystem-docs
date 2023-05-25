@@ -1,4 +1,7 @@
-# DateTimeLib
+---
+id: DateTimeLib
+title: DateTimeLib
+---
 
 **Author:**
 Solady (https://github.com/vectorized/solady/blob/main/utils/DateTimeLib.sol)

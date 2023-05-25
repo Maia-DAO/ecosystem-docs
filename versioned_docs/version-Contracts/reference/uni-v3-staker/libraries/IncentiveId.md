@@ -1,4 +1,7 @@
-# IncentiveId
+---
+id: IncentiveId
+title: IncentiveId
+---
 
 **Author:**
 Maia DAO (https://github.com/Maia-DAO)
