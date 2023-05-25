@@ -42,6 +42,11 @@ sidebar_position: 2
     - [BaseV2Gauge](./reference/gauges/BaseV2Gauge)
     - [UniswapV3Gauge](./reference/gauges/UniswapV3Gauge)
   - ❱ governance
+    - [GovernorBravoConstantsSeverity1](./reference/governance/GovernorBravoConstantsSeverity1)
+    - [GovernorBravoConstantsSeverity2](./reference/governance/GovernorBravoConstantsSeverity2)
+    - [GovernorBravoConstantsSeverity3](./reference/governance/GovernorBravoConstantsSeverity3)
+    - [GovernorBravoConstantsSeverity4](./reference/governance/GovernorBravoConstantsSeverity4)
+    - [GovernorBravoConstantsSeverity5](./reference/governance/GovernorBravoConstantsSeverity5)
     - [GovernorBravoConstants](./reference/governance/GovernorBravoConstants)
     - [GovernorBravoDelegate](./reference/governance/GovernorBravoDelegate)
     - [GovernorBravoDelegator](./reference/governance/GovernorBravoDelegator)
@@ -81,26 +86,6 @@ sidebar_position: 2
       - [Maia](./reference/maia/tokens/Maia)
     - [PartnerUtilityManager](./reference/maia/PartnerUtilityManager)
     - [vMaia](./reference/maia/vMaia)
-  - ❱ out-of-scope
-    - ❱ governance
-      - [GovernorBravoConstantsSeverity1](./reference/out-of-scope/governance/GovernorBravoConstantsSeverity1)
-      - [GovernorBravoDelegate](./reference/out-of-scope/governance/GovernorBravoDelegate)
-      - [GovernorBravoConstantsSeverity2](./reference/out-of-scope/governance/GovernorBravoConstantsSeverity2)
-      - [GovernorBravoDelegate](./reference/out-of-scope/governance/GovernorBravoDelegate)
-      - [GovernorBravoConstantsSeverity3](./reference/out-of-scope/governance/GovernorBravoConstantsSeverity3)
-      - [GovernorBravoDelegate](./reference/out-of-scope/governance/GovernorBravoDelegate)
-      - [GovernorBravoConstantsSeverity4](./reference/out-of-scope/governance/GovernorBravoConstantsSeverity4)
-      - [GovernorBravoDelegate](./reference/out-of-scope/governance/GovernorBravoDelegate)
-      - [GovernorBravoConstantsSeverity5](./reference/out-of-scope/governance/GovernorBravoConstantsSeverity5)
-      - [GovernorBravoDelegate](./reference/out-of-scope/governance/GovernorBravoDelegate)
-      - [GovernorBravoDelegator](./reference/out-of-scope/governance/GovernorBravoDelegator)
-      - [GovernorBravoEvents](./reference/out-of-scope/governance/GovernorBravoEvents)
-      - [GovernorBravoDelegatorStorage](./reference/out-of-scope/governance/GovernorBravoDelegatorStorage)
-      - [GovernorBravoDelegateStorageV1](./reference/out-of-scope/governance/GovernorBravoDelegateStorageV1)
-      - [GovernorBravoDelegateStorageV2](./reference/out-of-scope/governance/GovernorBravoDelegateStorageV2)
-      - [TimelockInterface](./reference/out-of-scope/governance/TimelockInterface)
-      - [GovTokenInterface](./reference/out-of-scope/governance/GovTokenInterface)
-      - [GovernorAlpha](./reference/out-of-scope/governance/GovernorAlpha)
   - ❱ rewards
     - ❱ base
       - [BaseFlywheelRewards](./reference/rewards/base/BaseFlywheelRewards)
