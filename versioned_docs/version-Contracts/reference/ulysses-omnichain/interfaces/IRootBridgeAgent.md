@@ -29,20 +29,22 @@ internal function clearing all executionBudget from the AnycallConfig contract f
 as performing the Router calls, if any of the calls initiated by the Router lead to an invlaid state change
 both the token deposit clearances as well as the external interactions will be reverted. Yet executionGas
 will still be credited by the `RootBridgeAgent`.
+
 Func IDs for calling these  functions through messaging layer:
-ROOT BRIDGE AGENT DEPOSIT FLAGS
---------------------------------------
-ID           | DESCRIPTION
--------------+------------------------
-0x00         | Branch Router Response.
-0x01         | Call to Root Router without Deposit.
-0x02         | Call to Root Router with Deposit.
-0x03         | Call to Root Router with Deposit of Multiple Tokens.
-0x04         | Call to Root Router without Deposit + singned message.
-0x05         | Call to Root Router with Deposit + singned message.
-0x06         | Call to Root Router with Deposit of Multiple Tokens + singned message.
-0x07         | Call to `retrySettlement()´. (retries sending a settlement + calldata for branch execution with new gas)
-0x08         | Call to `clearDeposit()´. (clears a deposit that has not been executed yet triggering `anyFallback`)
+
+| ID   | DESCRIPTION                                                      |
+|------|----------------------------------------------------------------- |
+| 0x00 | Branch Router Response.                                          |
+| 0x01 | Call to Root Router without Deposit.                             |
+| 0x02 | Call to Root Router with Deposit.                                |
+| 0x03 | Call to Root Router with Deposit of Multiple Tokens.             |
+| 0x04 | Call to Root Router without Deposit + signed message.            |
+| 0x05 | Call to Root Router with Deposit + signed message.               |
+| 0x06 | Call to Root Router with Deposit of Multiple Tokens + signed message. |
+| 0x07 | Call to `retrySettlement()`. (retries sending a settlement + calldata for branch execution with new gas) |
+| 0x08 | Call to `clearDeposit()`. (clears a deposit that has not been executed yet triggering `anyFallback`) |
+
+
 Encoding Scheme for different Root Bridge Agent Deposit Flags:
 - ht = hToken
 - t = Token
@@ -51,19 +53,20 @@ Encoding Scheme for different Root Bridge Agent Deposit Flags:
 - C = ChainId
 - b = bytes
 - n = number of assets
-___________________________________________________________________________________________________________________________
-|            Flag               |        Deposit Info        |             Token Info             |   DATA   |  Gas Info   |
-|           1 byte              |         4-25 bytes         |     3 + (105 or 128) * n bytes     |   ---	 |  32 bytes   |
-|                               |                            |          hT - t - A - D - C        |          |             |
-|_______________________________|____________________________|____________________________________|__________|_____________|
-| callOutSystem = 0x0   	    |                 4b(nonce)  |            -------------           |   ---	 |  dep + bOut |
-| callOut = 0x1                 |                 4b(nonce)  |            -------------           |   ---	 |  dep + bOut |
-| callOutSingle = 0x2           |                 4b(nonce)  |      20b + 20b + 32b + 32b + 3b    |   ---	 |  16b + 16b  |
-| callOutMulti = 0x3            |         1b(n) + 4b(nonce)  |   	32b + 32b + 32b + 32b + 3b    |   ---	 |  16b + 16b  |
-| callOutSigned = 0x4           |    20b(recip) + 4b(nonce)  |   	      -------------           |   ---    |  16b + 16b  |
-| callOutSignedSingle = 0x5     |           20b + 4b(nonce)  |      20b + 20b + 32b + 32b + 3b 	  |   ---	 |  16b + 16b  |
-| callOutSignedMultiple = 0x6   |   20b + 1b(n) + 4b(nonce)  |      32b + 32b + 32b + 32b + 3b 	  |   ---	 |  16b + 16b  |
-|_______________________________|____________________________|____________________________________|__________|_____________|
+
+| Flag                       | Deposit Info                | Token Info                         | DATA | Gas Info    |
+|----------------------------|-----------------------------|------------------------------------|------|-------------|
+| 1 byte                     | 4-25 bytes                  | 3 + (105 or 128) * n bytes         | ---  | 32 bytes    |
+|                            |                             | hT - t - A - D - C                 |      |             |
+|----------------------------|-----------------------------|------------------------------------|------|-------------|
+| callOutSystem = 0x0        | 4b(nonce)                   | -------------                      | ---  | dep + bOut  |
+| callOut = 0x1              | 4b(nonce)                   | -------------                      | ---  | dep + bOut  |
+| callOutSingle = 0x2        | 4b(nonce)                   | 20b + 20b + 32b + 32b + 3b         | ---  | 16b + 16b   |
+| callOutMulti = 0x3         | 1b(n) + 4b(nonce)           | 32b + 32b + 32b + 32b + 3b         | ---  | 16b + 16b   |
+| callOutSigned = 0x4        | 20b(recip) + 4b(nonce)      | -------------                      | ---  | 16b + 16b   |
+| callOutSignedSingle = 0x5  | 20b + 4b(nonce)             | 20b + 20b + 32b + 32b + 3b         | ---  | 16b + 16b   |
+| callOutSignedMultiple = 0x6| 20b + 1b(n) + 4b(nonce)     | 32b + 32b + 32b + 32b + 3b         | ---  | 16b + 16b   |
+
 Contract Interaction Flows:
 - 1) Remote to Remote:
 RootBridgeAgent.anyExecute**() -> BridgeAgentExecutor.execute**() -> Router.anyExecute**() -> BridgeAgentExecutor (txExecuted) -> RootBridgeAgent (replenishedGas)

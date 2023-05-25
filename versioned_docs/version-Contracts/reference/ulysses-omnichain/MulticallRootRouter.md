@@ -11,19 +11,16 @@ MaiaDAO
 
 Root Router implementation for interfacing with third party dApps present in the Root Omnichain Environment.
 
-\*Func IDs for calling these functions through messaging layer:
-CROSS-CHAIN MESSAGING FUNCIDs
+Func IDs for calling these functions through messaging layer:
 
----
-
-FUNC ID | FUNC NAME
--------------+---------------
-0x01 | multicallNoOutput
-0x02 | multicallSingleOutput
-0x03 | multicallMultipleOutput
-0x04 | multicallSignedNoOutput
-0x05 | multicallSignedSingleOutput
-0x06 | multicallSignedMultipleOutput\*
+| FUNC ID | FUNC NAME                     |
+| ------- | ----------------------------- |
+| 0x01    | multicallNoOutput             |
+| 0x02    | multicallSingleOutput         |
+| 0x03    | multicallMultipleOutput       |
+| 0x04    | multicallSignedNoOutput       |
+| 0x05    | multicallSignedSingleOutput   |
+| 0x06    | multicallSignedMultipleOutput |
 
 ## State Variables
 
