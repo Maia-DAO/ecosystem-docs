@@ -51,13 +51,13 @@ export const actions = [
     to: './protocols/Ulysses/introduction',
     text: `Learn about Ulysses and what is an Omnichain Virtual Environment and Unified Liquidity.`,
   },
-  // {
-  //   title: 'Smart contract overview',
-  //   href: '#',
-  //   icon: BookOpenIcon,
-  //   to: './protocols/reference/smart-contracts',
-  //   text: `Learn about the architecture of the Maia Ecosystem smart contracts made up of the Core and Periphery libraries.`,
-  // },
+    // {
+    //   title: 'Smart contract overview',
+    //   href: '#',
+    //   icon: BookOpenIcon,
+    //   to: './protocols/reference/smart-contracts',
+    //   text: `Learn about the architecture of the Maia Ecosystem smart contracts made up of the Core and Periphery libraries.`,
+    // },
   // {
   //   title: 'Maia Ecosystem SDK',
   //   href: '#',
@@ -131,22 +131,22 @@ export const quick = [
   {
     title: 'Smart Contracts',
     text: 'Start swapping from a smart contract',
-    to: './protocols/reference/smart-contracts',
+    to: './protocols/Contracts/introduction',
   },
-  {
-    title: 'SDK',
-    text: 'Start swapping from a smart contract',
-    to: './sdk/introduction',
-  },
-  {
-    title: 'Widgets',
-    text: 'Get started with the swap widget',
-    to: './sdk/widgets/swap-widget',
-  },
+  // {
+  //   title: 'SDK',
+  //   text: 'Start swapping from a smart contract',
+  //   to: './sdk/introduction',
+  // },
+  // {
+  //   title: 'Widgets',
+  //   text: 'Get started with the swap widget',
+  //   to: './sdk/widgets/swap-widget',
+  // },
   {
     title: 'Medium',
     text: "Read Maia DAO's articles",
-    to: 'https://uniswap.org/whitepaper-v3.pdf',
+    to: 'https://medium.com/@maiaDAO',
   },
 ]
 
@@ -491,7 +491,7 @@ export default function Home() {
         </TwoRow>
 
         <hr />
-        {/* <TwoRow
+        <TwoRow
           style={{
             gap: '48px',
             alignItems: 'center',
@@ -500,8 +500,8 @@ export default function Home() {
           <StyledImage
             style={{ maxHeight: '400px' }}
             sources={{
-              light: useBaseUrl('/img/use.png'),
-              dark: useBaseUrl('/img/use2.png'),
+              light: useBaseUrl('/img/banner.png'),
+              dark: useBaseUrl('/img/banner.png'),
             }}
           />
           <div>
@@ -532,7 +532,7 @@ export default function Home() {
           </div>
         </TwoRow>
 
-        <hr /> */}
+        <hr />
 
         <Row>
           <Link style={{ textDecoration: 'none' }} href={'https://discord.gg/maiadao'}>
