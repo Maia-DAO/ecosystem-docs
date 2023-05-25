@@ -123,18 +123,6 @@ module.exports = {
           className: 'Hermes_active',
         },
         {
-          to: '/protocols/Talos/governance/overview',
-          label: 'Governance',
-          position: 'left',
-          className: 'Talos_active',
-        },
-        {
-          to: '/protocols/Ulysses/governance/overview',
-          label: 'Governance',
-          position: 'left',
-          className: 'Ulysses_active',
-        },
-        {
           to: '/protocols/Hermes/partners/program',
           label: 'Hermes Partners',
           position: 'left',
