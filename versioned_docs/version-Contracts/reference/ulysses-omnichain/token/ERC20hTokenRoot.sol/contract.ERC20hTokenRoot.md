@@ -1,5 +1,4 @@
 # ERC20hTokenRoot
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/ulysses-omnichain/token/ERC20hTokenRoot.sol)
 
 **Inherits:**
 ERC20, [IERC20hTokenRoot](/ulysses-omnichain/interfaces/IERC20hTokenRoot.sol/interface.IERC20hTokenRoot.md)

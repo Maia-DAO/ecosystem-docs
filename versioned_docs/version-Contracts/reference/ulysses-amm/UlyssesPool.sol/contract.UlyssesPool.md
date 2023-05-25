@@ -1,5 +1,4 @@
 # UlyssesPool
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/ulysses-amm/UlyssesPool.sol)
 
 **Inherits:**
 [UlyssesERC4626](/erc-4626/UlyssesERC4626.sol/abstract.UlyssesERC4626.md), Ownable, [IUlyssesPool](/ulysses-amm/interfaces/IUlyssesPool.sol/interface.IUlyssesPool.md)

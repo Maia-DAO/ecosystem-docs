@@ -1,5 +1,4 @@
 # UlyssesToken
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/ulysses-amm/UlyssesToken.sol)
 
 **Inherits:**
 [ERC4626MultiToken](/erc-4626/ERC4626MultiToken.sol/abstract.ERC4626MultiToken.md), Ownable, [IUlyssesToken](/ulysses-amm/interfaces/IUlyssesToken.sol/interface.IUlyssesToken.md)

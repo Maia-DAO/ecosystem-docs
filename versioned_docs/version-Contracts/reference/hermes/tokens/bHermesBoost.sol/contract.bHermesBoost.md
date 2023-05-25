@@ -1,5 +1,4 @@
 # bHermesBoost
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/hermes/tokens/bHermesBoost.sol)
 
 **Inherits:**
 [ERC20Boost](/erc-20/ERC20Boost.sol/abstract.ERC20Boost.md), [IbHermesUnderlying](/hermes/interfaces/IbHermesUnderlying.sol/interface.IbHermesUnderlying.md)

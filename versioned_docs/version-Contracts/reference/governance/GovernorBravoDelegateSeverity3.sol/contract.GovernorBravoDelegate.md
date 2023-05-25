@@ -1,5 +1,4 @@
 # GovernorBravoDelegate
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/out-of-scope/governance/GovernorBravoDelegateSeverity3.sol)
 
 **Inherits:**
 [GovernorBravoDelegateStorageV2](/out-of-scope/governance/GovernorBravoInterfaces.sol/contract.GovernorBravoDelegateStorageV2.md), [GovernorBravoEvents](/out-of-scope/governance/GovernorBravoInterfaces.sol/contract.GovernorBravoEvents.md), [GovernorBravoConstantsSeverity3](/out-of-scope/governance/GovernorBravoDelegateSeverity3.sol/contract.GovernorBravoConstantsSeverity3.md)

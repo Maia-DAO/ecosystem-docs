@@ -1,5 +1,4 @@
 # UniswapV3Gauge
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/gauges/UniswapV3Gauge.sol)
 
 **Inherits:**
 [BaseV2Gauge](/gauges/BaseV2Gauge.sol/abstract.BaseV2Gauge.md), [IUniswapV3Gauge](/gauges/interfaces/IUniswapV3Gauge.sol/interface.IUniswapV3Gauge.md)

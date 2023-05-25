@@ -1,5 +1,4 @@
 # PartnerUtilityManager
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/maia/PartnerUtilityManager.sol)
 
 **Inherits:**
 [UtilityManager](/hermes/UtilityManager.sol/abstract.UtilityManager.md), [IPartnerUtilityManager](/maia/interfaces/IPartnerUtilityManager.sol/interface.IPartnerUtilityManager.md)

@@ -1,5 +1,4 @@
 # TalosOptimizer
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/talos/TalosOptimizer.sol)
 
 **Inherits:**
 Ownable, [ITalosOptimizer](/talos/interfaces/ITalosOptimizer.sol/interface.ITalosOptimizer.md)

@@ -1,5 +1,4 @@
 # ERC4626PartnerManager
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/maia/tokens/ERC4626PartnerManager.sol)
 
 **Inherits:**
 [PartnerUtilityManager](/maia/PartnerUtilityManager.sol/abstract.PartnerUtilityManager.md), Ownable, [ERC4626](/erc-4626/ERC4626.sol/abstract.ERC4626.md), [IERC4626PartnerManager](/maia/interfaces/IERC4626PartnerManager.sol/interface.IERC4626PartnerManager.md)

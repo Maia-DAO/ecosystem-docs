@@ -1,5 +1,4 @@
 # BribesFactory
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/gauges/factories/BribesFactory.sol)
 
 **Inherits:**
 Ownable, [IBribesFactory](/gauges/interfaces/IBribesFactory.sol/interface.IBribesFactory.md)

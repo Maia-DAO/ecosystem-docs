@@ -1,5 +1,4 @@
 # BaseV2Gauge
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/gauges/BaseV2Gauge.sol)
 
 **Inherits:**
 Ownable, [IBaseV2Gauge](/gauges/interfaces/IBaseV2Gauge.sol/interface.IBaseV2Gauge.md)

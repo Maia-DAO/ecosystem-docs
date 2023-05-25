@@ -1,5 +1,4 @@
 # UniswapV3GaugeFactory
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/gauges/factories/UniswapV3GaugeFactory.sol)
 
 **Inherits:**
 [BaseV2GaugeFactory](/gauges/factories/BaseV2GaugeFactory.sol/abstract.BaseV2GaugeFactory.md), [IUniswapV3GaugeFactory](/gauges/interfaces/IUniswapV3GaugeFactory.sol/interface.IUniswapV3GaugeFactory.md)

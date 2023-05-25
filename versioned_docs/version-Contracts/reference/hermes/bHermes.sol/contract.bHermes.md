@@ -1,5 +1,4 @@
 # bHermes
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/hermes/bHermes.sol)
 
 **Inherits:**
 [UtilityManager](/hermes/UtilityManager.sol/abstract.UtilityManager.md), [ERC4626DepositOnly](/erc-4626/ERC4626DepositOnly.sol/abstract.ERC4626DepositOnly.md)

@@ -1,5 +1,4 @@
 # UlyssesERC4626
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/erc-4626/UlyssesERC4626.sol)
 
 **Inherits:**
 ERC20, ReentrancyGuard, [IUlyssesERC4626](/erc-4626/interfaces/IUlyssesERC4626.sol/interface.IUlyssesERC4626.md)

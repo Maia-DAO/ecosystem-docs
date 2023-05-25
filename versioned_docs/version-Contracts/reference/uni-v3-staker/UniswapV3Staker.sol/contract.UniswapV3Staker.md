@@ -1,5 +1,4 @@
 # UniswapV3Staker
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/uni-v3-staker/UniswapV3Staker.sol)
 
 **Inherits:**
 [IUniswapV3Staker](/uni-v3-staker/interfaces/IUniswapV3Staker.sol/interface.IUniswapV3Staker.md), Multicallable

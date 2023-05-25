@@ -1,5 +1,4 @@
 # ERC20Gauges
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/erc-20/ERC20Gauges.sol)
 
 **Inherits:**
 [ERC20MultiVotes](/erc-20/ERC20MultiVotes.sol/abstract.ERC20MultiVotes.md), ReentrancyGuard, [IERC20Gauges](/erc-20/interfaces/IERC20Gauges.sol/interface.IERC20Gauges.md)

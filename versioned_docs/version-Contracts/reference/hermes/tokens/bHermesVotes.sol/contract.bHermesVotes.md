@@ -1,5 +1,4 @@
 # bHermesVotes
-[Git Source](https://github.com/Maia-DAO/test-env-V2/blob/84b5f9e8695c91ddb02f27bb3dfb1c652f55ced4/hermes/tokens/bHermesVotes.sol)
 
 **Inherits:**
 [ERC20MultiVotes](/erc-20/ERC20MultiVotes.sol/abstract.ERC20MultiVotes.md), [IbHermesUnderlying](/hermes/interfaces/IbHermesUnderlying.sol/interface.IbHermesUnderlying.md)
