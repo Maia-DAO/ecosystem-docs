@@ -18,10 +18,7 @@ Where:
 
 This formula ensures that the user's boost (𝑏*<sub>𝑢</sub>) is calculated in a way that rewards users proportionally based users bHERMES and liquidity provided while taking into account the total bHERMES and total liquidity provided by all users.
 
-:::info
-Please note that in order to prevent gaming of the boost system, users are able to have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.
-:::
-
+:::info Please note that in order to prevent gaming of the boost system, users are able to have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.:::
 To utilize this feature, a user must first acquire bHermes Boost and also provide liquidity to a gauge. 
 
 To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
