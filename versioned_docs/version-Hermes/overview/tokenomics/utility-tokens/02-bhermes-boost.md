@@ -2,12 +2,24 @@
 id: bhermes-boost
 title: bHermes Boost
 ---
+# bHermes Boost
 
-Boost in Hermes gauges is a feature designed to incentivize users by providing them with an opportunity to earn a higher return on the liquidity they provide on the HERMES platform. The mechanism for calculating this boost is derived from the formula used by Curve Finance.
+Boost in Hermes gauges is a feature designed to incentivize users by providing them with an opportunity to earn a higher return on the liquidity they provide on the HERMES platform.
 
-The formula for calculating the boost 𝑏*<sub>𝑢</sub> is as follows:
+## Key Terms
 
-𝑏*<sub>𝑢</sub> = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
+Before we dive in, let's clarify some terms:
+
+- **Liquidity**: This refers to the assets that users deposit into a pool. These assets are used to facilitate trading and are rewarded with fees and tokens.
+- **Gauge**: A gauge is a smart contract that measures and rewards the liquidity provided by users.
+- **bHermes**: bHermes are tokens that represent a user's stake in the Hermes platform. The more bHermes a user holds, the higher their potential rewards.
+- **LP Tokens**: LP stands for Liquidity Provider. LP tokens are proof of your contribution to a liquidity pool. They are used to claim your share of the pool's trading fees and rewards.
+
+## Boost Formula
+
+The calculation for the user's boost, 𝑏*<sub>𝑢</sub> is based on the formula by Curve Finance
+
+$$b_u^* = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
 Where:
 - 𝑏*<sub>𝑢</sub> = User's boosted balance.
@@ -16,44 +28,66 @@ Where:
 - 𝑤<sub>𝑖</sub> = User's bHERMES.
 - 𝑊 = Total bHERMES of all users.
 
-This formula ensures that the user's boost (𝑏*<sub>𝑢</sub>) is calculated in a way that rewards users proportionally based users bHERMES and liquidity provided while taking into account the total bHERMES and total liquidity provided by all users.
+This formula calculates the user's boost, 𝑏*<sub>𝑢</sub> based on the amount of bHERMES they hold and the liquidity they provide. It also takes into account the total amount of bHERMES and liquidity provided by all users.
 
-:::info Please note that in order to prevent gaming of the boost system, users are able to have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.:::
+> **Please note** that in order to prevent gaming of the boost system and ensure fair distribution of rewards, users are able to have their entire boost applied to all pools, but are only able to have 1 boosted position per pool.
+## Utilizing the Boost Feature
 To utilize this feature, a user must first acquire bHermes Boost and also provide liquidity to a gauge. 
-
+## Maximum Boost = 2.5 $\times$ No Boost
 To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
 
-𝑤<sub>𝑖</sub>/𝑊 = 𝑏/𝑆
+$$\frac{w_i}{W} = \frac{b}{S}$$
 
-where (user's boosted balance) 𝑏*<sub>𝑢</sub> = Boost &times; 𝑏. We can simplify our equation from:
+where (user's boosted balance) $b_u^*$ = $Boost \times {b}$. We can simplify our equation from:
 
-𝑏*<sub>𝑢</sub> = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
+$$b_u^* = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-1. Replace 𝑏*<sub>𝑢</sub> with (Boost &times; 𝑏) | Boost &times; 𝑏 = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
+1. Replace $b_u^*$ with $Boost \times {b}$ 
 
-2. Replace 𝑤<sub>𝑖</sub>/𝑊 with 𝑏/𝑆 | Boost &times; 𝑏 = _min_(0.4 𝑏 + 0.6 𝑆(𝑏/S), 𝑏)
+$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-3. Simplify 0.6 𝑆(𝑏/S) | Boost &times; 𝑏 = _min_(0.4 𝑏 + 0.6 𝑏, 𝑏)
+2. Replace $\frac{w_i}{W}$ with $\frac{b}{S}$
 
-4. Add 0.4𝑏 + 0.6𝑏 | Boost &times; 𝑏 = _min_(1.0 𝑏, 𝑏)
+$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{b}{S}, b)$$
 
-5. Divide by 𝑏 | Boost = _min_(1.0, 𝑏)
+3. Simplify $0.6 S\frac{b}{S}$
+
+$$Boost \times b = \min(0.4 b + 0.6 b, b)$$
+
+4. Add $0.4b + 0.6b$
+
+$$Boost \times b = \min(1.0 b, b)$$
+
+5. Divide by ${b}$
+
+$$Boost = \min(1.0, b)$$
 
 The term "Boost = min(1.0, 𝑏)" signifies that the user's boost is determined by the minimum value between 1.0 and 𝑏. In this context, 1.0 represents 100% of rewards based on the liquidity provided by the user, denoted by 𝑏. This allows for potential rewards up to 100%, a significant increase from the standard 40%, effectively offering up to a 2.5x boost.
+## No Boost = 40% $\times$ Max Boost
 
-Conversely, if a user has 0 bHERMES (aka 𝑤<sub>𝑖</sub> = 0), then they will only receive 40%.
+Conversely, if a user has ${0}$ bHERMES ($w_i = 0$), then they will only receive 40% of the Max Boost
 
-𝑏*<sub>𝑢</sub> = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
+$$b_u^* = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-1. Replace 𝑏*<sub>𝑢</sub> with (Boost &times; 𝑏) | 𝑏*<sub>𝑢</sub> with (Boost &times; 𝑏) = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
+1. Replace $b_u^*$ with ${Boost \times {b}}$
 
-2. Replace 𝑤<sub>𝑖</sub>/𝑊 with 0 | Boost &times; 𝑏 = _min_(0.4 𝑏 + 0.6 𝑆(0/𝑊), 𝑏)
+$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-3. Simplify 0.6 𝑆(0/𝑊) = 0 | Boost &times; 𝑏 = _min_(0.4 𝑏, 𝑏)
+2. Replace ${w_i}$ with ${0}$
 
-4. Divide by 𝑏 | Boost = _min_(0.4, 𝑏)
+$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{0}{W}, b)$$
+
+3. Simplify $0.6 S\frac{0}{W}$ = ${0}$
+
+$$Boost \times b = \min(0.4 b, b)$$
+
+4. Divide by **${b}$**
+
+$$Boost = \min(0.4, b)$$
 
 The expression "Boost = min(0.4, 𝑏)" is a way of saying that a user's boost will be the smaller of two values: 0.4 or 𝑏. In simpler terms, if the value of 𝑏, which is based on the user's provided liquidity, is less than 0.4, then that's the boost they'll receive. If 𝑏 is more than 0.4, then their boost will be 0.4. This mechanism ensures that the user's boost will not exceed 0.4, or 40% of potential rewards.
+
+## Other Considerations
 
 It's important to note that the boost earned on a user's liquidity is in addition to the standard rewards earned on the HERMES platform. This makes Boost in Hermes gauges an attractive feature for users looking to maximize their returns on liquidity provided.
 
