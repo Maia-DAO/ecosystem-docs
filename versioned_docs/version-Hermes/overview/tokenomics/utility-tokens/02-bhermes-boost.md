@@ -26,7 +26,7 @@ To utilize this feature, a user must first acquire bHermes Boost and also provid
 
 To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
 
-𝑤<sub>𝑖</sub>/𝑊 = 𝑏/𝑆$
+𝑤<sub>𝑖</sub>/𝑊 = 𝑏/𝑆
 
 where (user's boosted balance) 𝑏*<sub>𝑢</sub> = Boost &times; 𝑏. We can simplify our equation from:
 
