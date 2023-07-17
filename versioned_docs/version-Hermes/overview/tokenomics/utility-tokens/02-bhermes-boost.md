@@ -7,7 +7,7 @@ Boost in Hermes gauges is a feature designed to incentivize users by providing t
 
 The formula for calculating the boost 𝑏*<sub>𝑢</sub> is as follows:
 
-$𝑏*<sub>𝑢</sub> = _min_(0.4 &times; 𝑏<sub>𝑢</sub> + 0.6 &times; 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏<sub>𝑢</sub>)$
+𝑏*<sub>𝑢</sub> = _min_(0.4 𝑏 + 0.6 𝑆(𝑤<sub>𝑖</sub>/𝑊), 𝑏)
 
 Where:
 - 𝑏*<sub>𝑢</sub> = User's boosted balance.
@@ -26,7 +26,7 @@ To utilize this feature, a user must first acquire bHermes Boost and also provid
 
 To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
 
-$𝑤<sub>𝑖</sub>/𝑊 = 𝑏/𝑆$
+𝑤<sub>𝑖</sub>/𝑊 = 𝑏/𝑆$
 
 where (user's boosted balance) 𝑏*<sub>𝑢</sub> = Boost &times; 𝑏. We can simplify our equation from:
 
