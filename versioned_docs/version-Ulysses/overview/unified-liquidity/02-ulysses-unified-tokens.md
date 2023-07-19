@@ -22,7 +22,7 @@ Ulysses Unified Tokens can be utilized for trading and providing liquidity to ot
 
 ### Building Blocks for Other Applications
 
-Ulysses Unified Tokens can serve as a foundation for other applications. A lending platform might use them as collateral, allowing users to borrow against their assets across multiple chains. Similarly, a stablecoin issuer could leverage Ulysses Unified Tokens to create a multichain stablecoin pegged to the value of multiple underlying assets.
+Ulysses Unified Tokens can serve as a foundation for other applications. A lending platform might use them as collateral, allowing users to borrow against their assets across multiple chains. Similarly, a stablecoin issuer could leverage Ulysses Unified Tokens to create a omnichain stablecoin pegged to the value of multiple underlying assets.
 
 ## Summary and Key Takeaways
 
@@ -35,7 +35,7 @@ In this example, Ulysses USDC Token and Ulysses ETH Token have the same weights:
 | Step | Action | Deposit | Return | Platform | Chain |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Deposit and Bridge | 10 USDC |  | Ulysses Branch Port | OP |
-| 2 | Send Anycall Request |  |  |  |  |
+| 2 | Send LayerZero Request |  |  |  |  |
 | 3 | Receive |  | 10 op-hUSDC | Ulysses Root Port | ARB |
 | 4 | Deposit | 1 op-hUSDC | 1 op-ulysses-LP of USDC | Ulysses AMM | ARB |
 | 5 | Swap | 3 op-hUSDC | 3 arb-hUSDC | Ulysses AMM | ARB |
@@ -51,13 +51,13 @@ In this example, Ulysses USDC Token and Ulysses ETH Token have the same weights:
 | 16 | Withdraw | 0.6 mainnet-ulysses-LP of ETH | 0.6 mainnet-hETH | Ulysses AMM | ARB |
 | 17 | Swap | 0.6 mainnet-hETH | 0.6 op-hETH | Ulysses AMM | ARB |
 | 18 | Bridge and Withdraw | 1 op-hETH |  | Ulysses Root Port | ARB |
-| 19 | Send Anycall Request |  |  |  |  |
+| 19 | Send LayerZero Request |  |  |  |  |
 | 20 | Withdraw |  | 1 ETH | Ulysses Branch Port | OP |
 
 This table represents a series of actions performed on the Ulysses platform, which involves deposits, swaps, and withdrawals across different chains. The process begins with depositing USDC in the Ulysses Branch Port on the OP chain, and ends with the withdrawal of ETH from the same port. The steps are as follows:
 
 1. Deposit 10 USDC in the Ulysses Branch Port on the OP chain.
-2. Send an Anycall request.
+2. Send an LayerZero request.
 3. Receive 10 op-hUSDC in the Ulysses Root Port on the Arbitrum (ARB) chain.
 4. Deposit 1 op-hUSDC in the Ulysses AMM on the ARB chain and receive 1 op-ulysses-LP of USDC.
 5. Swap 3 op-hUSDC for 3 arb-hUSDC using the Ulysses AMM on the ARB chain.
@@ -73,7 +73,7 @@ This table represents a series of actions performed on the Ulysses platform, whi
 15. Withdraw 0.6 mainnet-hETH from the Ulysses AMM on the ARB chain using 0.6 mainnet-ulysses-LP of ETH.
 16. Swap 0.6 mainnet-hETH for 0.6 op-hETH using the Ulysses AMM on the ARB chain.
 17. Bridge and withdraw 1 op-hETH using the Ulysses Root Port on the ARB chain.
-18. Send an Anycall request.
+18. Send an LayerZero request.
 19. Withdraw 1 ETH from the Ulysses Branch Port on the OP chain.
 
 ### FlowChart
@@ -106,7 +106,7 @@ graph TD
     end
 
     subgraph ARB Chain
-        A -->|Anycall Request| C[10 op-hUSDC]
+        A -->|LayerZero Request| C[10 op-hUSDC]
         C -->|Deposit| E[1 op-ulysses-LP of USDC]
         F1[3 arb-hUSDC] -->|Deposit| G[3 arb-ulysses-LP of USDC]
         H1[6 mainnet-hUSDC] -->|Deposit| I[6 mainnet-ulysses-LP of USDC]
@@ -128,7 +128,7 @@ graph TD
     end
 
     subgraph OP Chain
-    S -->|Anycall Request| V[End: Withdraw 1 ETH]
+    S -->|LayerZero Request| V[End: Withdraw 1 ETH]
     end
 ```
 
@@ -152,7 +152,7 @@ graph LR
     end
 
     subgraph ARB Chain
-        A -->|Anycall Request| C[10 op-hUSDC]
+        A -->|LayerZero Request| C[10 op-hUSDC]
         C -->|Deposit| E[1 op-ulysses-LP of USDC]
         F1[3 arb-hUSDC] -->|Deposit| G[3 arb-ulysses-LP of USDC]
         H1[6 mainnet-hUSDC] -->|Deposit| I[6 mainnet-ulysses-LP of USDC]
@@ -192,7 +192,7 @@ graph LR
     end
 
     subgraph OP Chain
-        S -->|Anycall Request| V[End: Withdraw 1 ETH]
+        S -->|LayerZero Request| V[End: Withdraw 1 ETH]
     end
 ```
 
