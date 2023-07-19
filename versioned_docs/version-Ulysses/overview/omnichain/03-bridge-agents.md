@@ -25,7 +25,7 @@ Let's examine a swap example to understand user interaction with Branch and Root
 
 1. **User Request:** The user submits a swap request to the Branch Bridge Agent, providing required parameters.
 
-2. **Deposit Assets:** The originating Branch Bridge Agent locks the user's necessary balance and logs the deposit. The essential data is then relayed to the corresponding Root Bridge Agent via the Anycall messaging layer.
+2. **Deposit Assets:** The originating Branch Bridge Agent locks the user's necessary balance and logs the deposit. The essential data is then relayed to the corresponding Root Bridge Agent via the LayerZero messaging layer.
 
 3. **Receive Request:** The Root Bridge Agent authenticates and validates the request and deposit data received from the Branch Bridge Agent. If valid, the request is forwarded to the corresponding Root Router.
 
