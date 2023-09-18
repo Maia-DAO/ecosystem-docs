@@ -9,7 +9,7 @@ The Boost Aggregator Factory is a versatile and powerful tool that enables the d
 
 ### Deployment Process
 
-To deploy the Boost Aggregator, you only need to specify the owner of the boost aggregator, which is typically yourself. The owner can be changed at any time, but only by the current owner.
+To deploy the Boost Aggregator, you only need to specify the owner of the Boost Aggregator, which is typically yourself. The owner can be changed at any time, but only by the current owner.
 
 ### Customization Options
 

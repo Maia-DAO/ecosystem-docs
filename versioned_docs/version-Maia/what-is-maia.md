@@ -21,9 +21,9 @@ $MAIA when locked as [vMAIA](./overview/tokenomics/vMaia) is a utility and gover
 
 As a DAO we constantly push towards improving our decentralized governance structure and processes. Maia leveraged OHM's Staking & Bonding Mechanics in its initial distribution phase. The emissions were distributed via rebase and capped at a supply of 180,000 $MAIA. From now on, $MAIA will only be emitted via strategic bonds proposed through governance.
 
-This is achieved by providing exposure to yield-bearing tokens and a set of curated strategies. The first deployed strategies have been efficient liquidity provision and bribe collection in Hermes Protocol.
+This is achieved by providing exposure to yield-bearing tokens and a set of curated strategies. The first deployed strategies have been efficient liquidity provision and bribe collection in the Hermes Protocol.
 
-Each $MAIA token is backed by a basket of blue-chip and revenue generating assets in its treasury (e.g., sETH, stablecoins, and burned Hermes). This backing guarantees a fair minimum value for each $MAIA token.
+Each $MAIA token is backed by a basket of blue-chip and revenue-generating assets in its treasury (e.g., sETH, stablecoins, and burned Hermes). This backing guarantees a fair minimum value for each $MAIA token.
 
 ### With $MAIA you will be able to:
 
@@ -32,7 +32,7 @@ Each $MAIA token is backed by a basket of blue-chip and revenue generating asset
    - Earn bribes on your MAIA Voting Power
    - Earn a share of Maia's Treasury Revenue
 
-2. **Make the best out of upcoming Maia Vaults**
+2. **Make the best out of the upcoming Maia Vaults**
    - Deposit to earn a share of a given vault strategy revenue and earn a boost according to your vMAIA balance.
 
 ## Where can I find more information about the ecosystem products

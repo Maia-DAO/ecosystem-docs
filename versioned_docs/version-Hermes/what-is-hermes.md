@@ -19,11 +19,11 @@ One of the key features of Hermes Protocol V2 is the ability to swap from and to
 
 ### Renting liquidity
 
-Hermes Protocol V2 also includes a Liquidity Provision assistant, which is designed to make it easier for users to provide liquidity to the protocol and to earn rewards for doing so. The protocol also includes a bribes system, where users can rent liquidity via the already in place bribes system.
+Hermes Protocol V2 also includes a Liquidity Provision assistant, which is designed to make it easier for users to provide liquidity to the protocol and to earn rewards for doing so. The protocol also includes a bribe system, where users can rent liquidity via the incorporated fully decentralized bribe system.
 
 ### Yield Marketplace
 
-Finally, the last major feature of Hermes Protocol V2 is the introduction of a yield marketplace, where users can buy and sell the rights to yield. This allows users to earn returns on their assets in a more flexible and efficient way, and to take advantage of the different yield opportunities available on different chains.
+Finally, the last major feature of Hermes Protocol V2 is the introduction of a yield marketplace, where users can buy and sell the rights to yield. This allows users to earn returns on their assets more flexibly and efficiently, and to take advantage of the different yield opportunities available on different chains.
 
 ## Where can I find more information about ecosystem products
 

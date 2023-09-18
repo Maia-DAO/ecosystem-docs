@@ -49,7 +49,7 @@ The second departure from traditional markets is the permissionless and immutabl
 
 Permissionless design means that the protocol's services are entirely open for public use, with no ability to selectively restrict who can or cannot use them. Anyone can provide liquidity, or create new markets at will. This is a departure from traditional financial services, which typically restrict access based on geography, wealth status, and age.
 
-The protocol is immutable, meaning it cannot be upgraded or altered. No party has the ability to pause the contracts, reverse trade execution, or modify the protocol's behavior in any way. Talos Governance retains the right to 20% of swap fees generated from all Vanilla positions; however, this arrangement is transparent and unchangeable, known to all participants beforehand.
+The protocol is immutable, meaning it cannot be upgraded or altered. No party can pause the contracts, reverse trade execution, or modify the protocol's behavior in any way. Talos Governance retains the right to 20% of swap fees generated from all Vanilla positions; however, this arrangement is transparent and unchangeable, known to all participants beforehand.
 
 It is important to highlight that Staked Talos positions do not incur any protocol fees on emissions. Instead, the owner of the position's boost aggregator can establish fees on earned emissions, which may be subject to change. While staked positions do not generate fees, as they are staked in [Hermes Uniswap v3 Gauges](../Hermes/overview/gauges/uni-v3), any earned swap fees from unstaked positions will be collected by the protocol and allocated as bribes, similar to the process for staked positions.
 

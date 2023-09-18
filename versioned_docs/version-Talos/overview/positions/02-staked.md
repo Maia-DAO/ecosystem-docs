@@ -5,7 +5,7 @@ title: Staked
 
 [//]: # (TODO: add that positions can be associated with any strategy)
 [//]: # (TODO: pools together users so they can stake every epoch together, bringing down costs)
-[//]: # (TODO: if there is no staking incentive active, this position will be equal to a vanilla position)
+[//]: # (TODO: if there is no staking incentive active, all feels are collected as protocol fees)
 
 TALOS Staked Positions are a new type of LP that allows users to stake their UNI V3 NFTs in the Hermes Uniswap V3 gauge. These staked positions are built on the Arbitrum layer 2 solution, which allows for faster and cheaper transactions compared to the Ethereum mainnet.
 

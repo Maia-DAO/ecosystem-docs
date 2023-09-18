@@ -18,9 +18,9 @@ Both the Hermes V2 architecture using [Uniswap V3 pools](/protocols/Hermes/overv
 
 ## Upcoming Features
 
-### Autocompounding Mode
+### Auto-Compounding Mode
 
-Maia Vaults make use of MEV and game theory to incentive participants to keep the vaults which enabled AUTOCOMPOUND MODE autocompounded in exchange for a small fee taken from rewards. This provides a decentralized and less-extractive approach to autocompounding than charging a fee up-front. 
+Maia Vaults makes use of MEV and game theory to incentivize participants to keep the vaults which enabled AUTOCOMPOUND MODE autocompounded in exchange for a small fee taken from rewards. This provides a decentralized and less-extractive approach to auto-compounding rather than charging a fee up-front. 
 
 ### Leverage
 

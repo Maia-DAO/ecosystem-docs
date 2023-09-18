@@ -11,7 +11,7 @@ Emissions are determined by the Minter contract according to the circulating sup
 
 ## Distribution
 
-In this process, weekly HERMES distribution is allocated depending on votes from [bHermes Gauges](./utility-tokens/01-bhermes-gauges.md) holders. It's important to note that Emissions are decided at the end of each epoch and are linearly distributed throughout the whole epoch. This allows for a more smooth distribution of emissions and less volatility for the users and liquidity providers.
+In this process, weekly HERMES distribution is allocated depending on votes from [bHermes Gauges](./utility-tokens/01-bhermes-gauges.md) holders. It's important to note that Emissions are decided at the end of each epoch and are linearly distributed throughout the whole epoch. This allows for more smoother distribution of emissions and less volatility for the users and liquidity providers.
 
 ## DAO Emissions
 

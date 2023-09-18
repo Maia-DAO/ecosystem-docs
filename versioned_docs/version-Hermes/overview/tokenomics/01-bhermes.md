@@ -7,7 +7,6 @@ title: Introducing bHermes
 
 To enhance user experience and benefits around Hermes Tokenomics, the protocol has introduced three underlying utility tokens - bHermes Gauge, bHermes Boost, and bHermes Votes. These tokens enhance governance, rewards, and engagement within the platform, allowing token holders to participate in various governance processes.
 
-
 ## Burning
 To acquire bHERMES, users must first permanently lock (burn) their HERMES tokens by depositing them into the Burner ERC-4626 Vault Contract accessible via the platform's user interface (UI). Users receive bHERMES ERC-4626 shares proportional to their deposit, based on a conversion ratio that starts at a 1:1 ratio at version 2 launch and increases with inflation, protecting voters from dilution.
 
