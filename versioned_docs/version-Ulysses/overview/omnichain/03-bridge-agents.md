@@ -35,6 +35,6 @@ Let's examine a swap example to understand user interaction with Branch and Root
 
 6. **Receive Request and Clear Tokens:** Upon receiving the Root Bridge Agent's communication, the destination Branch Bridge Agent requests token clearance for user withdrawal from the local Port.
 
-When using our platform, requests betweent two chains will always be flow through a Bridge Agent. This agent acts in the same way that a neural pathway works in a body - relaying information back and forth between its different organs. These Bridge Agents not only receive and broadcast user requests but also take on the responsibility for the system's responses. By acting as an intermediary between the user and the system, it ensures that the connection is made without any issues.
+When using our platform, requests between two chains will always be flow through a Bridge Agent. This agent acts in the same way that a neural pathway works in a body - relaying information back and forth between its different organs. These Bridge Agents not only receive and broadcast user requests but also take on the responsibility for the system's responses. By acting as an intermediary between the user and the system, it ensures that the connection is made without any issues.
 
 ![Omnichain Flow](./images/Ulysses_Omnichain_Flow.png)
