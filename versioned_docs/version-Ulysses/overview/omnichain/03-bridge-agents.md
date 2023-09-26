@@ -23,7 +23,7 @@ Root Bridge Agents, located in the Root Chain, liaise with all connected Branch 
 
 Let's examine a swap example to understand user interaction with Branch and Root Routers.
 
-1. **User Request:** The user submits a swap request to the Branch Bridge Agent, providing required parameters.
+1. **User Request:** The user submits a swap request to the Branch Bridge Agent, providing the required parameters.
 
 2. **Deposit Assets:** The originating Branch Bridge Agent locks the user's necessary balance and logs the deposit. The essential data is then relayed to the corresponding Root Bridge Agent via the LayerZero messaging layer.
 
