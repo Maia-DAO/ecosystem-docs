@@ -31,9 +31,11 @@ Where:
 This formula calculates the user's boost, 𝑏*<sub>𝑢</sub> based on the amount of bHERMES they hold and the liquidity they provide. It also takes into account the total amount of bHERMES and liquidity provided by all users.
 
 > **Please note** that in order to prevent gaming of the boost system and ensure fair distribution of rewards, users are able to have their entire boost applied to all pools, but are only able to have 1 boosted position per pool.
-## Utilizing the Boost Feature
-To utilize this feature, a user must first acquire bHermes Boost and also provide liquidity to a gauge. 
-## Maximum Boost = 2.5 $\times$ No Boost
+
+### To utilize this feature, a user must first acquire bHermes Boost and also provide liquidity to a gauge. 
+
+## Maximum Boost = 2.5 x No Boost
+
 To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
 
 $$\frac{w_i}{W} = \frac{b}{S}$$
@@ -63,7 +65,8 @@ $$Boost \times b = \min(1.0 b, b)$$
 $$Boost = \min(1.0, b)$$
 
 The term "Boost = min(1.0, 𝑏)" signifies that the user's boost is determined by the minimum value between 1.0 and 𝑏. In this context, 1.0 represents 100% of rewards based on the liquidity provided by the user, denoted by 𝑏. This allows for potential rewards up to 100%, a significant increase from the standard 40%, effectively offering up to a 2.5x boost.
-## No Boost = 40% $\times$ Max Boost
+
+## No Boost = 40% x Max Boost
 
 Conversely, if a user has ${0}$ bHERMES ($w_i = 0$), then they will only receive 40% of the Max Boost
 
