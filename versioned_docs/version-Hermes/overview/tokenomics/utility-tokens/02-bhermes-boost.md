@@ -34,61 +34,70 @@ This formula calculates the user's boost, 𝑏*<sub>𝑢</sub> based on the amou
 
 ### To utilize this feature, a user must first acquire bHermes Boost and also provide liquidity to a gauge. 
 
-## Maximum Boost = 2.5 x No Boost
+## Maximum Boost = 2.5 x [No Boost]
 
-To achieve the maximum boost of 2.5x, a user must hold the same percentage of bHermes Boost as the gauge's total liquidity. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
+To achieve the maximum boost of 2.5x, a user must hold the <span style="color:green">same % share of **bHermes Boost** to their **liquidity** staked in gauge</span>. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then
 
 $$\frac{w_i}{W} = \frac{b}{S}$$
 
-where (user's boosted balance) $b_u^*$ = $Boost \times {b}$. We can simplify our equation from:
+<div style="text-align:left; margin-left:auto; margin-right:auto; max-width:70%;">
+
+We can simplify our equation from:
 
 $$b_u^* = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-1. Replace $b_u^*$ with $Boost \times {b}$ 
+### 1. Replace $b_u^*$ with $Boost \times {b}$ 
 
-$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
+$$
+\textcolor{green}{{\text{Boost} \times b}} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)
+$$
+### 2. Replace $\frac{w_i}{W}$ with $\frac{b}{S}$
 
-2. Replace $\frac{w_i}{W}$ with $\frac{b}{S}$
+$$Boost \times {b} = \min(0.4 b + 0.6 S\textcolor{green}{{\frac{b}{S}}}, b)$$
 
-$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{b}{S}, b)$$
+### 3. Simplify $0.6 S\frac{b}{S}$
 
-3. Simplify $0.6 S\frac{b}{S}$
+$$Boost \times b = \min(0.4 b + \textcolor{green}{{0.6 b}}, b)$$
 
-$$Boost \times b = \min(0.4 b + 0.6 b, b)$$
+### 4. Add $0.4b + 0.6b$
 
-4. Add $0.4b + 0.6b$
+$$Boost \times b = \min(\textcolor{green}{{1.0 b}}, b)$$
 
-$$Boost \times b = \min(1.0 b, b)$$
+### 5. Divide by ${b}$
 
-5. Divide by ${b}$
+$$\textcolor{green}{{Boost}} = \min(\textcolor{green}{{1.0}}, b)$$
+</div>
+The term "Boost = min(1.0, 𝑏)" signifies that the user's boost is determined by the minimum value between 1.0 and 𝑏. In this context, 1.0 represents 100% of rewards based on the liquidity provided by the user, denoted by 𝑏. 
 
-$$Boost = \min(1.0, b)$$
+    This allows for potential rewards up to 100%, a significant increase from the standard 40%, effectively offering up to a 2.5x boost.
 
-The term "Boost = min(1.0, 𝑏)" signifies that the user's boost is determined by the minimum value between 1.0 and 𝑏. In this context, 1.0 represents 100% of rewards based on the liquidity provided by the user, denoted by 𝑏. This allows for potential rewards up to 100%, a significant increase from the standard 40%, effectively offering up to a 2.5x boost.
+## No Boost = 40% x [Max Boost]
 
-## No Boost = 40% x Max Boost
-
-Conversely, if a user has ${0}$ bHERMES ($w_i = 0$), then they will only receive 40% of the Max Boost
+Conversely, if a user has <span style="color:red">0 bHERMES</span> ($w_i = 0$), then they will only receive 40% of the Max Boost
 
 $$b_u^* = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-1. Replace $b_u^*$ with ${Boost \times {b}}$
+<div style="text-align:left; margin-left:auto; margin-right:auto; max-width:70%;">
 
-$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
+### 1. Replace $b_u^*$ with ${Boost \times {b}}$
 
-2. Replace ${w_i}$ with ${0}$
+$$\textcolor{red}{{Boost \times {b}}} = \min(0.4 b + 0.6 S\frac{w_i}{W}, b)$$
 
-$$Boost \times {b} = \min(0.4 b + 0.6 S\frac{0}{W}, b)$$
+### 2. Replace ${w_i}$ with ${0}$
 
-3. Simplify $0.6 S\frac{0}{W}$ = ${0}$
+$$Boost \times {b} = \min(0.4 b + 0.6 S\textcolor{red}{{\frac{0}{W}}}, b)$$
 
-$$Boost \times b = \min(0.4 b, b)$$
+### 3. Simplify $0.6 S\frac{0}{W}$ = ${0}$
 
-4. Divide by **${b}$**
+$$Boost \times b = \min(\textcolor{red}{{0.4 b}}, b)$$
 
-$$Boost = \min(0.4, b)$$
+### 4. Divide by **${b}$**
 
-The expression "Boost = min(0.4, 𝑏)" is a way of saying that a user's boost will be the smaller of two values: 0.4 or 𝑏. In simpler terms, if the value of 𝑏, which is based on the user's provided liquidity, is less than 0.4, then that's the boost they'll receive. If 𝑏 is more than 0.4, then their boost will be 0.4. This mechanism ensures that the user's boost will not exceed 0.4, or 40% of potential rewards.
+$$\textcolor{red}{{Boost}} = \min(\textcolor{red}{{0.4}}, b)$$
+</div>
+The expression "Boost = min(0.4, 𝑏)" is saying that a user's boost will be the smaller of two values: 0.4 or 𝑏. In simpler terms, if the value of 𝑏, which is based on the user's provided liquidity, is less than 0.4, then that's the boost they'll receive. If 𝑏 is more than 0.4, then their boost will be 0.4. 
+
+    This mechanism ensures that the user's boost will not exceed 0.4, or 40% of potential rewards.
 
 ## Other Considerations
 
