@@ -119,6 +119,14 @@ h5 {
   font-weight: 500;
 }
 
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+
 h1 {
   font-size: 32px !important;
 }
@@ -540,4 +548,8 @@ html[data-theme='dark'] .DocSearch-Hit a {
   text-decoration-color: rgb(41, 149, 182) !important;
 }
 
-img[alt=Omnichain_Architecture] { width: 50%; display: flex; margin: 0 auto; }
+img[alt='Omnichain_Architecture'] {
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+}
