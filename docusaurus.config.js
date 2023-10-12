@@ -277,7 +277,7 @@ module.exports = {
             },
             {
               label: 'Hermes\' Twitter',
-              href: 'https://twitter.com/HermesOminchain',
+              href: 'https://twitter.com/HermesOmnichain',
             },
             {
               label: 'Talos\' Twitter',
