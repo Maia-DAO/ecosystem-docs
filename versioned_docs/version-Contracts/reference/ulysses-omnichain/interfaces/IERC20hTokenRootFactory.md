@@ -1,7 +1,5 @@
----
-id: IERC20hTokenRootFactory
-title: IERC20hTokenRootFactory
----
+# IERC20hTokenRootFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IERC20hTokenRootFactory.sol)
 
 **Author:**
 MaiaDAO
@@ -19,7 +17,9 @@ Function to create a new hToken.
 
 
 ```solidity
-function createToken(string memory _name, string memory _symbol) external returns (ERC20hTokenRoot newToken);
+function createToken(string memory _name, string memory _symbol, uint8 _decimals)
+    external
+    returns (ERC20hToken newToken);
 ```
 **Parameters**
 
@@ -27,12 +27,13 @@ function createToken(string memory _name, string memory _symbol) external return
 |----|----|-----------|
 |`_name`|`string`|Name of the Token.|
 |`_symbol`|`string`|Symbol of the Token.|
+|`_decimals`|`uint8`|Decimals of the Token.|
 
 
 ## Errors
-### UnrecognizedCoreRouter
+### UnrecognizedCoreRouterOrPort
 
 ```solidity
-error UnrecognizedCoreRouter();
+error UnrecognizedCoreRouterOrPort();
 ```
 

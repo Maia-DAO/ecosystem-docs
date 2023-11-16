@@ -1,10 +1,11 @@
----
-id: RootBridgeAgentFactory
-title: RootBridgeAgentFactory
----
+# RootBridgeAgentFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/factories/RootBridgeAgentFactory.sol)
 
 **Inherits:**
-[IRootBridgeAgentFactory](/ulysses-omnichain/interfaces/IRootBridgeAgentFactory.sol/interface.IRootBridgeAgentFactory.md)
+[IRootBridgeAgentFactory](/src/ulysses-omnichain/interfaces/IRootBridgeAgentFactory.md)
+
+**Author:**
+MaiaDAO
 
 
 ## State Variables
@@ -13,16 +14,7 @@ Root Chain Id
 
 
 ```solidity
-uint24 public immutable rootChainId;
-```
-
-
-### wrappedNativeToken
-Local Wrapped Native Token
-
-
-```solidity
-WETH9 public immutable wrappedNativeToken;
+uint16 public immutable rootChainId;
 ```
 
 
@@ -35,39 +27,12 @@ address public immutable rootPortAddress;
 ```
 
 
-### daoAddress
-DAO Address
+### lzEndpointAddress
+Local Layerzero Enpoint Address
 
 
 ```solidity
-address public immutable daoAddress;
-```
-
-
-### localAnyCallAddress
-Local Anycall Address
-
-
-```solidity
-address public immutable localAnyCallAddress;
-```
-
-
-### localAnyCallExecutorAddress
-Local Anyexec Address
-
-
-```solidity
-address public immutable localAnyCallExecutorAddress;
-```
-
-
-### getBridgeAgentManager
-Bridge Agent Manager
-
-
-```solidity
-mapping(address => address) public getBridgeAgentManager;
+address public immutable lzEndpointAddress;
 ```
 
 
@@ -78,23 +43,15 @@ Constructor for Bridge Agent.
 
 
 ```solidity
-constructor(
-    uint24 _rootChainId,
-    WETH9 _wrappedNativeToken,
-    address _localAnyCallAddress,
-    address _rootPortAddress,
-    address _daoAddress
-);
+constructor(uint16 _rootChainId, address _lzEndpointAddress, address _rootPortAddress);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_rootChainId`|`uint24`|Root Chain Id.|
-|`_wrappedNativeToken`|`WETH9`|Local Wrapped Native Token.|
-|`_localAnyCallAddress`|`address`|Local Anycall Address.|
-|`_rootPortAddress`|`address`|Local Port Address.|
-|`_daoAddress`|`address`|DAO Address.|
+|`_rootChainId`|`uint16`|Root Chain Layer Zero Id.|
+|`_lzEndpointAddress`|`address`|Layer Zero Endpoint for cross-chain communication.|
+|`_rootPortAddress`|`address`|Root Port Address.|
 
 
 ### createBridgeAgent

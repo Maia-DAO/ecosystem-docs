@@ -1,7 +1,5 @@
----
-id: IBranchPort
-title: IBranchPort
----
+# IBranchPort
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IBranchPort.sol)
 
 **Author:**
 MaiaDAO
@@ -119,22 +117,41 @@ function manage(address _token, uint256 _amount) external;
 
 allow approved address to repay borrowed reserves with reserves
 
+*must be called by the port strategy itself*
+
 
 ```solidity
-function replenishReserves(address _strategy, address _token, uint256 _amount) external;
+function replenishReserves(address _token, uint256 _amount) external;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_strategy`|`address`||
 |`_token`|`address`|address|
 |`_amount`|`uint256`|uint|
 
 
+### replenishReserves
+
+allow approved address to repay borrowed reserves and replenish a given token's reserves
+
+*can be called by anyone to ensure availability of service*
+
+
+```solidity
+function replenishReserves(address _strategy, address _token) external;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_strategy`|`address`|address|
+|`_token`|`address`|address|
+
+
 ### withdraw
 
-Function to withdraw underlying / native token amount into Port in exchange for Local hToken.
+Function to withdraw underlying/native token amount into Port in exchange for Local hToken.
 
 
 ```solidity
@@ -145,7 +162,7 @@ function withdraw(address _recipient, address _underlyingAddress, uint256 _amoun
 |Name|Type|Description|
 |----|----|-----------|
 |`_recipient`|`address`|hToken receiver.|
-|`_underlyingAddress`|`address`|underlying / native token address.|
+|`_underlyingAddress`|`address`|underlying/native token address.|
 |`_amount`|`uint256`|amount of tokens.|
 
 
@@ -172,7 +189,13 @@ Setter function to increase local hToken supply.
 
 
 ```solidity
-function bridgeInMultiple(address _recipient, address[] memory _localAddresses, uint256[] memory _amounts) external;
+function bridgeInMultiple(
+    address _recipient,
+    address[] memory _localAddresses,
+    address[] memory _underlyingAddresses,
+    uint256[] memory _amounts,
+    uint256[] memory _deposits
+) external;
 ```
 **Parameters**
 
@@ -180,7 +203,9 @@ function bridgeInMultiple(address _recipient, address[] memory _localAddresses, 
 |----|----|-----------|
 |`_recipient`|`address`|hToken receiver.|
 |`_localAddresses`|`address[]`|token addresses.|
+|`_underlyingAddresses`|`address[]`||
 |`_amounts`|`uint256[]`|amount of tokens.|
+|`_deposits`|`uint256[]`||
 
 
 ### bridgeOut
@@ -205,7 +230,7 @@ function bridgeOut(
 |`_localAddress`|`address`|token address.|
 |`_underlyingAddress`|`address`||
 |`_amount`|`uint256`|amount of tokens.|
-|`_deposit`|`uint256`||
+|`_deposit`|`uint256`|amount of underlying tokens.|
 
 
 ### bridgeOutMultiple
@@ -248,28 +273,13 @@ function addBridgeAgent(address _bridgeAgent) external;
 |`_bridgeAgent`|`address`|address of the bridge agent to add to the Port|
 
 
-### setCoreRouter
+### toggleBridgeAgentFactory
 
-Sets the core router address for the branch port.
-
-
-```solidity
-function setCoreRouter(address _newCoreRouter) external;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_newCoreRouter`|`address`|address of the new core router|
-
-
-### addBridgeAgentFactory
-
-Adds a new bridge agent factory address to the branch port.
+Toggle a given bridge agent factory. If it's active, it will de-activate it and vice-versa.
 
 
 ```solidity
-function addBridgeAgentFactory(address _bridgeAgentFactory) external;
+function toggleBridgeAgentFactory(address _bridgeAgentFactory) external;
 ```
 **Parameters**
 
@@ -278,115 +288,121 @@ function addBridgeAgentFactory(address _bridgeAgentFactory) external;
 |`_bridgeAgentFactory`|`address`|address of the bridge agent factory to add to the Port|
 
 
-### toggleBridgeAgentFactory
-
-Reverts the toggle on the given bridge agent factory. If it's active, it will de-activate it and vice-versa.
-
-
-```solidity
-function toggleBridgeAgentFactory(address _newBridgeAgentFactory) external;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_newBridgeAgentFactory`|`address`|address of the bridge agent factory to add to the Port|
-
-
-### toggleBridgeAgent
-
-Reverts thfe toggle on the given bridge agent  If it's active, it will de-activate it and vice-versa.
-
-
-```solidity
-function toggleBridgeAgent(address _bridgeAgent) external;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_bridgeAgent`|`address`|address of the bridge agent to add to the Port|
-
-
-### addStrategyToken
-
-Adds a new strategy token.
-
-
-```solidity
-function addStrategyToken(address _token, uint256 _minimumReservesRatio) external;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_token`|`address`|address of the token to add to the Strategy Tokens|
-|`_minimumReservesRatio`|`uint256`||
-
-
 ### toggleStrategyToken
 
-Reverts the toggle on the given strategy token. If it's active, it will de-activate it and vice-versa.
+Toggle a given strategy token. If it's active, it will de-activate it and vice-versa.
+
+*Must be between 7000 and 10000 (70% and 100%). Can be any value if the token is being de-activated.*
 
 
 ```solidity
-function toggleStrategyToken(address _token) external;
+function toggleStrategyToken(address _token, uint256 _minimumReservesRatio) external;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_token`|`address`|address of the token to add to the Strategy Tokens|
+|`_minimumReservesRatio`|`uint256`|minimum reserves ratio for the token|
 
 
-### addPortStrategy
+### updateStrategyToken
 
-Adds a new Port strategy to the given port
+Update an active strategy token's minimum reserves ratio. If it is not active, it will revert.
+
+*Must be between 7000 and 10000 (70% and 100%). Can be any value if the token is being de-activated.*
 
 
 ```solidity
-function addPortStrategy(address _portStrategy, address _token, uint256 _dailyManagementLimit) external;
+function updateStrategyToken(address _token, uint256 _minimumReservesRatio) external;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_portStrategy`|`address`|address of the bridge agent factory to add to the Port|
-|`_token`|`address`||
-|`_dailyManagementLimit`|`uint256`||
+|`_token`|`address`|address of the token to add to the Strategy Tokens|
+|`_minimumReservesRatio`|`uint256`|minimum reserves ratio for the token|
 
 
 ### togglePortStrategy
 
-Reverts the toggle on the given port strategy. If it's active, it will de-activate it and vice-versa.
+Add or Remove a Port Strategy.
+
+*Must be between 7000 and 10000 (70% and 100%). Can be any value if the token is being de-activated.*
 
 
 ```solidity
-function togglePortStrategy(address _portStrategy, address _token) external;
+function togglePortStrategy(
+    address _portStrategy,
+    address _underlyingToken,
+    uint256 _dailyManagementLimit,
+    uint256 _reserveRatioManagementLimit
+) external;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_portStrategy`|`address`|address of the bridge agent factory to add to the Port|
-|`_token`|`address`||
+|`_portStrategy`|`address`|Address of the Port Strategy to be added for use in Branch strategies.|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_dailyManagementLimit`|`uint256`|Daily management limit of the given token for the Port Strategy.|
+|`_reserveRatioManagementLimit`|`uint256`|Total reserves management limit of the given token for the Port Strategy.|
 
 
 ### updatePortStrategy
 
-Updates the daily management limit for the given port strategy.
+Updates a Port Strategy.
+
+*Must be between 7000 and 10000 (70% and 100%). Can be any value if the token is being de-activated.*
 
 
 ```solidity
-function updatePortStrategy(address _portStrategy, address _token, uint256 _dailyManagementLimit) external;
+function updatePortStrategy(
+    address _portStrategy,
+    address _underlyingToken,
+    uint256 _dailyManagementLimit,
+    uint256 _reserveRatioManagementLimit
+) external;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_portStrategy`|`address`|address of the bridge agent factory to add to the Port|
-|`_token`|`address`|address of the token to update the limit for|
-|`_dailyManagementLimit`|`uint256`|new daily management limit|
+|`_portStrategy`|`address`|Address of the Port Strategy to be added for use in Branch strategies.|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_dailyManagementLimit`|`uint256`|Daily management limit of the given token for the Port Strategy.|
+|`_reserveRatioManagementLimit`|`uint256`|Total reserves management limit of the given token for the Port Strategy.|
+
+
+### setCoreBranchRouter
+
+Sets the core branch router and bridge agent for the branch port.
+
+
+```solidity
+function setCoreBranchRouter(address _coreBranchRouter, address _coreBranchBridgeAgent) external;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_coreBranchRouter`|`address`|address of the new core branch router|
+|`_coreBranchBridgeAgent`|`address`|address of the new core branch bridge agent|
+
+
+### sweep
+
+Allows governance to claim any native tokens accumulated from failed transactions.
+
+
+```solidity
+function sweep(address _recipient) external;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_recipient`|`address`|address to transfer ETH to.|
 
 
 ## Events
@@ -402,40 +418,21 @@ event DebtCreated(address indexed _strategy, address indexed _token, uint256 _am
 event DebtRepaid(address indexed _strategy, address indexed _token, uint256 _amount);
 ```
 
-### StrategyTokenAdded
+### StrategyTokenUpdated
 
 ```solidity
-event StrategyTokenAdded(address indexed _token, uint256 _minimumReservesRatio);
-```
-
-### StrategyTokenToggled
-
-```solidity
-event StrategyTokenToggled(address indexed _token);
-```
-
-### PortStrategyAdded
-
-```solidity
-event PortStrategyAdded(address indexed _portStrategy, address indexed _token, uint256 _dailyManagementLimit);
-```
-
-### PortStrategyToggled
-
-```solidity
-event PortStrategyToggled(address indexed _portStrategy, address indexed _token);
+event StrategyTokenUpdated(address indexed _token, uint256 indexed _minimumReservesRatio);
 ```
 
 ### PortStrategyUpdated
 
 ```solidity
-event PortStrategyUpdated(address indexed _portStrategy, address indexed _token, uint256 _dailyManagementLimit);
-```
-
-### BridgeAgentFactoryAdded
-
-```solidity
-event BridgeAgentFactoryAdded(address indexed _bridgeAgentFactory);
+event PortStrategyUpdated(
+    address indexed _portStrategy,
+    address indexed _token,
+    uint256 indexed _dailyManagementLimit,
+    uint256 _reserveRatioManagementLimit
+);
 ```
 
 ### BridgeAgentFactoryToggled
@@ -450,17 +447,47 @@ event BridgeAgentFactoryToggled(address indexed _bridgeAgentFactory);
 event BridgeAgentToggled(address indexed _bridgeAgent);
 ```
 
+### CoreBranchSet
+
+```solidity
+event CoreBranchSet(address indexed _coreBranchRouter, address indexed _coreBranchBridgeAgent);
+```
+
 ## Errors
+### AlreadyAddedBridgeAgent
+
+```solidity
+error AlreadyAddedBridgeAgent();
+```
+
+### AlreadyAddedBridgeAgentFactory
+
+```solidity
+error AlreadyAddedBridgeAgentFactory();
+```
+
 ### InvalidMinimumReservesRatio
 
 ```solidity
 error InvalidMinimumReservesRatio();
 ```
 
+### InvalidInputArrays
+
+```solidity
+error InvalidInputArrays();
+```
+
 ### InsufficientReserves
 
 ```solidity
 error InsufficientReserves();
+```
+
+### ExceedsReserveRatioManagementLimit
+
+```solidity
+error ExceedsReserveRatioManagementLimit();
 ```
 
 ### UnrecognizedCore
@@ -491,5 +518,19 @@ error UnrecognizedPortStrategy();
 
 ```solidity
 error UnrecognizedStrategyToken();
+```
+
+### NotEnoughDebtToRepay
+
+```solidity
+error NotEnoughDebtToRepay();
+```
+
+### InvalidUnderlyingAddress
+Error emitted when an invalid underlying token address is provided.
+
+
+```solidity
+error InvalidUnderlyingAddress();
 ```
 

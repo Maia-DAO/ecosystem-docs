@@ -1,20 +1,18 @@
----
-id: IPortStrategy
-title: IPortStrategy
----
+# IPortStrategy
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IPortStrategy.sol)
 
 **Author:**
 MaiaDAO
 
-Base Contract for interfacing with Brach Port Strategy contracts
-whitelisted by the chain's Branch Port to manage a limited amount
+Interface to be implemented by Brach Port Strategy contracts
+allowlisted by the chain's Branch Port to manage a limited amount
 of one or more Strategy Tokens.
 
 
 ## Functions
 ### withdraw
 
-Function to withdraw underlying / native token amount back into Branch Port.
+Function to withdraw underlying/native token amount back into Branch Port.
 
 
 ```solidity

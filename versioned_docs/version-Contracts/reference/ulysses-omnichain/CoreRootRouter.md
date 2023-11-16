@@ -1,91 +1,105 @@
----
-id: CoreRootRouter
-title: CoreRootRouter
----
+# CoreRootRouter
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/CoreRootRouter.sol)
 
 **Inherits:**
-[IRootRouter](./interfaces/IRootRouter), Ownable
+[IRootRouter](/src/ulysses-omnichain/interfaces/IRootRouter.md), Ownable
 
 **Author:**
 MaiaDAO
+
+2
 
 Core Root Router implementation for Root Environment deployment.
 This contract is responsible for permissionlessly adding new
 tokens or Bridge Agents to the system as well as key governance
 enabled system functions (i.e. `toggleBranchBridgeAgentFactory`).
 
-Func IDs for calling these functions through messaging layer:
+*Func IDs for calling these functions through messaging layer:
+CROSS-CHAIN MESSAGING FUNCIDs
+-----------------------------
+FUNC ID      | FUNC NAME
+-------------+---------------
+0x01         | addGlobalToken
+0x02         | addLocalToken
+0x03         | setLocalToken
+0x04         | syncBranchBridgeAgent*
 
-| FUNC ID | FUNC NAME             |
-| ------- | --------------------- |
-| 0x01    | addGlobalToken        |
-| 0x02    | addLocalToken         |
-| 0x03    | setLocalToken         |
-| 0x04    | syncBranchBridgeAgent |
 
 ## State Variables
+### _setup
+Boolean to indicate if the contract is in set up mode.
 
-### wrappedNativeToken
-
-Local Wrapped Native Token
 
 ```solidity
-WETH9 public immutable wrappedNativeToken;
+bool internal _setup;
 ```
+
 
 ### rootChainId
+Root Chain Layer Zero Identifier.
 
-Address for Local Port Address where funds deposited from this chain are kept, managed and supplied to different Port Strategies.
 
 ```solidity
-uint24 public immutable rootChainId;
+uint256 public immutable rootChainId;
 ```
 
-### rootPortAddress
 
-Address for Local Port Address where funds deposited from this chain are kept, managed and supplied to different Port Strategies.
+### rootPortAddress
+Address for Local Port Address where funds deposited from this chain are kept
+managed and supplied to different Port Strategies.
+
 
 ```solidity
 address public immutable rootPortAddress;
 ```
 
-### bridgeAgentAddress
 
-Bridge Agent to maneg communcations and cross-chain assets.
+### bridgeAgentAddress
+Bridge Agent to manage remote execution and cross-chain assets.
+
 
 ```solidity
 address payable public bridgeAgentAddress;
 ```
 
+
 ### bridgeAgentExecutorAddress
+Bridge Agent Executor Address.
+
 
 ```solidity
 address public bridgeAgentExecutorAddress;
 ```
 
-### hTokenFactoryAddress
 
-Uni V3 Factory Address
+### hTokenFactoryAddress
+ERC20 hToken Root Factory Address.
+
 
 ```solidity
 address public hTokenFactoryAddress;
 ```
 
-### \_unlocked
-
-```solidity
-uint256 internal _unlocked = 1;
-```
 
 ## Functions
-
 ### constructor
 
+Constructor for Core Root Router.
+
+
 ```solidity
-constructor(uint24 _rootChainId, address _wrappedNativeToken, address _rootPortAddress);
+constructor(uint256 _rootChainId, address _rootPortAddress);
 ```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_rootChainId`|`uint256`|layer zero root chain id.|
+|`_rootPortAddress`|`address`|address of the Root Port.|
+
 
 ### initialize
+
 
 ```solidity
 function initialize(address _bridgeAgentAddress, address _hTokenFactory) external onlyOwner;
@@ -95,65 +109,376 @@ function initialize(address _bridgeAgentAddress, address _hTokenFactory) externa
 
 Add a new Chain (Branch Bridge Agent and respective Router) to a Root Bridge Agent.
 
+
 ```solidity
 function addBranchToBridgeAgent(
     address _rootBridgeAgent,
     address _branchBridgeAgentFactory,
     address _newBranchRouter,
-    address _gasReceiver,
-    uint24 _toChain,
-    uint128 _remoteExecutionGas
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams[2] calldata _gParams
 ) external payable;
 ```
-
 **Parameters**
 
-| Name                        | Type      | Description                                                               |
-| --------------------------- | --------- | ------------------------------------------------------------------------- |
-| `_rootBridgeAgent`          | `address` |                                                                           |
-| `_branchBridgeAgentFactory` | `address` | Address of the branch Bridge Agent Factory.                               |
-| `_newBranchRouter`          | `address` | Address of the new branch router.                                         |
-| `_gasReceiver`              | `address` | Address of the excess gas receiver.                                       |
-| `_toChain`                  | `uint24`  | Chain Id of the branch chain where the new Bridge Agent will be deployed. |
-| `_remoteExecutionGas`       | `uint128` | gas to be bridged back to root chain.                                     |
+|Name|Type|Description|
+|----|----|-----------|
+|`_rootBridgeAgent`|`address`||
+|`_branchBridgeAgentFactory`|`address`|Address of the branch Bridge Agent Factory.|
+|`_newBranchRouter`|`address`|Address of the new branch router.|
+|`_refundee`|`address`|Address of the excess gas receiver.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams[2]`|Gas parameters for remote execution.|
 
-### \_syncBranchBridgeAgent
 
-_Internal function sync a Root Bridge Agent with a newly created BRanch Bridge Agent._
+### toggleBranchBridgeAgentFactory
+
+Add or Remove a Branch Bridge Agent Factory.
+
 
 ```solidity
-function _syncBranchBridgeAgent(address _newBranchBridgeAgent, address _rootBridgeAgent, uint24 _fromChain) internal;
+function toggleBranchBridgeAgentFactory(
+    address _rootBridgeAgentFactory,
+    address _branchBridgeAgentFactory,
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable onlyOwner;
 ```
-
 **Parameters**
 
-| Name                    | Type      | Description                     |
-| ----------------------- | --------- | ------------------------------- |
-| `_newBranchBridgeAgent` | `address` | new branch bridge agent address |
-| `_rootBridgeAgent`      | `address` | new branch bridge agent address |
-| `_fromChain`            | `uint24`  | branch chain id.                |
+|Name|Type|Description|
+|----|----|-----------|
+|`_rootBridgeAgentFactory`|`address`|Address of the root Bridge Agent Factory.|
+|`_branchBridgeAgentFactory`|`address`|Address of the branch Bridge Agent Factory.|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching the destination network.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
 
-### \_addGlobalToken
 
-Internal function to add a global token to a specific chain. Must be called from a branch.
+### toggleStrategyToken
+
+Add or Remove a Strategy Token.
+
+*Must be between 7000 and 9999 (70% and 99.99%). Can be any value if the token is being de-activated.*
+
 
 ```solidity
-function _addGlobalToken(uint128 _remoteExecutionGas, address _globalAddress, address _gasReceiver, uint24 _toChain)
-    internal;
+function toggleStrategyToken(
+    address _underlyingToken,
+    uint256 _minimumReservesRatio,
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable onlyOwner;
 ```
-
 **Parameters**
 
-| Name                  | Type      | Description                                    |
-| --------------------- | --------- | ---------------------------------------------- |
-| `_remoteExecutionGas` | `uint128` | gas to be used in remote execution.            |
-| `_globalAddress`      | `address` | global token to be added.                      |
-| `_gasReceiver`        | `address` | Address of the excess gas receiver.            |
-| `_toChain`            | `uint24`  | chain to which the Global Token will be added. |
+|Name|Type|Description|
+|----|----|-----------|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_minimumReservesRatio`|`uint256`|Minimum Branch Port reserves ratio for the underlying token.|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching destination network.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
 
-### \_addLocalToken
+
+### updateStrategyToken
+
+Update an active Strategy Token's minimum reserves ratio.
+
+
+```solidity
+function updateStrategyToken(
+    address _underlyingToken,
+    uint256 _minimumReservesRatio,
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable onlyOwner;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_minimumReservesRatio`|`uint256`|Minimum Branch Port reserves ratio for the underlying token.|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching destination network.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
+
+
+### togglePortStrategy
+
+Add or Remove a Port Strategy.
+
+
+```solidity
+function togglePortStrategy(
+    address _portStrategy,
+    address _underlyingToken,
+    uint256 _dailyManagementLimit,
+    uint256 _reserveRatioManagementLimit,
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable onlyOwner;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_portStrategy`|`address`|Address of the Port Strategy to be added for use in Branch strategies.|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_dailyManagementLimit`|`uint256`|Daily management limit of the given token for the Port Strategy.|
+|`_reserveRatioManagementLimit`|`uint256`|Total reserves management limit of the given token for the Port Strategy.|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching destination network.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
+
+
+### updatePortStrategy
+
+Update a Port Strategy.
+
+
+```solidity
+function updatePortStrategy(
+    address _portStrategy,
+    address _underlyingToken,
+    uint256 _dailyManagementLimit,
+    uint256 _reserveRatioManagementLimit,
+    address _refundee,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable onlyOwner;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_portStrategy`|`address`|Address of the Port Strategy to be added for use in Branch strategies.|
+|`_underlyingToken`|`address`|Address of the underlying token to be added for use in Branch strategies.|
+|`_dailyManagementLimit`|`uint256`|Daily management limit of the given token for the Port Strategy.|
+|`_reserveRatioManagementLimit`|`uint256`|Total reserves management limit of the given token for the Port Strategy.|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching destination network.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
+
+
+### setCoreBranch
+
+Set the Core Branch Router and Bridge Agent.
+
+
+```solidity
+function setCoreBranch(
+    address _refundee,
+    address _coreBranchRouter,
+    address _coreBranchBridgeAgent,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) external payable;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_refundee`|`address`|Receiver of any leftover execution gas upon reaching destination network.|
+|`_coreBranchRouter`|`address`|Address of the Core Branch Router.|
+|`_coreBranchBridgeAgent`|`address`|Address of the Core Branch Bridge Agent.|
+|`_dstChainId`|`uint16`|Chain Id of the branch chain where the new Bridge Agent will be deployed.|
+|`_gParams`|`GasParams`|Gas parameters for remote execution.|
+
+
+### sweep
+
+Allows governance to claim any native tokens accumulated from failed transactions.
+
+
+```solidity
+function sweep(address _refundee, address _recipient, uint16 _dstChainId, GasParams calldata _gParams)
+    external
+    payable
+    onlyOwner;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_refundee`|`address`|Receiver of any excess msg.value sent to Layer Zero on source chain.|
+|`_recipient`|`address`|address to transfer ETH to on destination chain.|
+|`_dstChainId`|`uint16`||
+|`_gParams`|`GasParams`|gasParameters for remote execution|
+
+
+### retrySettlement
+
+Function to execute Branch Bridge Agent initiated requests to retry a settlement.
+
+
+```solidity
+function retrySettlement(uint32, address, bytes calldata, GasParams calldata, bool) external payable override;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`uint32`||
+|`<none>`|`address`||
+|`<none>`|`bytes`||
+|`<none>`|`GasParams`||
+|`<none>`|`bool`||
+
+
+### executeRetrySettlement
+
+Function to execute Branch Bridge Agent initiated requests to retry a settlement.
+
+
+```solidity
+function executeRetrySettlement(address, uint32, address, bytes calldata, GasParams calldata, bool, uint16)
+    public
+    payable
+    override;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`address`||
+|`<none>`|`uint32`||
+|`<none>`|`address`||
+|`<none>`|`bytes`||
+|`<none>`|`GasParams`||
+|`<none>`|`bool`||
+|`<none>`|`uint16`||
+
+
+### execute
+
+Function responsible of executing a crosschain request without any deposit.
+
+
+```solidity
+function execute(bytes calldata _encodedData, uint16 _srcChainId) external payable override requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_encodedData`|`bytes`||
+|`_srcChainId`|`uint16`||
+
+
+### executeDepositSingle
+
+FUNC ID: 1 (_addGlobalToken)
+FUNC ID: 2 (_addLocalToken)
+FUNC ID: 3 (_setLocalToken)
+FUNC ID: 4 (_syncBranchBridgeAgent)
+Unrecognized Function Selector
+
+
+```solidity
+function executeDepositSingle(bytes memory, DepositParams memory, uint16) external payable override requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`||
+|`<none>`|`DepositParams`||
+|`<none>`|`uint16`||
+
+
+### executeDepositMultiple
+
+Function responsible of executing a crosschain request which contains cross-chain deposit information for multiple assets attached.
+
+
+```solidity
+function executeDepositMultiple(bytes calldata, DepositMultipleParams memory, uint16)
+    external
+    payable
+    override
+    requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`||
+|`<none>`|`DepositMultipleParams`||
+|`<none>`|`uint16`||
+
+
+### executeSigned
+
+Function responsible of executing a crosschain request with msg.sender without any deposit.
+
+
+```solidity
+function executeSigned(bytes memory, address, uint16) external payable override requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`||
+|`<none>`|`address`||
+|`<none>`|`uint16`||
+
+
+### executeSignedDepositSingle
+
+Function responsible of executing a crosschain request which contains cross-chain deposit information and msg.sender attached.
+
+
+```solidity
+function executeSignedDepositSingle(bytes memory, DepositParams memory, address, uint16)
+    external
+    payable
+    override
+    requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`||
+|`<none>`|`DepositParams`||
+|`<none>`|`address`||
+|`<none>`|`uint16`||
+
+
+### executeSignedDepositMultiple
+
+Function responsible of executing a crosschain request which contains cross-chain deposit information for multiple assets and msg.sender attached.
+
+
+```solidity
+function executeSignedDepositMultiple(bytes memory, DepositMultipleParams memory, address, uint16)
+    external
+    payable
+    override
+    requiresExecutor;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`||
+|`<none>`|`DepositMultipleParams`||
+|`<none>`|`address`||
+|`<none>`|`uint16`||
+
+
+### _addLocalToken
 
 Function to add a new local to the global environment. Called from branch chain.
+
 
 ```solidity
 function _addLocalToken(
@@ -161,307 +486,86 @@ function _addLocalToken(
     address _localAddress,
     string memory _name,
     string memory _symbol,
-    uint24 _fromChain
+    uint8 _decimals,
+    uint16 _srcChainId
 ) internal;
 ```
-
 **Parameters**
 
-| Name                 | Type      | Description                                  |
-| -------------------- | --------- | -------------------------------------------- |
-| `_underlyingAddress` | `address` | the token's underlying/native chain address. |
-| `_localAddress`      | `address` | the token's address.                         |
-| `_name`              | `string`  | the token's name.                            |
-| `_symbol`            | `string`  | the token's symbol.                          |
-| `_fromChain`         | `uint24`  | the token's origin chain Id.                 |
+|Name|Type|Description|
+|----|----|-----------|
+|`_underlyingAddress`|`address`|the token's underlying/native chain address.|
+|`_localAddress`|`address`|the token's address.|
+|`_name`|`string`|the token's name.|
+|`_symbol`|`string`|the token's symbol.|
+|`_decimals`|`uint8`|the token's decimals.|
+|`_srcChainId`|`uint16`|the token's origin chain Id.|
 
-### \_setLocalToken
+
+### _addGlobalToken
+
+Internal function to add a global token to a specific chain. Must be called from a branch.
+
+
+```solidity
+function _addGlobalToken(address _refundee, address _globalAddress, uint16 _dstChainId, GasParams[2] memory _gParams)
+    internal;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_refundee`|`address`|Address of the excess gas receiver.|
+|`_globalAddress`|`address`|global token to be added.|
+|`_dstChainId`|`uint16`|chain to which the Global Token will be added.|
+|`_gParams`|`GasParams[2]`|Gas parameters for remote execution.|
+
+
+### _setLocalToken
 
 Internal function to set the local token on a specific chain for a global token.
 
-```solidity
-function _setLocalToken(address _globalAddress, address _localAddress, uint24 _toChain) internal;
-```
 
+```solidity
+function _setLocalToken(address _globalAddress, address _localAddress, uint16 _dstChainId) internal;
+```
 **Parameters**
 
-| Name             | Type      | Description                 |
-| ---------------- | --------- | --------------------------- |
-| `_globalAddress` | `address` | global token to be updated. |
-| `_localAddress`  | `address` | local token to be added.    |
-| `_toChain`       | `uint24`  | local token's chain.        |
+|Name|Type|Description|
+|----|----|-----------|
+|`_globalAddress`|`address`|global token to be updated.|
+|`_localAddress`|`address`|local token to be added.|
+|`_dstChainId`|`uint16`|local token's chain.|
 
-### toggleBranchBridgeAgentFactory
 
-Add or Remove a Branch Bridge Agent Factory.
+### _syncBranchBridgeAgent
+
+*Internal function sync a Root Bridge Agent with a newly created BRanch Bridge Agent.*
+
 
 ```solidity
-function toggleBranchBridgeAgentFactory(
-    address _rootBridgeAgentFactory,
-    address _branchBridgeAgentFactory,
-    address _gasReceiver,
-    uint24 _toChain
-) external payable onlyOwner;
+function _syncBranchBridgeAgent(address _newBranchBridgeAgent, address _rootBridgeAgent, uint256 _srcChainId)
+    internal;
 ```
-
 **Parameters**
 
-| Name                        | Type      | Description                                                               |
-| --------------------------- | --------- | ------------------------------------------------------------------------- |
-| `_rootBridgeAgentFactory`   | `address` | Address of the root Bridge Agent Factory.                                 |
-| `_branchBridgeAgentFactory` | `address` | Address of the branch Bridge Agent Factory.                               |
-| `_gasReceiver`              | `address` | Receiver of any leftover execution gas upon reaching destination network. |
-| `_toChain`                  | `uint24`  | Chain Id of the branch chain where the new Bridge Agent will be deployed. |
+|Name|Type|Description|
+|----|----|-----------|
+|`_newBranchBridgeAgent`|`address`|new branch bridge agent address|
+|`_rootBridgeAgent`|`address`|new branch bridge agent address|
+|`_srcChainId`|`uint256`|branch chain id.|
 
-### removeBranchBridgeAgent
-
-Remove a Branch Bridge Agent.
-
-```solidity
-function removeBranchBridgeAgent(address _branchBridgeAgent, address _gasReceiver, uint24 _toChain)
-    external
-    payable
-    onlyOwner;
-```
-
-**Parameters**
-
-| Name                 | Type      | Description                                                               |
-| -------------------- | --------- | ------------------------------------------------------------------------- |
-| `_branchBridgeAgent` | `address` | Address of the Branch Bridge Agent to be updated.                         |
-| `_gasReceiver`       | `address` | Receiver of any leftover execution gas upon reaching destination network. |
-| `_toChain`           | `uint24`  | Chain Id of the branch chain where the new Bridge Agent will be deployed. |
-
-### manageStrategyToken
-
-Add or Remove a Strategy Token.
-
-```solidity
-function manageStrategyToken(
-    address _underlyingToken,
-    uint256 _minimumReservesRatio,
-    address _gasReceiver,
-    uint24 _toChain
-) external payable onlyOwner;
-```
-
-**Parameters**
-
-| Name                    | Type      | Description                                                               |
-| ----------------------- | --------- | ------------------------------------------------------------------------- |
-| `_underlyingToken`      | `address` | Address of the underlying token to be added for use in Branch strategies. |
-| `_minimumReservesRatio` | `uint256` | Minimum Branch Port reserves ratio for the underlying token.              |
-| `_gasReceiver`          | `address` | Receiver of any leftover execution gas upon reaching destination network. |
-| `_toChain`              | `uint24`  | Chain Id of the branch chain where the new Bridge Agent will be deployed. |
-
-### managePortStrategy
-
-Add, Remove or update a Port Strategy.
-
-```solidity
-function managePortStrategy(
-    address _portStrategy,
-    address _underlyingToken,
-    uint256 _dailyManagementLimit,
-    bool _isUpdateDailyLimit,
-    address _gasReceiver,
-    uint24 _toChain
-) external payable onlyOwner;
-```
-
-**Parameters**
-
-| Name                    | Type      | Description                                                                           |
-| ----------------------- | --------- | ------------------------------------------------------------------------------------- |
-| `_portStrategy`         | `address` | Address of the Port Strategy to be added for use in Branch strategies.                |
-| `_underlyingToken`      | `address` | Address of the underlying token to be added for use in Branch strategies.             |
-| `_dailyManagementLimit` | `uint256` | Daily management limit of the given token for the Port Strategy.                      |
-| `_isUpdateDailyLimit`   | `bool`    | Boolean to safely indicate if the Port Strategy is being updated and not deactivated. |
-| `_gasReceiver`          | `address` | Receiver of any leftover execution gas upon reaching destination network.             |
-| `_toChain`              | `uint24`  | Chain Id of the branch chain where the new Bridge Agent will be deployed.             |
-
-### anyExecuteResponse
-
-Function to execute Branch Bridge Agent system initiated requests with no asset deposit.
-
-```solidity
-function anyExecuteResponse(bytes1 _funcId, bytes calldata _encodedData, uint24 fromChainId)
-    external
-    payable
-    override
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name           | Type     | Description                              |
-| -------------- | -------- | ---------------------------------------- |
-| `_funcId`      | `bytes1` |                                          |
-| `_encodedData` | `bytes`  |                                          |
-| `fromChainId`  | `uint24` | chain where the request originated from. |
-
-### anyExecute
-
-FUNC ID: 3 (\_setLocalToken)
-FUNC ID: 4 (\_syncBranchBridgeAgent)
-Unrecognized Function Selector
-
-```solidity
-function anyExecute(bytes1 _funcId, bytes calldata _encodedData, uint24 _fromChainId)
-    external
-    payable
-    override
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name           | Type     | Description |
-| -------------- | -------- | ----------- |
-| `_funcId`      | `bytes1` |             |
-| `_encodedData` | `bytes`  |             |
-| `_fromChainId` | `uint24` |             |
-
-### anyExecuteDepositSingle
-
-FUNC ID: 1 (\_addGlobalToken)
-FUNC ID: 2 (\_addLocalToken)
-Unrecognized Function Selector
-
-```solidity
-function anyExecuteDepositSingle(bytes1, bytes memory, DepositParams memory, uint24)
-    external
-    payable
-    override
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name     | Type            | Description |
-| -------- | --------------- | ----------- |
-| `<none>` | `bytes1`        |             |
-| `<none>` | `bytes`         |             |
-| `<none>` | `DepositParams` |             |
-| `<none>` | `uint24`        |             |
-
-### anyExecuteDepositMultiple
-
-Function responsible of executing a crosschain request which contains cross-chain deposit information for multiple assets attached.
-
-```solidity
-function anyExecuteDepositMultiple(bytes1, bytes calldata, DepositMultipleParams memory, uint24)
-    external
-    payable
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name     | Type                    | Description |
-| -------- | ----------------------- | ----------- |
-| `<none>` | `bytes1`                |             |
-| `<none>` | `bytes`                 |             |
-| `<none>` | `DepositMultipleParams` |             |
-| `<none>` | `uint24`                |             |
-
-### anyExecuteSigned
-
-Function responsible of executing a crosschain request with msg.sender without any deposit.
-
-```solidity
-function anyExecuteSigned(bytes1, bytes memory, address, uint24)
-    external
-    payable
-    override
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name     | Type      | Description |
-| -------- | --------- | ----------- |
-| `<none>` | `bytes1`  |             |
-| `<none>` | `bytes`   |             |
-| `<none>` | `address` |             |
-| `<none>` | `uint24`  |             |
-
-### anyExecuteSignedDepositSingle
-
-Function responsible of executing a crosschain request which contains cross-chain deposit information and msg.sender attached.
-
-```solidity
-function anyExecuteSignedDepositSingle(bytes1, bytes memory, DepositParams memory, address, uint24)
-    external
-    payable
-    override
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name     | Type            | Description |
-| -------- | --------------- | ----------- |
-| `<none>` | `bytes1`        |             |
-| `<none>` | `bytes`         |             |
-| `<none>` | `DepositParams` |             |
-| `<none>` | `address`       |             |
-| `<none>` | `uint24`        |             |
-
-### anyExecuteSignedDepositMultiple
-
-Function responsible of executing a crosschain request which contains cross-chain deposit information for multiple assets and msg.sender attached.
-
-```solidity
-function anyExecuteSignedDepositMultiple(bytes1, bytes memory, DepositMultipleParams memory, address, uint24)
-    external
-    payable
-    requiresExecutor
-    returns (bool, bytes memory);
-```
-
-**Parameters**
-
-| Name     | Type                    | Description |
-| -------- | ----------------------- | ----------- |
-| `<none>` | `bytes1`                |             |
-| `<none>` | `bytes`                 |             |
-| `<none>` | `DepositMultipleParams` |             |
-| `<none>` | `address`               |             |
-| `<none>` | `uint24`                |             |
-
-### lock
-
-Modifier for a simple re-entrancy check.
-
-```solidity
-modifier lock();
-```
 
 ### requiresExecutor
 
 Modifier verifies the caller is the Bridge Agent Executor.
 
+
 ```solidity
 modifier requiresExecutor();
 ```
 
-### \_requiresExecutor
-
-Internal function verifies the caller is the Bridge Agent Executor. Reuse to reduce contract bytesize
-
-```solidity
-function _requiresExecutor() internal view;
-```
-
 ## Errors
-
 ### InvalidChainId
 
 ```solidity
@@ -497,3 +601,4 @@ error UnrecognizedGlobalToken();
 ```solidity
 error UnrecognizedBridgeAgentFactory();
 ```
+

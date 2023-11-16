@@ -1,10 +1,11 @@
----
-id: RootBridgeAgentExecutor
-title: RootBridgeAgentExecutor
----
+# RootBridgeAgentExecutor
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/RootBridgeAgentExecutor.sol)
 
 **Inherits:**
-Ownable
+Ownable, [BridgeAgentConstants](/src/ulysses-omnichain/interfaces/BridgeAgentConstants.md)
+
+**Author:**
+MaiaDAO
 
 This contract is used for requesting token settlement clearance and
 executing transaction requests from the branch chains.
@@ -14,136 +15,29 @@ and interactions with external contracts should be reverted and caught.*
 
 
 ## State Variables
-### PARAMS_START
-Remote Execution Consts
+### rootRouterAddress
+Router that is responsible for executing the cross-chain requests forwarded by this contract.
 
 
 ```solidity
-uint8 internal constant PARAMS_START = 1;
-```
-
-
-### PARAMS_START_SIGNED
-
-```solidity
-uint8 internal constant PARAMS_START_SIGNED = 21;
-```
-
-
-### PARAMS_END_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_END_OFFSET = 9;
-```
-
-
-### PARAMS_END_SIGNED_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_END_SIGNED_OFFSET = 29;
-```
-
-
-### PARAMS_ENTRY_SIZE
-
-```solidity
-uint8 internal constant PARAMS_ENTRY_SIZE = 32;
-```
-
-
-### PARAMS_ADDRESS_SIZE
-
-```solidity
-uint8 internal constant PARAMS_ADDRESS_SIZE = 20;
-```
-
-
-### PARAMS_TKN_SET_SIZE
-
-```solidity
-uint8 internal constant PARAMS_TKN_SET_SIZE = 104;
-```
-
-
-### PARAMS_TKN_SET_SIZE_MULTIPLE
-
-```solidity
-uint8 internal constant PARAMS_TKN_SET_SIZE_MULTIPLE = 128;
-```
-
-
-### PARAMS_GAS_IN
-
-```solidity
-uint8 internal constant PARAMS_GAS_IN = 32;
-```
-
-
-### PARAMS_GAS_OUT
-
-```solidity
-uint8 internal constant PARAMS_GAS_OUT = 16;
-```
-
-
-### PARAMS_TKN_START
-BridgeIn Consts
-
-
-```solidity
-uint8 internal constant PARAMS_TKN_START = 5;
-```
-
-
-### PARAMS_AMT_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_AMT_OFFSET = 64;
-```
-
-
-### PARAMS_DEPOSIT_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_DEPOSIT_OFFSET = 96;
+IRouter public immutable rootRouterAddress;
 ```
 
 
 ## Functions
 ### constructor
 
-
-```solidity
-constructor(address owner);
-```
-
-### executeSystemRequest
-
-Execute a system request from a remote chain
-
-*DEPOSIT FLAG: 0 (System request / response)*
+Constructor for Root Bridge Agent Executor.
 
 
 ```solidity
-function executeSystemRequest(address _router, bytes calldata _data, uint24 _fromChainId)
-    external
-    onlyOwner
-    returns (bool success, bytes memory result);
+constructor(address _rootRouterAddress);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_rootRouterAddress`|`address`|router that will execute the cross-chain requests forwarded by this contract.|
 
 
 ### executeNoDeposit
@@ -154,25 +48,14 @@ Execute a remote request from a remote chain
 
 
 ```solidity
-function executeNoDeposit(address _router, bytes calldata _data, uint24 _fromChainId)
-    external
-    onlyOwner
-    returns (bool success, bytes memory result);
+function executeNoDeposit(bytes calldata _payload, uint16 _srcChainId) external payable onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### executeWithDeposit
@@ -183,25 +66,14 @@ Execute a remote request from a remote chain
 
 
 ```solidity
-function executeWithDeposit(address _router, bytes calldata _data, uint24 _fromChainId)
-    external
-    onlyOwner
-    returns (bool success, bytes memory result);
+function executeWithDeposit(bytes calldata _payload, uint16 _srcChainId) external payable onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### executeWithDepositMultiple
@@ -212,25 +84,14 @@ Execute a remote request from a remote chain
 
 
 ```solidity
-function executeWithDepositMultiple(address _router, bytes calldata _data, uint24 _fromChainId)
-    external
-    onlyOwner
-    returns (bool success, bytes memory result);
+function executeWithDepositMultiple(bytes calldata _payload, uint16 _srcChainId) external payable onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### executeSignedNoDeposit
@@ -241,26 +102,18 @@ Execute a remote request from a remote chain
 
 
 ```solidity
-function executeSignedNoDeposit(address _account, address _router, bytes calldata _data, uint24 _fromChainId)
+function executeSignedNoDeposit(address _account, bytes calldata _payload, uint16 _srcChainId)
     external
-    onlyOwner
-    returns (bool success, bytes memory result);
+    payable
+    onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_account`|`address`|The account that will execute the request|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### executeSignedWithDeposit
@@ -271,26 +124,18 @@ Execute a remote request from a remote chain with single asset deposit
 
 
 ```solidity
-function executeSignedWithDeposit(address _account, address _router, bytes calldata _data, uint24 _fromChainId)
+function executeSignedWithDeposit(address _account, bytes calldata _payload, uint16 _srcChainId)
     external
-    onlyOwner
-    returns (bool success, bytes memory result);
+    payable
+    onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_account`|`address`|The account that will execute the request|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### executeSignedWithDepositMultiple
@@ -301,53 +146,18 @@ Execute a remote request from a remote chain with multiple asset deposit
 
 
 ```solidity
-function executeSignedWithDepositMultiple(address _account, address _router, bytes calldata _data, uint24 _fromChainId)
+function executeSignedWithDepositMultiple(address _account, bytes calldata _payload, uint16 _srcChainId)
     external
-    onlyOwner
-    returns (bool success, bytes memory result);
+    payable
+    onlyOwner;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_account`|`address`|The account that will execute the request|
-|`_router`|`address`|The router contract address|
-|`_data`|`bytes`|The encoded request data|
-|`_fromChainId`|`uint24`|The chain id of the chain that sent the request|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
-
-
-### executeRetrySettlement
-
-Retry a settlement request that has not yet been executed in destination chain.
-
-*DEPOSIT FLAG: 7 (Retry Settlement)*
-
-
-```solidity
-function executeRetrySettlement(uint32 _settlementNonce)
-    external
-    onlyOwner
-    returns (bool success, bytes memory result);
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_settlementNonce`|`uint32`|The settlement nonce of the request to retry.|
-
-**Returns**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`success`|`bool`|Whether the request was successful|
-|`result`|`bytes`|The result of the request|
+|`_payload`|`bytes`|The encoded request data payload|
+|`_srcChainId`|`uint16`|The chain id of the chain that sent the request|
 
 
 ### _bridgeIn
@@ -356,7 +166,7 @@ Internal function to move assets from branch chain to root omnichain environment
 
 
 ```solidity
-function _bridgeIn(address _recipient, DepositParams memory _dParams, uint24 _fromChain) internal;
+function _bridgeIn(address _recipient, DepositParams memory _dParams, uint16 _srcChainId) internal;
 ```
 **Parameters**
 
@@ -364,14 +174,14 @@ function _bridgeIn(address _recipient, DepositParams memory _dParams, uint24 _fr
 |----|----|-----------|
 |`_recipient`|`address`||
 |`_dParams`|`DepositParams`|Cross-Chain Deposit of Multiple Tokens Params.|
-|`_fromChain`|`uint24`|chain to bridge from.|
+|`_srcChainId`|`uint16`|chain to bridge from.|
 
 
 ### _bridgeInMultiple
 
 Internal function to move assets from branch chain to root omnichain environment.
 
-*Since the input data is encodePacked we need to parse it:
+*Since the input data payload is encodePacked we need to parse it:
 1. First byte is the number of assets to be bridged in. Equals length of all arrays.
 2. Next 4 bytes are the nonce of the deposit.
 3. Last 32 bytes after the token related information are the chain to bridge to.
@@ -388,7 +198,7 @@ Internal function to move assets from branch chain to root omnichain environment
 
 
 ```solidity
-function _bridgeInMultiple(address _recipient, bytes calldata _dParams, uint24 _fromChain)
+function _bridgeInMultiple(address _recipient, bytes calldata _dParams, uint16 _srcChainId)
     internal
     returns (DepositMultipleParams memory dParams);
 ```
@@ -398,6 +208,6 @@ function _bridgeInMultiple(address _recipient, bytes calldata _dParams, uint24 _
 |----|----|-----------|
 |`_recipient`|`address`||
 |`_dParams`|`bytes`|Cross-Chain Deposit of Multiple Tokens Params.|
-|`_fromChain`|`uint24`|chain to bridge from.|
+|`_srcChainId`|`uint16`|chain to bridge from.|
 
 

@@ -1,7 +1,5 @@
----
-id: IMulticall2
-title: IMulticall2
----
+# IMulticall2
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IMulticall2.sol)
 
 **Authors:**
 Michael Elliot <mike@makerdao.com>, Joshua Levine <joshua@makerdao.com>, Nick Johnson <arachnid@notdot.net>

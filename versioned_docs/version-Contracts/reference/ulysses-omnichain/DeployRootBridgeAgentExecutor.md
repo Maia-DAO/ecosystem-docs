@@ -1,7 +1,5 @@
----
-id: DeployRootBridgeAgentExecutor
-title: DeployRootBridgeAgentExecutor
----
+# DeployRootBridgeAgentExecutor
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/RootBridgeAgentExecutor.sol)
 
 
 ## Functions
@@ -9,6 +7,6 @@ title: DeployRootBridgeAgentExecutor
 
 
 ```solidity
-function deploy(address _owner) external returns (address);
+function deploy(address _rootRouterAddress) external returns (address);
 ```
 

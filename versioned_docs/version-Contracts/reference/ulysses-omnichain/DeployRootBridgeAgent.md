@@ -1,7 +1,5 @@
----
-id: DeployRootBridgeAgent
-title: DeployRootBridgeAgent
----
+# DeployRootBridgeAgent
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/RootBridgeAgent.sol)
 
 
 ## Functions
@@ -9,14 +7,8 @@ title: DeployRootBridgeAgent
 
 
 ```solidity
-function deploy(
-    WETH9 _wrappedNativeToken,
-    uint24 _localChainId,
-    address _daoAddress,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
-    address _localPortAddress,
-    address _localRouterAddress
-) external returns (RootBridgeAgent);
+function deploy(uint16 _localChainId, address _lzEndpointAddress, address _rootPortAddress, address _rootRouterAddress)
+    external
+    returns (RootBridgeAgent);
 ```
 

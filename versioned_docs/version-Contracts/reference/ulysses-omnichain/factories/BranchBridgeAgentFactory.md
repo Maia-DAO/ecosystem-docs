@@ -1,46 +1,43 @@
----
-id: BranchBridgeAgentFactory
-title: BranchBridgeAgentFactory
----
+# BranchBridgeAgentFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/factories/BranchBridgeAgentFactory.sol)
 
 **Inherits:**
-Ownable, [IBranchBridgeAgentFactory](/ulysses-omnichain/interfaces/IBranchBridgeAgentFactory.sol/interface.IBranchBridgeAgentFactory.md)
+Ownable, [IBranchBridgeAgentFactory](/src/ulysses-omnichain/interfaces/IBranchBridgeAgentFactory.md)
+
+**Author:**
+MaiaDAO
+
+Factory contract for allowing permissionless deployment of
+new Branch Bridge Agents which are in charge of
+managing the deposit and withdrawal of assets between the
+branch chains and the omnichain environment.
 
 
 ## State Variables
 ### localChainId
-Local Chain Id
+Local Chain Id.
 
 
 ```solidity
-uint256 public immutable localChainId;
+uint16 public immutable localChainId;
 ```
 
 
 ### rootChainId
-Root Chain Id
+Root Chain Id.
 
 
 ```solidity
-uint256 public immutable rootChainId;
+uint16 public immutable rootChainId;
 ```
 
 
 ### rootBridgeAgentFactoryAddress
-Root Bridge Agent Factory Address
+Root Bridge Agent Factory Address.
 
 
 ```solidity
 address public immutable rootBridgeAgentFactoryAddress;
-```
-
-
-### wrappedNativeToken
-Local Wrapped Native Token
-
-
-```solidity
-WETH9 public immutable wrappedNativeToken;
 ```
 
 
@@ -54,7 +51,7 @@ address public immutable localCoreBranchRouterAddress;
 
 
 ### localPortAddress
-Root Port Address
+Root Port Address.
 
 
 ```solidity
@@ -62,21 +59,12 @@ address public immutable localPortAddress;
 ```
 
 
-### localAnyCallAddress
-Local Anycall Address
+### lzEndpointAddress
+Local Layer Zero Endpoint for cross-chain communication.
 
 
 ```solidity
-address public immutable localAnyCallAddress;
-```
-
-
-### localAnyCallExecutorAddress
-Local Anyexec Address
-
-
-```solidity
-address public immutable localAnyCallExecutorAddress;
+address public immutable lzEndpointAddress;
 ```
 
 
@@ -88,12 +76,10 @@ Constructor for Bridge Agent.
 
 ```solidity
 constructor(
-    uint256 _localChainId,
-    uint256 _rootChainId,
+    uint16 _localChainId,
+    uint16 _rootChainId,
     address _rootBridgeAgentFactoryAddress,
-    WETH9 _wrappedNativeToken,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
+    address _lzEndpointAddress,
     address _localCoreBranchRouterAddress,
     address _localPortAddress,
     address _owner
@@ -103,23 +89,29 @@ constructor(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_localChainId`|`uint256`|Local Chain Id.|
-|`_rootChainId`|`uint256`|Root Chain Id.|
+|`_localChainId`|`uint16`|Local Chain Layer Zero Id.|
+|`_rootChainId`|`uint16`|Root Chain Layer Zero Id.|
 |`_rootBridgeAgentFactoryAddress`|`address`|Root Bridge Agent Factory Address.|
-|`_wrappedNativeToken`|`WETH9`|Local Wrapped Native Token.|
-|`_localAnyCallAddress`|`address`|Local Anycall Address.|
-|`_localAnyCallExecutorAddress`|`address`|Local Anyexec Address.|
+|`_lzEndpointAddress`|`address`|Layer Zero Endpoint for cross-chain communication.|
 |`_localCoreBranchRouterAddress`|`address`|Local Core Branch Router Address.|
-|`_localPortAddress`|`address`|Local Port Address.|
+|`_localPortAddress`|`address`|Local Branch Port Address.|
 |`_owner`|`address`|Owner of the contract.|
 
 
 ### initialize
 
+Function to initialize the contract.
+
 
 ```solidity
-function initialize(address _coreRootBridgeAgent) external virtual onlyOwner;
+function initialize(address _coreRootBridgeAgent) external onlyOwner;
 ```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_coreRootBridgeAgent`|`address`|Address of the Root Chain's Core Root Bridge Agent.|
+
 
 ### createBridgeAgent
 
@@ -131,14 +123,39 @@ function createBridgeAgent(
     address _newBranchRouterAddress,
     address _rootBridgeAgentAddress,
     address _rootBridgeAgentFactoryAddress
-) external virtual returns (address newBridgeAgent);
+) external returns (address newBridgeAgent);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_newBranchRouterAddress`|`address`|Address of the new branch router.|
-|`_rootBridgeAgentAddress`|`address`|Address of the root bridge agent.|
+|`_rootBridgeAgentAddress`|`address`|Address of the root bridge agent to connect to.|
 |`_rootBridgeAgentFactoryAddress`|`address`||
+
+
+### _deployBridgeAgent
+
+Internal function to deploy a new branch bridge agent.
+
+
+```solidity
+function _deployBridgeAgent(address _rootBridgeAgentAddress, address _newBranchRouterAddress)
+    internal
+    virtual
+    returns (address newBridgeAgent);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_rootBridgeAgentAddress`|`address`|Address of the root bridge agent to connect to.|
+|`_newBranchRouterAddress`|`address`|Address of the new branch router.|
+
+**Returns**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`newBridgeAgent`|`address`|Address of the newly deployed bridge agent.|
 
 

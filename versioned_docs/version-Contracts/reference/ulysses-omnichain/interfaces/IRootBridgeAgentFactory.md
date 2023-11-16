@@ -1,7 +1,5 @@
----
-id: IRootBridgeAgentFactory
-title: IRootBridgeAgentFactory
----
+# IRootBridgeAgentFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IRootBridgeAgentFactory.sol)
 
 **Author:**
 MaiaDAO
@@ -17,5 +15,12 @@ between the branch chains and the omnichain environment.
 
 ```solidity
 function createBridgeAgent(address newRootRouterAddress) external returns (address newBridgeAgent);
+```
+
+## Events
+### BridgeAgentAdded
+
+```solidity
+event BridgeAgentAdded(address indexed bridgeAgent, address indexed manager);
 ```
 

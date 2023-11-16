@@ -1,178 +1,151 @@
----
-id: ArbitrumBranchBridgeAgent
-title: ArbitrumBranchBridgeAgent
----
+# ArbitrumBranchBridgeAgent
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/ArbitrumBranchBridgeAgent.sol)
 
 **Inherits:**
-[BranchBridgeAgent](./BranchBridgeAgent)
+[BranchBridgeAgent](/src/ulysses-omnichain/BranchBridgeAgent.sol/contract.BranchBridgeAgent.md)
 
 **Author:**
 MaiaDAO
 
 This contract is used for interfacing with Users/Routers acting as a middleman
-to access Anycall cross-chain messaging and Port communication for asset management
+to access LayerZero cross-chain messaging and Port communication for asset management
 connecting Arbitrum Branch Chain contracts and the root omnichain environment.
 
-_Execution gas from remote interactions is managed by `RootBridgeAgent` contract._
 
 ## Functions
-
 ### constructor
+
+Constructor for Arbitrum Branch Bridge Agent.
+
 
 ```solidity
 constructor(
-    WETH9 _wrappedNativeToken,
-    uint256 _localChainId,
+    uint16 _localChainId,
     address _rootBridgeAgentAddress,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
     address _localRouterAddress,
     address _localPortAddress
 )
     BranchBridgeAgent(
-        _wrappedNativeToken,
         _localChainId,
         _localChainId,
         _rootBridgeAgentAddress,
-        _localAnyCallAddress,
-        _localAnyCallExecutorAddress,
+        address(0),
         _localRouterAddress,
         _localPortAddress
     );
 ```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_localChainId`|`uint16`|Local Chain Layer Zero Id.|
+|`_rootBridgeAgentAddress`|`address`|Root Bridge Agent Address.|
+|`_localRouterAddress`|`address`|Local Core Branch Router Address.|
+|`_localPortAddress`|`address`|Local Branch Port Address.|
+
 
 ### depositToPort
 
 Function to deposit a single asset to the local Port.
 
+
 ```solidity
 function depositToPort(address underlyingAddress, uint256 amount) external payable lock;
 ```
-
 **Parameters**
 
-| Name                | Type      | Description                                      |
-| ------------------- | --------- | ------------------------------------------------ |
-| `underlyingAddress` | `address` | address of the underlying asset to be deposited. |
-| `amount`            | `uint256` | amount to be deposited.                          |
+|Name|Type|Description|
+|----|----|-----------|
+|`underlyingAddress`|`address`|address of the underlying asset to be deposited.|
+|`amount`|`uint256`|amount to be deposited.|
+
 
 ### withdrawFromPort
 
-Function to withdraw a single asset to the local Port.
+Function to withdraw a single asset from the local Port.
+
 
 ```solidity
-function withdrawFromPort(address localAddress, uint256 amount) external payable lock;
+function withdrawFromPort(address globalAddress, uint256 amount) external payable lock;
 ```
-
 **Parameters**
 
-| Name           | Type      | Description                   |
-| -------------- | --------- | ----------------------------- |
-| `localAddress` | `address` | local hToken to be withdrawn. |
-| `amount`       | `uint256` | amount to be withdrawn.       |
+|Name|Type|Description|
+|----|----|-----------|
+|`globalAddress`|`address`|local hToken to be withdrawn.|
+|`amount`|`uint256`|amount to be withdrawn.|
 
-### \_depositGas
 
-Internal function to move gas to RootBridgeAgent for remote chain execution.
+### retrySettlement
+
+External function to retry a failed Settlement entry on the root chain.
+
+*This functionality should be accessed from Root environment*
+
 
 ```solidity
-function _depositGas(uint128 _gasToBridgeOut) internal override;
+function retrySettlement(uint32, bytes calldata, GasParams[2] calldata, bool) external payable override;
 ```
-
 **Parameters**
 
-| Name              | Type      | Description                    |
-| ----------------- | --------- | ------------------------------ |
-| `_gasToBridgeOut` | `uint128` | amount of gas to be deposited. |
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`uint32`||
+|`<none>`|`bytes`||
+|`<none>`|`GasParams[2]`||
+|`<none>`|`bool`||
 
-### \_forceRevert
 
-This function is used to revert the current transaction with a "no enough budget" message.
+### _performCall
 
-```solidity
-function _forceRevert() internal pure override;
-```
+Internal function performs the call to LayerZero messaging layer Endpoint for cross-chain messaging.
 
-### \_performCall
-
-Internal function performs call to AnycallProxy Contract for cross-chain messaging.
 
 ```solidity
-function _performCall(bytes memory _callData) internal override;
+function _performCall(address payable, bytes memory _calldata, GasParams calldata, uint256) internal override;
 ```
-
 **Parameters**
 
-| Name        | Type    | Description                                       |
-| ----------- | ------- | ------------------------------------------------- |
-| `_callData` | `bytes` | bytes of the call to be sent to the AnycallProxy. |
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`address payable`||
+|`_calldata`|`bytes`|params for root bridge agent execution.|
+|`<none>`|`GasParams`||
+|`<none>`|`uint256`||
 
-### \_gasSwapIn
 
-Internal that clears gas allocated for usage with remote request
+### _performFallbackCall
 
-```solidity
-function _gasSwapIn(bytes memory gasData) internal override returns (uint256 gasAmount);
-```
+Internal function performs the call to Layerzero Endpoint Contract for cross-chain messaging.
 
-### \_payExecutionGas
-
-Internal function to pay for execution gas. Overwritten Gas is processed by Root Bridge Agent contract - `depositedGas` is used to pay for execution and `gasToBridgeOut`is cleared to recipient.
 
 ```solidity
-function _payExecutionGas(address _recipient, uint256) internal override;
+function _performFallbackCall(address payable _refundee, uint32 _settlementNonce) internal override;
 ```
-
-### \_payFallbackGas
-
-Internal function to pay for fallback gas. Overwritten no cross-chain messaging fallback between Arbitrum Branch Bridge Agent and Root Bridge Agent.
-
-```solidity
-function _payFallbackGas(uint32, uint256) internal override;
-```
-
-### \_replenishGas
-
-Internal function to deposit gas to the AnycallProxy.
-
-```solidity
-function _replenishGas(uint256) internal override;
-```
-
 **Parameters**
 
-| Name     | Type      | Description |
-| -------- | --------- | ----------- |
-| `<none>` | `uint256` |             |
+|Name|Type|Description|
+|----|----|-----------|
+|`_refundee`|`address payable`|address to refund gas to.|
+|`_settlementNonce`|`uint32`|root settlement nonce to fallback.|
 
-### \_requiresExecutor
 
-Verifies the caller is the Anycall Executor. Internal function used in modifier to reduce contract bytesize.
+### _requiresEndpoint
 
-```solidity
-function _requiresExecutor() internal view override;
-```
+Verifies the caller is the Root Bridge Agent.
 
-### \_requiresFallbackGas
+*Internal function used in modifier to reduce contract bytesize.*
 
-Verifies enough gas is deposited to pay for an eventual fallback call. Reuse to reduce contract bytesize.
 
 ```solidity
-function _requiresFallbackGas() internal view override;
+function _requiresEndpoint(uint16, address _endpoint, bytes calldata) internal view override;
 ```
+**Parameters**
 
-### \_requiresFallbackGas
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`uint16`||
+|`_endpoint`|`address`|address of the endpoint to be verified.|
+|`<none>`|`bytes`||
 
-Verifies enough gas is deposited to pay for an eventual fallback call.
 
-```solidity
-function _requiresFallbackGas(uint256) internal view override;
-```
-
-## Errors
-
-### GasErrorOrRepeatedTx
-
-```solidity
-error GasErrorOrRepeatedTx();
-```

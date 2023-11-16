@@ -1,852 +1,780 @@
----
-id: RootBridgeAgent
-title: RootBridgeAgent
----
+# RootBridgeAgent
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/RootBridgeAgent.sol)
 
 **Inherits:**
-[IRootBridgeAgent](./interfaces/IRootBridgeAgent.md)
+[IRootBridgeAgent](/src/ulysses-omnichain/interfaces/IRootBridgeAgent.md), [BridgeAgentConstants](/src/ulysses-omnichain/interfaces/BridgeAgentConstants.md)
+
+**Author:**
+MaiaDAO
+
 
 ## State Variables
-
-### PARAMS_START
-
-AnyExec Consts
-
-```solidity
-uint8 internal constant PARAMS_START = 1;
-```
-
-### PARAMS_START_SIGNED
-
-```solidity
-uint8 internal constant PARAMS_START_SIGNED = 21;
-```
-
-### PARAMS_ADDRESS_SIZE
-
-```solidity
-uint8 internal constant PARAMS_ADDRESS_SIZE = 20;
-```
-
-### PARAMS_GAS_IN
-
-```solidity
-uint8 internal constant PARAMS_GAS_IN = 32;
-```
-
-### PARAMS_GAS_OUT
-
-```solidity
-uint8 internal constant PARAMS_GAS_OUT = 16;
-```
-
-### PARAMS_TKN_START
-
-BridgeIn Consts
-
-```solidity
-uint8 internal constant PARAMS_TKN_START = 5;
-```
-
-### PARAMS_AMT_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_AMT_OFFSET = 64;
-```
-
-### PARAMS_DEPOSIT_OFFSET
-
-```solidity
-uint8 internal constant PARAMS_DEPOSIT_OFFSET = 96;
-```
-
 ### localChainId
-
 Local Chain Id
 
-```solidity
-uint24 public immutable localChainId;
-```
-
-### wrappedNativeToken
-
-Local Wrapped Native Token
 
 ```solidity
-WETH9 public immutable wrappedNativeToken;
+uint16 public immutable localChainId;
 ```
+
 
 ### factoryAddress
-
 Bridge Agent Factory Address.
+
 
 ```solidity
 address public immutable factoryAddress;
 ```
 
-### daoAddress
 
-Address of DAO.
-
-```solidity
-address public immutable daoAddress;
-```
-
-### localRouterAddress
-
+### rootRouterAddress
 Local Core Root Router Address
 
-```solidity
-address public immutable localRouterAddress;
-```
-
-### localPortAddress
-
-Address for Local Port Address where funds deposited from this chain are stored.
 
 ```solidity
-address public immutable localPortAddress;
+address public immutable rootRouterAddress;
 ```
 
-### localAnyCallAddress
 
-Local Anycall Address
+### rootPortAddress
+Local Port Address where funds deposited from this chain are stored.
+
 
 ```solidity
-address public immutable localAnyCallAddress;
+address public immutable rootPortAddress;
 ```
 
-### localAnyCallExecutorAddress
 
-Local Anyexec Address
+### lzEndpointAddress
+Local Layer Zero Endpoint Address for cross-chain communication.
+
 
 ```solidity
-address public immutable localAnyCallExecutorAddress;
+address public immutable lzEndpointAddress;
 ```
+
 
 ### bridgeAgentExecutorAddress
-
 Address of Root Bridge Agent Executor.
+
 
 ```solidity
 address public immutable bridgeAgentExecutorAddress;
 ```
 
-### getBranchBridgeAgent
 
+### pendingBridgeAgentManagerAddress
+Address of the pending Root Bridge Agent Manager.
+
+
+```solidity
+address public pendingBridgeAgentManagerAddress;
+```
+
+
+### getBranchBridgeAgent
 Chain -> Branch Bridge Agent Address. For N chains, each Root Bridge Agent Address has M =< N Branch Bridge Agent Address.
 
+
 ```solidity
-mapping(uint256 => address) public getBranchBridgeAgent;
+mapping(uint256 chainId => address branchBridgeAgent) public getBranchBridgeAgent;
 ```
+
+
+### getBranchBridgeAgentPath
+Message Path for each connected Branch Bridge Agent as bytes for Layzer Zero interaction = localAddress + destinationAddress abi.encodePacked()
+
+
+```solidity
+mapping(uint256 chainId => bytes branchBridgeAgentPath) public getBranchBridgeAgentPath;
+```
+
 
 ### isBranchBridgeAgentAllowed
-
 If true, bridge agent manager has allowed for a new given branch bridge agent to be synced/added.
 
+
 ```solidity
-mapping(uint256 => bool) public isBranchBridgeAgentAllowed;
+mapping(uint256 chainId => bool allowed) public isBranchBridgeAgentAllowed;
 ```
 
-### settlementNonce
 
-Deposit nonce used for identifying transaction.
+### settlementNonce
+Deposit nonce used for identifying the transaction.
+
 
 ```solidity
 uint32 public settlementNonce;
 ```
 
+
 ### getSettlement
+Mapping from Settlement nonce to Settlement Struct.
 
-Mapping from Settlement nonce to Deposit Struct.
-
-```solidity
-mapping(uint32 => Settlement) public getSettlement;
-```
-
-### executionHistory
-
-If true, bridge agent has already served a request with this nonce from a given chain. Chain -> Nonce -> Bool
 
 ```solidity
-mapping(uint256 => mapping(uint32 => bool)) public executionHistory;
+mapping(uint256 nonce => Settlement settlementInfo) public getSettlement;
 ```
 
-### MIN_FALLBACK_RESERVE
+
+### executionState
+If true, the bridge agent has already served a request with this nonce from  a given chain. Chain -> Nonce -> Bool
+
 
 ```solidity
-uint256 internal constant MIN_FALLBACK_RESERVE = 155_000;
+mapping(uint256 chainId => mapping(uint256 nonce => uint256 state)) public executionState;
 ```
 
-### MIN_EXECUTION_OVERHEAD
 
-```solidity
-uint256 internal constant MIN_EXECUTION_OVERHEAD = 155_000;
-```
+### _unlocked
+Re-entrancy lock modifier state.
 
-### initialGas
-
-```solidity
-uint256 public initialGas;
-```
-
-### userFeeInfo
-
-```solidity
-UserFeeInfo public userFeeInfo;
-```
-
-### accumulatedFees
-
-```solidity
-uint256 public accumulatedFees;
-```
-
-### GLOBAL_DIVISIONER
-
-```solidity
-uint24 private constant GLOBAL_DIVISIONER = 1e6;
-```
-
-### approvedGasPool
-
-```solidity
-mapping(address => bool) private approvedGasPool;
-```
-
-### \_unlocked
 
 ```solidity
 uint256 internal _unlocked = 1;
 ```
 
-## Functions
 
+## Functions
 ### constructor
 
 Constructor for Bridge Agent.
 
-```solidity
-constructor(
-    WETH9 _wrappedNativeToken,
-    uint24 _localChainId,
-    address _daoAddress,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
-    address _localPortAddress,
-    address _localRouterAddress
-);
-```
 
+```solidity
+constructor(uint16 _localChainId, address _lzEndpointAddress, address _rootPortAddress, address _rootRouterAddress);
+```
 **Parameters**
 
-| Name                           | Type      | Description                 |
-| ------------------------------ | --------- | --------------------------- |
-| `_wrappedNativeToken`          | `WETH9`   | Local Wrapped Native Token. |
-| `_localChainId`                | `uint24`  | Local Chain Id.             |
-| `_daoAddress`                  | `address` | Address of DAO.             |
-| `_localAnyCallAddress`         | `address` | Local Anycall Address.      |
-| `_localAnyCallExecutorAddress` | `address` |                             |
-| `_localPortAddress`            | `address` | Local Port Address.         |
-| `_localRouterAddress`          | `address` | Local Port Address.         |
+|Name|Type|Description|
+|----|----|-----------|
+|`_localChainId`|`uint16`|Local Chain Id.|
+|`_lzEndpointAddress`|`address`|Local Layerzero Endpoint Address.|
+|`_rootPortAddress`|`address`|Local Port Address.|
+|`_rootRouterAddress`|`address`|Local Port Address.|
+
+
+### receive
+
+
+```solidity
+receive() external payable;
+```
 
 ### getSettlementEntry
 
 External function that returns a given settlement entry.
 
-```solidity
-function getSettlementEntry(uint32 _settlementNonce) external view returns (Settlement memory);
-```
-
-**Parameters**
-
-| Name               | Type     | Description                      |
-| ------------------ | -------- | -------------------------------- |
-| `_settlementNonce` | `uint32` | Identifier for token settlement. |
-
-### retrySettlement
-
-Function to retry a user's Settlement balance.
 
 ```solidity
-function retrySettlement(uint32 _settlementNonce, uint128 _remoteExecutionGas) external payable;
+function getSettlementEntry(uint32 _settlementNonce) external view override returns (Settlement memory);
 ```
-
 **Parameters**
 
-| Name                  | Type      | Description                      |
-| --------------------- | --------- | -------------------------------- |
-| `_settlementNonce`    | `uint32`  | Identifier for token settlement. |
-| `_remoteExecutionGas` | `uint128` | Identifier for token settlement. |
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
 
-### redeemSettlement
-
-Function that allows redemption of failed Settlement's global tokens.
-
-```solidity
-function redeemSettlement(uint32 _depositNonce) external lock;
-```
-
-**Parameters**
-
-| Name            | Type     | Description                   |
-| --------------- | -------- | ----------------------------- |
-| `_depositNonce` | `uint32` | Identifier for token deposit. |
 
 ### callOut
 
-External function performs call to AnycallProxy Contract for cross-chain messaging.
+External function performs call to LayerZero Endpoint Contract for cross-chain messaging.
 
-_Internal function performs call to AnycallProxy Contract for cross-chain messaging._
+*Internal function performs call to LayerZero Endpoint Contract for cross-chain messaging.*
+
 
 ```solidity
-function callOut(address _recipient, bytes memory _data, uint24 _toChain) external payable lock requiresRouter;
+function callOut(
+    address payable _gasRefundee,
+    address _recipient,
+    uint16 _dstChainId,
+    bytes calldata _params,
+    GasParams calldata _gParams
+) external payable override lock requiresRouter;
 ```
-
 **Parameters**
 
-| Name         | Type      | Description                                                      |
-| ------------ | --------- | ---------------------------------------------------------------- |
-| `_recipient` | `address` | address to receive any outstanding gas on the destination chain. |
-| `_data`      | `bytes`   |                                                                  |
-| `_toChain`   | `uint24`  | Chain to bridge to.                                              |
+|Name|Type|Description|
+|----|----|-----------|
+|`_gasRefundee`|`address payable`|Address to return excess gas deposited in `msg.value` to.|
+|`_recipient`|`address`|address to receive any outstanding gas on the destination chain.|
+|`_dstChainId`|`uint16`|Chain to bridge to.|
+|`_params`|`bytes`|Calldata for function call.|
+|`_gParams`|`GasParams`|Gas Parameters for cross-chain message.|
+
 
 ### callOutAndBridge
 
-External function to move assets from root chain to branch omnichain envirsonment.
+External function to move assets from root chain to branch omnichain environment.
+
 
 ```solidity
 function callOutAndBridge(
-    address _owner,
+    address payable _settlementOwnerAndGasRefundee,
     address _recipient,
-    bytes memory _data,
-    address _globalAddress,
-    uint256 _amount,
-    uint256 _deposit,
-    uint24 _toChain
-) external payable lock requiresRouter;
+    uint16 _dstChainId,
+    bytes calldata _params,
+    SettlementInput calldata _sParams,
+    GasParams calldata _gParams,
+    bool _hasFallbackToggled
+) external payable override lock requiresRouter;
 ```
-
 **Parameters**
 
-| Name             | Type      | Description                                                                                                             |
-| ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `_owner`         | `address` | address allowed for redeeming assets after a failed settlement fallback. This address' Virtual Account is also allowed. |
-| `_recipient`     | `address` | recipient of bridged tokens and any outstanding gas on the destination chain.                                           |
-| `_data`          | `bytes`   | parameters for function call on branch chain.                                                                           |
-| `_globalAddress` | `address` | global token to be moved.                                                                                               |
-| `_amount`        | `uint256` | amount of ´token´.                                                                                                      |
-| `_deposit`       | `uint256` | amount of native / underlying token.                                                                                    |
-| `_toChain`       | `uint24`  | chain to bridge to.                                                                                                     |
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementOwnerAndGasRefundee`|`address payable`|the effective owner of the settlement this address receives excess gas deposited on source chain for a cross-chain call and is allowed to redeeming assets after a failed settlement fallback. This address' Virtual Account is also allowed.|
+|`_recipient`|`address`|recipient of bridged tokens and any outstanding gas on the destination chain.|
+|`_dstChainId`|`uint16`|chain to bridge to.|
+|`_params`|`bytes`|parameters for function call on branch chain.|
+|`_sParams`|`SettlementInput`|settlement parameters for asset bridging to branch chains.|
+|`_gParams`|`GasParams`|Gas Parameters for cross-chain message.|
+|`_hasFallbackToggled`|`bool`|Flag to toggle fallback function.|
+
 
 ### callOutAndBridgeMultiple
 
 External function to move assets from branch chain to root omnichain environment.
 
+
 ```solidity
 function callOutAndBridgeMultiple(
-    address _owner,
+    address payable _settlementOwnerAndGasRefundee,
     address _recipient,
-    bytes memory _data,
-    address[] memory _globalAddresses,
-    uint256[] memory _amounts,
-    uint256[] memory _deposits,
-    uint24 _toChain
-) external payable lock requiresRouter;
+    uint16 _dstChainId,
+    bytes calldata _params,
+    SettlementMultipleInput calldata _sParams,
+    GasParams calldata _gParams,
+    bool _hasFallbackToggled
+) external payable override lock requiresRouter;
 ```
-
 **Parameters**
 
-| Name               | Type        | Description                                                                                                             |
-| ------------------ | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `_owner`           | `address`   | address allowed for redeeming assets after a failed settlement fallback. This address' Virtual Account is also allowed. |
-| `_recipient`       | `address`   | recipient of bridged tokens.                                                                                            |
-| `_data`            | `bytes`     | parameters for function call on branch chain.                                                                           |
-| `_globalAddresses` | `address[]` | global tokens to be moved.                                                                                              |
-| `_amounts`         | `uint256[]` | amounts of token.                                                                                                       |
-| `_deposits`        | `uint256[]` | amounts of underlying / token.                                                                                          |
-| `_toChain`         | `uint24`    | chain to bridge to.                                                                                                     |
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementOwnerAndGasRefundee`|`address payable`|the effective owner of the settlement this address receives excess gas deposited on source chain for a cross-chain call and is allowed to redeeming assets after a failed settlement fallback. This address' Virtual Account is also allowed.|
+|`_recipient`|`address`|recipient of bridged tokens.|
+|`_dstChainId`|`uint16`|chain to bridge to.|
+|`_params`|`bytes`|parameters for function call on branch chain.|
+|`_sParams`|`SettlementMultipleInput`|settlement parameters for asset bridging to branch chains.|
+|`_gParams`|`GasParams`|Gas Parameters for cross-chain message.|
+|`_hasFallbackToggled`|`bool`|Flag to toggle fallback function.|
+
+
+### retrySettlement
+
+Function to retry a user's Settlement balance.
+
+
+```solidity
+function retrySettlement(
+    address _settlementOwnerAndGasRefundee,
+    uint32 _settlementNonce,
+    address _recipient,
+    bytes calldata _params,
+    GasParams calldata _gParams,
+    bool _hasFallbackToggled
+) external payable override requiresRouter lock;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementOwnerAndGasRefundee`|`address`|owner of the settlement and gas refundee.|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
+|`_recipient`|`address`|recipient of bridged tokens and any outstanding gas on the destination chain.|
+|`_params`|`bytes`|Calldata for function call in branch chain.|
+|`_gParams`|`GasParams`|Gas Parameters for cross-chain message.|
+|`_hasFallbackToggled`|`bool`|Flag to toggle fallback function.|
+
+
+### retrieveSettlement
+
+Function that allows retrieval of failed Settlement's foricng fallback to be triggered.
+
+
+```solidity
+function retrieveSettlement(uint32 _settlementNonce, GasParams calldata _gParams) external payable lock;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
+|`_gParams`|`GasParams`|Gas Parameters for cross-chain message.|
+
+
+### redeemSettlement
+
+Function that allows redemption of failed Settlement's global tokens.
+
+
+```solidity
+function redeemSettlement(uint32 _settlementNonce, address _recipient) external override lock;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementNonce`|`uint32`||
+|`_recipient`|`address`|recipient of redeemed root/global tokens.|
+
 
 ### bridgeIn
 
-Function to move assets from branch chain to root omnichain environment. Called in response to Bridge Agent Executor.
+Function to move assets from branch chain to root omnichain environment.
+
+*Called in response to Bridge Agent Executor.*
+
 
 ```solidity
-function bridgeIn(address _recipient, DepositParams memory _dParams, uint24 _fromChain) public requiresAgentExecutor;
+function bridgeIn(address _recipient, DepositParams memory _dParams, uint256 _srcChainId)
+    public
+    override
+    requiresAgentExecutor;
 ```
-
 **Parameters**
 
-| Name         | Type            | Description                                    |
-| ------------ | --------------- | ---------------------------------------------- |
-| `_recipient` | `address`       |                                                |
-| `_dParams`   | `DepositParams` | Cross-Chain Deposit of Multiple Tokens Params. |
-| `_fromChain` | `uint24`        | chain to bridge from.                          |
+|Name|Type|Description|
+|----|----|-----------|
+|`_recipient`|`address`|recipient of bridged token.|
+|`_dParams`|`DepositParams`|Cross-Chain Deposit of Multiple Tokens Params.|
+|`_srcChainId`|`uint256`|chain to bridge from.|
+
 
 ### bridgeInMultiple
 
-Function to move assets from branch chain to root omnichain environment. Called in response to Bridge Agent Executor.
+Function to move assets from branch chain to root omnichain environment.
 
-\*Since the input data is encodePacked we need to parse it:
+*Called in response to Bridge Agent Executor.*
 
-1. First byte is the number of assets to be bridged in. Equals length of all arrays.
-2. Next 4 bytes are the nonce of the deposit.
-3. Last 32 bytes after the token related information are the chain to bridge to.
-4. Token related information starts at index PARAMS_TKN_START is encoded as follows:
-5. N \* 32 bytes for the hToken address.
-6. N \* 32 bytes for the underlying token address.
-7. N \* 32 bytes for the amount of hTokens to be bridged in.
-8. N \* 32 bytes for the amount of underlying tokens to be bridged in.
-9. Each of the 4 token related arrays are of length N and start at the following indexes:
-10. PARAMS_TKN_START [hToken address has no offset from token information start].
-11. PARAMS_TKN_START + (PARAMS_ADDRESS_SIZE \* N)
-12. PARAMS_TKN_START + (PARAMS_AMT_OFFSET \* N)
-13. PARAMS_TKN_START + (PARAMS_DEPOSIT_OFFSET _ N)_
 
 ```solidity
-function bridgeInMultiple(address _recipient, DepositMultipleParams memory _dParams, uint24 _fromChain)
+function bridgeInMultiple(address _recipient, DepositMultipleParams calldata _dParams, uint256 _srcChainId)
     external
+    override
     requiresAgentExecutor;
 ```
-
 **Parameters**
 
-| Name         | Type                    | Description                                    |
-| ------------ | ----------------------- | ---------------------------------------------- |
-| `_recipient` | `address`               |                                                |
-| `_dParams`   | `DepositMultipleParams` | Cross-Chain Deposit of Multiple Tokens Params. |
-| `_fromChain` | `uint24`                | chain to bridge from.                          |
+|Name|Type|Description|
+|----|----|-----------|
+|`_recipient`|`address`|recipient of bridged tokens.|
+|`_dParams`|`DepositMultipleParams`|Cross-Chain Deposit of Multiple Tokens Params.|
+|`_srcChainId`|`uint256`|chain to bridge from.|
 
-### \_updateStateOnBridgeOut
 
-Updates the token balance state by moving assets from root omnichain environment to branch chain, when a user wants to bridge out tokens from the root bridge agent chain.
+### lzReceive
+
+LayerZero endpoint will invoke this function to deliver the message on the destination
+
+
+```solidity
+function lzReceive(uint16 _srcChainId, bytes calldata _srcAddress, uint64, bytes calldata _payload)
+    public
+    payable
+    override
+    returns (bool success);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_srcChainId`|`uint16`|the source endpoint identifier|
+|`_srcAddress`|`bytes`|the source sending contract address from the source chain|
+|`<none>`|`uint64`||
+|`_payload`|`bytes`|the signed payload is the UA bytes has encoded to be sent|
+
+
+### lzReceiveNonBlocking
+
+External function to receive cross-chain messages from LayerZero Endpoint Contract without blocking.
+
+
+```solidity
+function lzReceiveNonBlocking(
+    address _endpoint,
+    uint16 _srcChainId,
+    bytes calldata _srcAddress,
+    bytes calldata _payload
+) public payable override requiresEndpoint(_endpoint, _srcChainId, _srcAddress);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_endpoint`|`address`|address of the LayerZero Endpoint Contract.|
+|`_srcChainId`|`uint16`||
+|`_srcAddress`|`bytes`|address path of the recipient + sender.|
+|`_payload`|`bytes`|Calldata for function call.|
+
+
+### forceResumeReceive
+
+DEPOSIT FLAG: 7 (retrySettlement)
+DEPOSIT FLAG: 8 (retrieveDeposit)
+
+
+```solidity
+function forceResumeReceive(uint16 _srcChainId, bytes calldata _srcAddress) external;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_srcChainId`|`uint16`|the chainId of the source chain|
+|`_srcAddress`|`bytes`|the contract address of the source contract at the source chain|
+
+
+### _execute
+
+Internal function requests execution from Root Bridge Agent Executor Contract.
+
+
+```solidity
+function _execute(uint256 _depositNonce, bytes memory _calldata, uint16 _srcChainId) private;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_depositNonce`|`uint256`|Identifier for nonce being executed.|
+|`_calldata`|`bytes`|Payload of message to be executed by the Root Bridge Agent Executor Contract.|
+|`_srcChainId`|`uint16`|Chain ID of source chain where request originates from.|
+
+
+### _execute
+
+Internal function requests execution from Root Bridge Agent Executor Contract.
+
+
+```solidity
+function _execute(
+    bool _hasFallbackToggled,
+    uint32 _depositNonce,
+    address _gasRefundee,
+    bytes memory _calldata,
+    uint16 _srcChainId
+) private;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_hasFallbackToggled`|`bool`|if true, fallback on execution failure is toggled on.|
+|`_depositNonce`|`uint32`|Identifier for nonce being executed.|
+|`_gasRefundee`|`address`|address to refund gas to in case of fallback being triggered.|
+|`_calldata`|`bytes`|Calldata to be executed by the Root Bridge Agent Executor Contract.|
+|`_srcChainId`|`uint16`|Chain ID of source chain where request originates from.|
+
+
+### _encodeAdapterParams
+
+Internal function to encode the Adapter Params for LayerZero Endpoint.
+
+*The minimum gas required for cross-chain call is added to the requested gasLimit.*
+
+
+```solidity
+function _encodeAdapterParams(GasParams calldata _gParams, uint256 _baseExecutionGas, address _callee)
+    internal
+    pure
+    returns (bytes memory);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_gParams`|`GasParams`|LayerZero gas information. (_gasLimit,_remoteBranchExecutionGas,_nativeTokenRecipientOnDstChain)|
+|`_baseExecutionGas`|`uint256`|Minimum gas required for cross-chain call.|
+|`_callee`|`address`|Address of the Branch Bridge Agent.|
+
+**Returns**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`bytes`|Gas limit for cross-chain call.|
+
+
+### _performCall
+
+Internal function performs call to Layer Zero Endpoint Contract for cross-chain messaging.
+
+
+```solidity
+function _performCall(
+    uint16 _dstChainId,
+    address payable _gasRefundee,
+    bytes memory _payload,
+    GasParams calldata _gParams,
+    uint256 _baseExecutionGas
+) internal;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_dstChainId`|`uint16`|Layer Zero Chain ID of destination chain.|
+|`_gasRefundee`|`address payable`|address to refund excess gas to.|
+|`_payload`|`bytes`|Payload of message to be sent to Layer Zero Endpoint Contract.|
+|`_gParams`|`GasParams`|Gas parameters for cross-chain message execution.|
+|`_baseExecutionGas`|`uint256`|Minimum gas required for cross-chain call.|
+
+
+### _performFallbackCall
+
+Internal function performs call to Layerzero Enpoint Contract for cross-chain messaging.
+
+
+```solidity
+function _performFallbackCall(address payable _gasRefundee, uint32 _depositNonce, uint16 _dstChainId) internal;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_gasRefundee`|`address payable`|address to refund excess gas to.|
+|`_depositNonce`|`uint32`|branch deposit nonce.|
+|`_dstChainId`|`uint16`|Chain ID of destination chain.|
+
+
+### _createSettlement
+
+Function to settle a single asset and perform a remote call to a branch chain.
+
+
+```solidity
+function _createSettlement(
+    uint32 _settlementNonce,
+    address _settlementOwner,
+    address _recipient,
+    uint16 _dstChainId,
+    bytes memory _params,
+    address _globalAddress,
+    uint256 _amount,
+    uint256 _deposit,
+    bool _hasFallbackToggled
+) internal returns (bytes memory _payload);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
+|`_settlementOwner`|`address`|address of settlement owner.|
+|`_recipient`|`address`|destination chain token receiver address.|
+|`_dstChainId`|`uint16`|branch chain to bridge to.|
+|`_params`|`bytes`|params for branch bridge agent and router execution.|
+|`_globalAddress`|`address`|global address of the token in root chain.|
+|`_amount`|`uint256`|amount of hTokens to be bridged out.|
+|`_deposit`|`uint256`|amount of underlying tokens to be cleared from branch port.|
+|`_hasFallbackToggled`|`bool`|if true, fallback is toggled on.|
+
+
+### _createSettlementMultiple
+
+Function to settle multiple assets and perform a remote call to a branch chain.
+
+
+```solidity
+function _createSettlementMultiple(
+    uint32 _settlementNonce,
+    address _settlementOwner,
+    address _recipient,
+    uint16 _dstChainId,
+    address[] memory _globalAddresses,
+    uint256[] memory _amounts,
+    uint256[] memory _deposits,
+    bytes memory _params,
+    bool _hasFallbackToggled
+) internal returns (bytes memory _payload);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
+|`_settlementOwner`|`address`|address of settlement owner.|
+|`_recipient`|`address`|destination chain token receiver address.|
+|`_dstChainId`|`uint16`|branch chain to bridge to.|
+|`_globalAddresses`|`address[]`|addresses of the global tokens in root chain.|
+|`_amounts`|`uint256[]`|amounts of hTokens to be bridged out.|
+|`_deposits`|`uint256[]`|amounts of underlying tokens to be cleared from branch port.|
+|`_params`|`bytes`|params for branch bridge agent and router execution.|
+|`_hasFallbackToggled`|`bool`|if true, fallback is toggled on.|
+
+
+### _retrySettlement
+
+Internal function performs call to Layer Zero Endpoint Contract for cross-chain messaging.
+
+
+```solidity
+function _retrySettlement(
+    bool _hasFallbackToggled,
+    address[] memory _hTokens,
+    address[] memory _tokens,
+    uint256[] memory _amounts,
+    uint256[] memory _deposits,
+    bytes calldata _params,
+    uint32 _settlementNonce,
+    address payable _gasRefundee,
+    address _recipient,
+    uint16 _dstChainId,
+    GasParams calldata _gParams
+) internal;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_hasFallbackToggled`|`bool`|if true, fallback is toggled on.|
+|`_hTokens`|`address[]`|deposited global token address.|
+|`_tokens`|`address[]`|deposited global token address.|
+|`_amounts`|`uint256[]`|amounts of total hTokens + Tokens output.|
+|`_deposits`|`uint256[]`|amount of underlying/native tokens to output.|
+|`_params`|`bytes`|Payload of message to be sent to Layer Zero Endpoint Contract.|
+|`_settlementNonce`|`uint32`|Identifier for token settlement.|
+|`_gasRefundee`|`address payable`|address of token owner and gas refundee.|
+|`_recipient`|`address`|destination chain receiver address.|
+|`_dstChainId`|`uint16`|Chain ID of destination chain.|
+|`_gParams`|`GasParams`|Gas parameters for cross-chain message execution.|
+
+
+### _checkSettlementOwner
+
+
+```solidity
+function _checkSettlementOwner(address caller, address settlementOwner) internal view;
+```
+
+### _updateStateOnBridgeOut
+
+Updates the token balance state by moving assets from root omnichain environment to branch chain,
+when a user wants to bridge out tokens from the root bridge agent chain.
+
 
 ```solidity
 function _updateStateOnBridgeOut(
-    address _sender,
+    address _depositor,
     address _globalAddress,
     address _localAddress,
     address _underlyingAddress,
     uint256 _amount,
     uint256 _deposit,
-    uint24 _toChain
+    uint16 _dstChainId
 ) internal;
 ```
-
 **Parameters**
 
-| Name                 | Type      | Description                                    |
-| -------------------- | --------- | ---------------------------------------------- |
-| `_sender`            | `address` | address of the sender.                         |
-| `_globalAddress`     | `address` | address of the global token.                   |
-| `_localAddress`      | `address` | address of the local token.                    |
-| `_underlyingAddress` | `address` | address of the underlying token.               |
-| `_amount`            | `uint256` | amount of hTokens to be bridged out.           |
-| `_deposit`           | `uint256` | amount of underlying tokens to be bridged out. |
-| `_toChain`           | `uint24`  | chain to bridge to.                            |
+|Name|Type|Description|
+|----|----|-----------|
+|`_depositor`|`address`|address of the token depositor.|
+|`_globalAddress`|`address`|address of the global token.|
+|`_localAddress`|`address`|address of the local token.|
+|`_underlyingAddress`|`address`|address of the underlying token.|
+|`_amount`|`uint256`|amount of hTokens to be bridged out.|
+|`_deposit`|`uint256`|amount of underlying tokens to be bridged out.|
+|`_dstChainId`|`uint16`|chain to bridge to.|
 
-### \_createSettlement
-
-Function to store a Settlement instance. Settlement should be reopened if fallback occurs.
-
-```solidity
-function _createSettlement(
-    address _owner,
-    address _recipient,
-    address _hToken,
-    address _token,
-    uint256 _amount,
-    uint256 _deposit,
-    bytes memory _callData,
-    uint24 _toChain
-) internal;
-```
-
-**Parameters**
-
-| Name         | Type      | Description                                    |
-| ------------ | --------- | ---------------------------------------------- |
-| `_owner`     | `address` | settlement owner address.                      |
-| `_recipient` | `address` | destination chain reciever address.            |
-| `_hToken`    | `address` | deposited global token address.                |
-| `_token`     | `address` | deposited global token address.                |
-| `_amount`    | `uint256` | amounts of total hTokens + Tokens output.      |
-| `_deposit`   | `uint256` | amount of underlying / native token to output. |
-| `_callData`  | `bytes`   | calldata to execute on destination Router.     |
-| `_toChain`   | `uint24`  | Destination chain identificator.               |
-
-### \_createMultipleSettlement
-
-Function to create a settlemment. Settlement should be reopened if fallback occurs.
-
-```solidity
-function _createMultipleSettlement(
-    address _owner,
-    address _recipient,
-    address[] memory _hTokens,
-    address[] memory _tokens,
-    uint256[] memory _amounts,
-    uint256[] memory _deposits,
-    bytes memory _callData,
-    uint24 _toChain
-) internal;
-```
-
-**Parameters**
-
-| Name         | Type        | Description                                     |
-| ------------ | ----------- | ----------------------------------------------- |
-| `_owner`     | `address`   | settlement owner address.                       |
-| `_recipient` | `address`   | destination chain reciever address.             |
-| `_hTokens`   | `address[]` | deposited global token addresses.               |
-| `_tokens`    | `address[]` | deposited global token addresses.               |
-| `_amounts`   | `uint256[]` | amounts of total hTokens + Tokens output.       |
-| `_deposits`  | `uint256[]` | amount of underlying / native tokens to output. |
-| `_callData`  | `bytes`     | calldata to execute on destination Router.      |
-| `_toChain`   | `uint24`    | Destination chain identificator.                |
-
-### \_retrySettlement
-
-Function to retry a user's Settlement balance with a new amount of gas to bridge out of Root Bridge Agent's Omnichain Environment.
-
-```solidity
-function _retrySettlement(uint32 _settlementNonce) internal returns (bool);
-```
-
-**Parameters**
-
-| Name               | Type     | Description                      |
-| ------------------ | -------- | -------------------------------- |
-| `_settlementNonce` | `uint32` | Identifier for token settlement. |
-
-### \_redeemSettlement
-
-Function to retry a user's Settlement balance.
-
-```solidity
-function _redeemSettlement(uint32 _settlementNonce) internal;
-```
-
-**Parameters**
-
-| Name               | Type     | Description                      |
-| ------------------ | -------- | -------------------------------- |
-| `_settlementNonce` | `uint32` | Identifier for token settlement. |
-
-### \_reopenSettlemment
-
-Function to reopen a user's Settlement balance as pending and thus retryable by users. Called upon anyFallback of triggered by Branch Bridge Agent.
-
-```solidity
-function _reopenSettlemment(uint32 _settlementNonce) internal;
-```
-
-**Parameters**
-
-| Name               | Type     | Description                      |
-| ------------------ | -------- | -------------------------------- |
-| `_settlementNonce` | `uint32` | Identifier for token settlement. |
-
-### \_getAndIncrementSettlementNonce
-
-Function that returns Deposit nonce and increments nonce counter.
-
-```solidity
-function _getAndIncrementSettlementNonce() internal returns (uint32);
-```
-
-### uniswapV3SwapCallback
-
-Checks if a pool is eligible to call uniswapV3SwapCallback
-
-```solidity
-function uniswapV3SwapCallback(int256 amount0, int256 amount1, bytes calldata _data) external;
-```
-
-**Parameters**
-
-| Name      | Type     | Description              |
-| --------- | -------- | ------------------------ |
-| `amount0` | `int256` | amount of token0 to swap |
-| `amount1` | `int256` | amount of token1 to swap |
-| `_data`   | `bytes`  | abi encoded data         |
-
-### \_gasSwapIn
-
-Swaps gas tokens from the given branch chain to the root chain
-
-```solidity
-function _gasSwapIn(uint256 _amount, uint24 _fromChain) internal returns (uint256);
-```
-
-**Parameters**
-
-| Name         | Type      | Description                 |
-| ------------ | --------- | --------------------------- |
-| `_amount`    | `uint256` | amount of gas token to swap |
-| `_fromChain` | `uint24`  | chain to swap from          |
-
-### \_gasSwapOut
-
-Swaps gas tokens from the given root chain to the branch chain
-
-```solidity
-function _gasSwapOut(uint256 _amount, uint24 _toChain) internal returns (uint256, address);
-```
-
-**Parameters**
-
-| Name       | Type      | Description                 |
-| ---------- | --------- | --------------------------- |
-| `_amount`  | `uint256` | amount of gas token to swap |
-| `_toChain` | `uint24`  | chain to swap to            |
-
-### \_manageGasOut
-
-Manages gas costs of bridging from Root to a given Branch.
-
-```solidity
-function _manageGasOut(uint24 _toChain) internal returns (uint128);
-```
-
-**Parameters**
-
-| Name       | Type     | Description        |
-| ---------- | -------- | ------------------ |
-| `_toChain` | `uint24` | destination chain. |
-
-### \_performCall
-
-Internal function performs call to AnycallProxy Contract for cross-chain messaging.
-
-```solidity
-function _performCall(bytes memory _calldata, uint256 _toChain) internal;
-```
-
-### \_payExecutionGas
-
-Pays for the remote call execution gas. Demands that the user has enough gas to replenish gas for the anycall config contract or forces reversion.
-
-```solidity
-function _payExecutionGas(uint128 _depositedGas, uint128 _gasToBridgeOut, uint256 _initialGas, uint24 _fromChain)
-    internal;
-```
-
-**Parameters**
-
-| Name              | Type      | Description                              |
-| ----------------- | --------- | ---------------------------------------- |
-| `_depositedGas`   | `uint128` | available user gas to pay for execution. |
-| `_gasToBridgeOut` | `uint128` | amount of gas needed to bridge out.      |
-| `_initialGas`     | `uint256` | initial gas used by the transaction.     |
-| `_fromChain`      | `uint24`  | chain remote action initiated from.      |
-
-### \_payFallbackGas
-
-Updates the user deposit with the amount of gas needed to pay for the fallback function execution.
-
-```solidity
-function _payFallbackGas(uint32 _settlementNonce, uint256 _initialGas) internal virtual;
-```
-
-**Parameters**
-
-| Name               | Type      | Description                                |
-| ------------------ | --------- | ------------------------------------------ |
-| `_settlementNonce` | `uint32`  | nonce of the failed settlement             |
-| `_initialGas`      | `uint256` | initial gas available for this transaction |
-
-### \_replenishGas
-
-```solidity
-function _replenishGas(uint256 _executionGasSpent) internal;
-```
-
-### \_getContext
-
-Internal function that return 'from' address and 'fromChain' Id by performing an external call to AnycallExecutor Context.
-
-```solidity
-function _getContext() internal view returns (address from, uint256 fromChainId);
-```
-
-### anyExecute
-
-anyExecute is the function that will be called on the destination chain to execute interaction (required).
-
-```solidity
-function anyExecute(bytes calldata data)
-    external
-    virtual
-    requiresExecutor
-    returns (bool success, bytes memory result);
-```
-
-**Parameters**
-
-| Name   | Type    | Description |
-| ------ | ------- | ----------- |
-| `data` | `bytes` |             |
-
-**Returns**
-
-| Name      | Type    | Description                             |
-| --------- | ------- | --------------------------------------- |
-| `success` | `bool`  | whether the interaction was successful. |
-| `result`  | `bytes` | the result of the interaction.          |
-
-### anyFallback
-
-DEPOSIT FLAG: 7 (retrySettlement)
-DEPOSIT FLAG: 8 (retrieveDeposit)
-
-```solidity
-function anyFallback(bytes calldata data)
-    external
-    virtual
-    requiresExecutor
-    returns (bool success, bytes memory result);
-```
-
-**Parameters**
-
-| Name   | Type    | Description |
-| ------ | ------- | ----------- |
-| `data` | `bytes` |             |
-
-**Returns**
-
-| Name      | Type    | Description                             |
-| --------- | ------- | --------------------------------------- |
-| `success` | `bool`  | whether the interaction was successful. |
-| `result`  | `bytes` | the result of the interaction.          |
-
-### depositGasAnycallConfig
-
-SETTLEMENT FLAG: 1 (single asset settlement)
-SETTLEMENT FLAG: 1 (single asset settlement)
-SETTLEMENT FLAG: 2 (multiple asset settlement)
-
-```solidity
-function depositGasAnycallConfig() external payable;
-```
-
-### forceRevert
-
-Function to force revert when a remote action does not have enough gas or is being retried after having been previously executed.
-
-```solidity
-function forceRevert() external requiresLocalBranchBridgeAgent;
-```
-
-### \_forceRevert
-
-Reverts the current transaction with a "no enough budget" message.
-
-_This function is used to revert the current transaction with a "no enough budget" message._
-
-```solidity
-function _forceRevert() internal;
-```
 
 ### approveBranchBridgeAgent
 
 Adds a new branch bridge agent to a given branch chainId
 
-```solidity
-function approveBranchBridgeAgent(uint256 _branchChainId) external requiresManager;
-```
 
+```solidity
+function approveBranchBridgeAgent(uint256 _branchChainId) external override requiresManager;
+```
 **Parameters**
 
-| Name             | Type      | Description                 |
-| ---------------- | --------- | --------------------------- |
-| `_branchChainId` | `uint256` | chainId of the branch chain |
+|Name|Type|Description|
+|----|----|-----------|
+|`_branchChainId`|`uint256`|chainId of the branch chain|
+
 
 ### syncBranchBridgeAgent
 
 Updates the address of the branch bridge agent
 
-```solidity
-function syncBranchBridgeAgent(address _newBranchBridgeAgent, uint24 _branchChainId) external requiresPort;
-```
 
+```solidity
+function syncBranchBridgeAgent(address _newBranchBridgeAgent, uint256 _branchChainId) external override requiresPort;
+```
 **Parameters**
 
-| Name                    | Type      | Description                            |
-| ----------------------- | --------- | -------------------------------------- |
-| `_newBranchBridgeAgent` | `address` | address of the new branch bridge agent |
-| `_branchChainId`        | `uint24`  | chainId of the branch chain            |
+|Name|Type|Description|
+|----|----|-----------|
+|`_newBranchBridgeAgent`|`address`|address of the new branch bridge agent|
+|`_branchChainId`|`uint256`|chainId of the branch chain|
 
-### sweep
 
-Function to collect excess gas fees.
+### transferManagementRole
 
-_only callable by the DAO._
+Allows current bridge agent manager to allowlist a successor address.
+
 
 ```solidity
-function sweep() external;
+function transferManagementRole(address _newManager) external override requiresManager;
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_newManager`|`address`|address of the new bridge agent manager.|
+
+
+### acceptManagementRole
+
+Used by the new bridge agent manager to accept the management role.
+
+
+```solidity
+function acceptManagementRole() external override;
 ```
 
 ### lock
 
 Modifier for a simple re-entrancy check.
 
+
 ```solidity
 modifier lock();
 ```
 
-### requiresExecutor
-
-Modifier verifies the caller is the Anycall Executor or Local Branch Bridge Agent.
-
-```solidity
-modifier requiresExecutor();
-```
-
-### \_requiresExecutor
-
-Verifies the caller is the Anycall Executor or Local Branch Bridge Agent. Internal function used in modifier to reduce contract bytesize.
-
-```solidity
-function _requiresExecutor() internal view;
-```
-
 ### requiresRouter
 
-Modifier that verifies msg sender is the Bridge Agent's Router
+Internal function to verify msg sender is Bridge Agent's Router.
+
 
 ```solidity
 modifier requiresRouter();
 ```
 
-### \_requiresRouter
+### requiresEndpoint
 
-Internal function to verify msg sender is Bridge Agent's Router. Reuse to reduce contract bytesize.
+Modifier verifies the caller is the Layerzero Enpoint or Local Branch Bridge Agent.
+
 
 ```solidity
-function _requiresRouter() internal view;
+modifier requiresEndpoint(address _endpoint, uint16 _srcChain, bytes calldata _srcAddress) virtual;
 ```
 
 ### requiresAgentExecutor
 
 Modifier that verifies msg sender is Bridge Agent Executor.
 
+*Allow eth_estimateGas to be called by zero address to mock layerzero's endpoint.*
+
+
 ```solidity
 modifier requiresAgentExecutor();
-```
-
-### requiresLocalBranchBridgeAgent
-
-Modifier that verifies msg sender is Local Branch Bridge Agent.
-
-```solidity
-modifier requiresLocalBranchBridgeAgent();
 ```
 
 ### requiresPort
 
 Modifier that verifies msg sender is the Local Port.
+
 
 ```solidity
 modifier requiresPort();
@@ -856,12 +784,8 @@ modifier requiresPort();
 
 Modifier that verifies msg sender is the Bridge Agent's Manager.
 
+
 ```solidity
 modifier requiresManager();
 ```
 
-### fallback
-
-```solidity
-fallback() external payable;
-```

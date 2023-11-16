@@ -1,7 +1,5 @@
----
-id: DeployBranchBridgeAgent
-title: DeployBranchBridgeAgent
----
+# DeployBranchBridgeAgent
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/BranchBridgeAgent.sol)
 
 
 ## Functions
@@ -10,12 +8,10 @@ title: DeployBranchBridgeAgent
 
 ```solidity
 function deploy(
-    WETH9 _wrappedNativeToken,
-    uint256 _rootChainId,
-    uint256 _localChainId,
+    uint16 _rootChainId,
+    uint16 _localChainId,
     address _rootBridgeAgentAddress,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
+    address _lzEndpointAddress,
     address _localRouterAddress,
     address _localPortAddress
 ) external returns (BranchBridgeAgent);

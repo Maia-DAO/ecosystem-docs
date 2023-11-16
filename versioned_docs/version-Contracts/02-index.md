@@ -167,10 +167,6 @@ sidebar_position: 2
       - [ERC20hTokenRootFactory](./reference/ulysses-omnichain/factories/ERC20hTokenRootFactory)
       - [RootBridgeAgentFactory](./reference/ulysses-omnichain/factories/RootBridgeAgentFactory)
     - ❱ interfaces
-      - [IAnycallConfig](./reference/ulysses-omnichain/interfaces/IAnycallConfig)
-      - [IAnycallExecutor](./reference/ulysses-omnichain/interfaces/IAnycallExecutor)
-      - [IAnycallProxy](./reference/ulysses-omnichain/interfaces/IAnycallProxy)
-      - [IApp](./reference/ulysses-omnichain/interfaces/IApp)
       - [IArbitrumBranchPort](./reference/ulysses-omnichain/interfaces/IArbitrumBranchPort)
       - [UserFeeInfo](./reference/ulysses-omnichain/interfaces/UserFeeInfo)
       - [DepositStatus](./reference/ulysses-omnichain/interfaces/DepositStatus)
@@ -213,8 +209,7 @@ sidebar_position: 2
     - ❱ lib
       - [AnycallFlags](./reference/ulysses-omnichain/lib/AnycallFlags)
     - ❱ token
-      - [ERC20hTokenBranch](./reference/ulysses-omnichain/token/ERC20hTokenBranch)
-      - [ERC20hTokenRoot](./reference/ulysses-omnichain/token/ERC20hTokenRoot)
+      - [ERC20hToken](./reference/ulysses-omnichain/token/ERC20hToken)
     - [DeployArbitrumBranchBridgeAgent](./reference/ulysses-omnichain/DeployArbitrumBranchBridgeAgent)
     - [ArbitrumBranchBridgeAgent](./reference/ulysses-omnichain/ArbitrumBranchBridgeAgent)
     - [ArbitrumBranchPort](./reference/ulysses-omnichain/ArbitrumBranchPort)

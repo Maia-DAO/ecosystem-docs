@@ -1,7 +1,5 @@
----
-id: DeployArbitrumBranchBridgeAgent
-title: DeployArbitrumBranchBridgeAgent
----
+# DeployArbitrumBranchBridgeAgent
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/ArbitrumBranchBridgeAgent.sol)
 
 
 ## Functions
@@ -9,14 +7,8 @@ title: DeployArbitrumBranchBridgeAgent
 
 
 ```solidity
-function deploy(
-    WETH9 _wrappedNativeToken,
-    uint256 _localChainId,
-    address _daoAddress,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
-    address _localPortAddress,
-    address _localRouterAddress
-) external returns (ArbitrumBranchBridgeAgent);
+function deploy(uint16 _localChainId, address _daoAddress, address _localRouterAddress, address _localPortAddress)
+    external
+    returns (ArbitrumBranchBridgeAgent);
 ```
 

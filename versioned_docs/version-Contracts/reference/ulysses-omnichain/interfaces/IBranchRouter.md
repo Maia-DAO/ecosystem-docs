@@ -1,7 +1,5 @@
----
-id: IBranchRouter
-title: IBranchRouter
----
+# IBranchRouter
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/interfaces/IBranchRouter.sol)
 
 **Author:**
 MaiaDAO
@@ -13,9 +11,18 @@ requests, as well as in response to requests from the Root Omnichain Environment
 
 
 ## Functions
+### localPortAddress
+
+External function to return the Branch Chain's Local Port Address.
+
+
+```solidity
+function localPortAddress() external view returns (address);
+```
+
 ### localBridgeAgentAddress
 
-Address for local Branch Bridge Agent who processes requests and ineracts with local port.
+Address for local Branch Bridge Agent who processes requests and interacts with local port.
 
 
 ```solidity
@@ -39,14 +46,14 @@ Function to perform a call to the Root Omnichain Router without token deposit.
 
 
 ```solidity
-function callOut(bytes calldata params, uint128 rootExecutionGas) external payable;
+function callOut(bytes calldata params, GasParams calldata gParams) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`params`|`bytes`|RLP enconded parameters to execute on the root chain.|
-|`rootExecutionGas`|`uint128`|gas allocated for remote execution.|
+|`params`|`bytes`|enconded parameters to execute on the root chain.|
+|`gParams`|`GasParams`|gas parameters for the cross-chain call.|
 
 
 ### callOutAndBridge
@@ -57,7 +64,7 @@ Function to perform a call to the Root Omnichain Router while depositing a singl
 
 
 ```solidity
-function callOutAndBridge(bytes calldata params, DepositInput memory dParams, uint128 rootExecutionGas)
+function callOutAndBridge(bytes calldata params, DepositInput calldata dParams, GasParams calldata gParams)
     external
     payable;
 ```
@@ -65,9 +72,9 @@ function callOutAndBridge(bytes calldata params, DepositInput memory dParams, ui
 
 |Name|Type|Description|
 |----|----|-----------|
-|`params`|`bytes`|RLP enconded parameters to execute on the root chain.|
+|`params`|`bytes`|encoded parameters to execute on the root chain.|
 |`dParams`|`DepositInput`|additional token deposit parameters.|
-|`rootExecutionGas`|`uint128`|gas allocated for remote execution.|
+|`gParams`|`GasParams`|gas parameters for the cross-chain call.|
 
 
 ### callOutAndBridgeMultiple
@@ -78,48 +85,19 @@ Function to perform a call to the Root Omnichain Router while depositing two or 
 
 
 ```solidity
-function callOutAndBridgeMultiple(bytes calldata params, DepositMultipleInput memory dParams, uint128 rootExecutionGas)
-    external
-    payable;
+function callOutAndBridgeMultiple(
+    bytes calldata params,
+    DepositMultipleInput calldata dParams,
+    GasParams calldata gParams
+) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`params`|`bytes`|RLP enconded parameters to execute on the root chain.|
+|`params`|`bytes`|encoded parameters to execute on the root chain.|
 |`dParams`|`DepositMultipleInput`|additional token deposit parameters.|
-|`rootExecutionGas`|`uint128`|gas allocated for remote execution.|
-
-
-### retrySettlement
-
-External function to retry a failed Settlement entry on the root chain.
-
-
-```solidity
-function retrySettlement(uint32 _settlementNonce, uint128 _gasToBoostSettlement) external payable;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_settlementNonce`|`uint32`|Identifier for user settlement.|
-|`_gasToBoostSettlement`|`uint128`|Additional gas to boost settlement.|
-
-
-### redeemDeposit
-
-External function to retry a failed Deposit entry on this branch chain.
-
-
-```solidity
-function redeemDeposit(uint32 _depositNonce) external;
-```
-**Parameters**
-
-|Name|Type|Description|
-|----|----|-----------|
-|`_depositNonce`|`uint32`|Identifier for user deposit.|
+|`gParams`|`GasParams`|gas parameters for the cross-chain call.|
 
 
 ### getDepositEntry
@@ -128,67 +106,87 @@ External function that returns a given deposit entry.
 
 
 ```solidity
-function getDepositEntry(uint32 _depositNonce) external view returns (Deposit memory);
+function getDepositEntry(uint32 depositNonce) external view returns (Deposit memory);
+```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`depositNonce`|`uint32`|Identifier for user deposit.|
+
+
+### retryDeposit
+
+Function to retry a deposit that has failed.
+
+
+```solidity
+function retryDeposit(uint32 _depositNonce, bytes calldata _params, GasParams calldata _gParams) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
 |`_depositNonce`|`uint32`|Identifier for user deposit.|
+|`_params`|`bytes`|encoded router parameters to execute on the root chain.|
+|`_gParams`|`GasParams`|gas parameters for the cross-chain call.|
 
 
-### anyExecuteNoSettlement
+### executeNoSettlement
 
 Function responsible of executing a branch router response.
 
 
 ```solidity
-function anyExecuteNoSettlement(bytes calldata data) external returns (bool success, bytes memory result);
+function executeNoSettlement(bytes calldata params) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`data`|`bytes`|data received from messaging layer.|
+|`params`|`bytes`|data received from messaging layer.|
 
 
-### anyExecuteSettlement
+### executeSettlement
 
 *Function responsible of executing a crosschain request without any deposit.*
 
 
 ```solidity
-function anyExecuteSettlement(bytes calldata data, SettlementParams memory sParams)
-    external
-    returns (bool success, bytes memory result);
+function executeSettlement(bytes calldata params, SettlementParams calldata sParams) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`data`|`bytes`|data received from messaging layer.|
+|`params`|`bytes`|data received from messaging layer.|
 |`sParams`|`SettlementParams`|SettlementParams struct.|
 
 
-### anyExecuteSettlementMultiple
+### executeSettlementMultiple
 
-*Function responsible of executing a crosschain request which contains cross-chain deposit information attached.*
+*Function responsible of executing a crosschain request which contains
+cross-chain deposit information attached.*
 
 
 ```solidity
-function anyExecuteSettlementMultiple(bytes calldata data, SettlementMultipleParams memory sParams)
-    external
-    returns (bool success, bytes memory result);
+function executeSettlementMultiple(bytes calldata params, SettlementMultipleParams calldata sParams) external payable;
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`data`|`bytes`|data received from messaging layer.|
+|`params`|`bytes`|data received from messaging layer.|
 |`sParams`|`SettlementMultipleParams`|SettlementParams struct containing deposit information.|
 
 
 ## Errors
+### UnrecognizedFunctionId
+
+```solidity
+error UnrecognizedFunctionId();
+```
+
 ### UnrecognizedBridgeAgentExecutor
 
 ```solidity

@@ -1,10 +1,8 @@
----
-id: ArbitrumBranchBridgeAgentFactory
-title: ArbitrumBranchBridgeAgentFactory
----
+# ArbitrumBranchBridgeAgentFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/factories/ArbitrumBranchBridgeAgentFactory.sol)
 
 **Inherits:**
-[BranchBridgeAgentFactory](/ulysses-omnichain/factories/BranchBridgeAgentFactory.sol/contract.BranchBridgeAgentFactory.md)
+[BranchBridgeAgentFactory](/src/ulysses-omnichain/factories/BranchBridgeAgentFactory.sol/contract.BranchBridgeAgentFactory.md)
 
 **Author:**
 MaiaDAO
@@ -18,16 +16,13 @@ branch chains and the omnichain environment.
 ## Functions
 ### constructor
 
-Constructor for Bridge Agent.
+Constructor for Bridge Agent Factory Contract.
 
 
 ```solidity
 constructor(
-    uint256 _rootChainId,
+    uint16 _rootChainId,
     address _rootBridgeAgentFactoryAddress,
-    WETH9 _wrappedNativeToken,
-    address _localAnyCallAddress,
-    address _localAnyCallExecutorAddress,
     address _localCoreBranchRouterAddress,
     address _localPortAddress,
     address _owner
@@ -36,9 +31,7 @@ constructor(
         _rootChainId,
         _rootChainId,
         _rootBridgeAgentFactoryAddress,
-        _wrappedNativeToken,
-        _localAnyCallAddress,
-        _localAnyCallExecutorAddress,
+        address(0),
         _localCoreBranchRouterAddress,
         _localPortAddress,
         _owner
@@ -48,41 +41,35 @@ constructor(
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_rootChainId`|`uint256`|Local Chain Id.|
+|`_rootChainId`|`uint16`|Root Chain Layer Zero Id.|
 |`_rootBridgeAgentFactoryAddress`|`address`|Root Bridge Agent Factory Address.|
-|`_wrappedNativeToken`|`WETH9`|Local Wrapped Native Token.|
-|`_localAnyCallAddress`|`address`|Local Anycall Address.|
-|`_localAnyCallExecutorAddress`|`address`|Local Anyexec Address.|
 |`_localCoreBranchRouterAddress`|`address`|Local Core Branch Router Address.|
-|`_localPortAddress`|`address`|Local Port Address.|
+|`_localPortAddress`|`address`|Local Branch Port Address.|
 |`_owner`|`address`|Owner of the contract.|
 
 
-### initialize
+### _deployBridgeAgent
+
+Internal function to deploy a new arbitrum branch bridge agent.
 
 
 ```solidity
-function initialize(address _coreRootBridgeAgent) external override onlyOwner;
-```
-
-### createBridgeAgent
-
-Creates a new bridge agent for a branch chain.
-
-
-```solidity
-function createBridgeAgent(
-    address _newBranchRouterAddress,
-    address _rootBridgeAgentAddress,
-    address _rootBridgeAgentFactoryAddress
-) external virtual override returns (address newBridgeAgent);
+function _deployBridgeAgent(address _rootBridgeAgentAddress, address _newBranchRouterAddress)
+    internal
+    override
+    returns (address newBridgeAgent);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
+|`_rootBridgeAgentAddress`|`address`|Address of the root bridge agent to connect to.|
 |`_newBranchRouterAddress`|`address`|Address of the new branch router.|
-|`_rootBridgeAgentAddress`|`address`|Address of the root bridge agent.|
-|`_rootBridgeAgentFactoryAddress`|`address`||
+
+**Returns**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`newBridgeAgent`|`address`|Address of the newly deployed bridge agent.|
 
 

@@ -1,22 +1,14 @@
----
-id: ERC20hTokenRootFactory
-title: ERC20hTokenRootFactory
----
+# ERC20hTokenRootFactory
+[Git Source](https://github.com/Maia-DAO/2023-09-maia-remediations/blob/main/src/factories/ERC20hTokenRootFactory.sol)
 
 **Inherits:**
-Ownable, [IERC20hTokenRootFactory](/ulysses-omnichain/interfaces/IERC20hTokenRootFactory.sol/interface.IERC20hTokenRootFactory.md)
+Ownable, [IERC20hTokenRootFactory](/src/ulysses-omnichain/interfaces/IERC20hTokenRootFactory.md)
+
+**Author:**
+MaiaDAO
 
 
 ## State Variables
-### localChainId
-Local Network Identifier.
-
-
-```solidity
-uint256 public immutable localChainId;
-```
-
-
 ### rootPortAddress
 Root Port Address.
 
@@ -36,42 +28,59 @@ address public coreRootRouterAddress;
 
 
 ### hTokens
+Array of all hTokens created.
+
 
 ```solidity
-ERC20hTokenRoot[] public hTokens;
-```
-
-
-### hTokensLenght
-
-```solidity
-uint256 public hTokensLenght;
+ERC20hToken[] public hTokens;
 ```
 
 
 ## Functions
 ### constructor
 
-Constructor for ERC20 hToken Contract
+Constructor for ERC20 hToken Root Factory Contract
 
 
 ```solidity
-constructor(uint256 _localChainId, address _rootPortAddress);
+constructor(address _rootPortAddress);
 ```
 **Parameters**
 
 |Name|Type|Description|
 |----|----|-----------|
-|`_localChainId`|`uint256`|Local Network Identifier.|
-|`_rootPortAddress`|`address`|Root Port Address|
+|`_rootPortAddress`|`address`|Root Port Address.|
 
 
 ### initialize
+
+Function to initialize the contract.
 
 
 ```solidity
 function initialize(address _coreRouter) external onlyOwner;
 ```
+**Parameters**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`_coreRouter`|`address`|Address of the Root Chain's Core Router.|
+
+
+### getHTokens
+
+Function to get the array of hTokens.
+
+
+```solidity
+function getHTokens() external view returns (ERC20hToken[] memory);
+```
+**Returns**
+
+|Name|Type|Description|
+|----|----|-----------|
+|`<none>`|`ERC20hToken[]`|Array of hTokens.|
+
 
 ### createToken
 
@@ -79,10 +88,10 @@ Function to create a new hToken.
 
 
 ```solidity
-function createToken(string memory _name, string memory _symbol)
+function createToken(string memory _name, string memory _symbol, uint8 _decimals)
     external
-    requiresCoreRouter
-    returns (ERC20hTokenRoot newToken);
+    requiresCoreRouterOrPort
+    returns (ERC20hToken newToken);
 ```
 **Parameters**
 
@@ -90,14 +99,15 @@ function createToken(string memory _name, string memory _symbol)
 |----|----|-----------|
 |`_name`|`string`|Name of the Token.|
 |`_symbol`|`string`|Symbol of the Token.|
+|`_decimals`|`uint8`|Decimals of the Token.|
 
 
-### requiresCoreRouter
+### requiresCoreRouterOrPort
 
 Modifier that verifies msg sender is the RootInterface Contract from Root Chain.
 
 
 ```solidity
-modifier requiresCoreRouter();
+modifier requiresCoreRouterOrPort();
 ```
 
