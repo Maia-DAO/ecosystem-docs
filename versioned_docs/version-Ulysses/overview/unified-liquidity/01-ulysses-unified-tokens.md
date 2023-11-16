@@ -11,6 +11,8 @@ Ulysses Unified Tokens enable users to tap into liquidity pools from multiple ch
 
 Guaranteeing effortless integrations and optimal liquidity management, every Ulysses LP (Liquidity Provider) token's total supply precisely mirrors the total withdrawable assets when the pool is balanced.
 
+![Unified Liquidity](./images/Ulysses_Omnichain_Unified_Liquidity.jpg)
+
 ## Compatibility and Design
 
 Ulysses Unified Tokens have been designed to allow the addition or removal of underlying assets at a consistent ratio. This offers unparalleled flexibility and control. The 1:1 ratio between the LP and underlying assets addresses complex challenges, ensuring streamlined asset value tracking for users and protocols.
