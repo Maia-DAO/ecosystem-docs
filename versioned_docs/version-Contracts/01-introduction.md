@@ -14,9 +14,7 @@ Previous Audits by Zellic can be found in our [Github](https://github.com/Maia-D
 - [Ulysses Protocol](https://github.com/Maia-DAO/maia-ecosystem-monorepo/tree/2-audit)
 
 :::caution
-Changes have been made to the contracts since these audits that are not reflected in this repositories. Final code is available in the [Code4rena Contest](https://github.com/code-423n4/2023-05-maia).
-
-If you are reading this, the contest has not ended yet! Go over to https://discord.gg/code4rena and try to earn your share of $300k UDSC, the second largest reward pool to date!
+Changes have been made to the contracts since these audits that are not reflected in this repositories. Updated code is available in the [Code4rena Contest](https://github.com/code-423n4/2023-09-maia).
 :::
 
 ## Hermes
