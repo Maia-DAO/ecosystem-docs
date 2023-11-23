@@ -3,31 +3,50 @@ id: governance-proposal
 title: Governance Proposal
 ---
 
-### **Phase 3: Governance Proposal**
+# Phase 3: Governance Proposal
 
-**Timeframe:** 2 day waiting period, 7 day voting period
+### **Objective**
+The objective of Phase 3, which represents the final step of the governance process, is to solidify and formalize the community's consensus regarding a specific proposal. Should this vote achieve approval, it will result in the implementation of the proposed changes on-chain.
 
-Proposal creation threshold: 2.5M bHERMES
+### **Requirements**
+- Duration
+    - **Waiting Period**: 2 Days
+    - **Voting Period**: 7 Days
 
-**Quorum:** 12.5M bHERMES
+- Threshold to Create Proposal: 2.5M bHERMES
 
-**Form:** [TBD]
+- Quorum: 12.5M bHERMES
 
-Phase 3 is the final step of the governance process. If this vote passes, then a change will be enacted on-chain.
+- Form: [TBD]
 
-To create an on-chain Governance Proposal:
+### **How To Create an On-Chain Governance Proposal**
 
 1. Incorporate any last iterations to your proposal based on feedback prior to posting. 
-   <!-- This step suggests making final changes to the proposed governance proposal based on received feedback before proceeding further. -->
 
 2. Create a topic in the [TBD] titled “POP - Governance Proposal — [Your Title Here]” and link to previous forum posts and the Partnering On-boarding Proposal Temperature Check Snapshot poll. 
-   <!-- This step involves creating a new topic in a platform (to be determined) with a specific title and linking to related forum posts and polls. -->
 
 3. Create your proposal. This can be done either through an interface (on [TBD]) or through writing the calldata for more complicated proposal logic. This calldata will be executed if and when the proposal passes. If writing the calldata yourself, please review the logic with a qualified Hermes community member prior to posting the proposal. 
-   <!-- This step focuses on creating the actual proposal. It can be done using an interface (on a platform to be determined) or by writing custom calldata for complex proposal logic. It is recommended to review the calldata logic with a qualified Hermes community member before posting the proposal. -->
 
 4. Ensure that at least 2.5 million bHERMES is delegated to your address in order to submit a proposal, or find a delegate who has enough delegated bHERMES to meet the proposal threshold to propose on your behalf. 
-   <!-- This step emphasizes the need to have at least 2.5 million bHERMES delegated to your address to submit a proposal. Alternatively, you can find a delegate who meets the proposal threshold to propose on your behalf. -->
 
 5. Once the proposal has been submitted (or the propose() function has been called), a two day voting delay will start. After the voting delay is finished, a seven day voting period begins. If the proposal passes successfully, the proposed code is executed. 
-   <!-- This step indicates that after submitting the proposal or calling the propose() function, there will be a two-day waiting period for voting to begin. Once the waiting period is over, a seven-day voting period starts. If the proposal passes during this time, the proposed code will be executed. -->
+
+
+
+___
+
+### **Next Steps** 
+
+- ~~Phase 1: [Request for Comment][phase-1]~~
+
+- ~~Phase 2: [Temperature Check][phase-2]~~
+
+- ~~Phase 3: [Governance Proposal][phase-3]~~
+
+Congratualtions! You've made it to the end of all three phases of the Hermes Governance Process. Ok, so now what? Now we await the votes to finalize and we can gauge whether or not the proposal will pass while meeting quorum, or not pass. 
+
+If a proposal does not pass, and the participants would like to submit another proposal for an additional attempt, they must wait at least two epochs before beginning the entire process again from Phase 1.  
+
+[phase-1]: ./versioned_docs/version-Hermes/governance/process/phases/01-phase-1-request-for-comment.md
+[phase-2]: ./versioned_docs/version-Hermes/governance/process/phases/02-phase-2-temperature-check.md
+[phase-3]: ./versioned_docs/version-Hermes/governance/process/phases/03-phase-3-governance-proposal.md

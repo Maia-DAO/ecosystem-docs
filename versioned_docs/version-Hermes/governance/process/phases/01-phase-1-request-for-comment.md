@@ -3,17 +3,33 @@ id: request-for-comment
 title: Request for Comment
 ---
 
-### **Phase 1: Request for Comment (POP-RFC)**
+# Phase 1: Request for Comment
 
-**Timeframe:** Minimum 3 days
+### **Objective**
+The purpose of the first phase of the governance process is meant to allow the community to digest a proposal, comment, and ask questions about the new partner in question and how it will benefit the ecosystem.
 
-**Form:** [Governance Forum](https://commonwealth.im/hermes-omnichain/discussions) Post
+### **Requirements**
+- Duration: Minimum of 3 Days
+- Quorum: N/A
+- Method: Governance post on [Commmonwealth Forum](https://commonwealth.im/hermes-omnichain/discussions) 
 
-The first phase of the governance process is meant to allow the community to digest a proposal, comment, and ask questions about the new partner in question and how it will benefit the ecosystem.
-<!-- This section explains that Phase 1 of the governance process is aimed at giving the community time to understand and discuss a proposal. They are encouraged to provide comments and ask questions related to the new partner and how their involvement can benefit the ecosystem. -->
+### **How to Create Phase 1 Request for Comment**
 
-In their proposal, the partner should clearly specify the desired tier they are applying for and provide detailed, verifiable information on how they plan to meet the associated requirements. They must also outline a transparent framework that allows any community member to easily track and evaluate their progress towards achieving the milestones set by the partner. This framework should include measurable objectives and verifiable data sources.
-<!-- This section highlights the expectations for the partner's proposal. It states that the partner should clearly mention the desired tier they are applying for and provide detailed information on how they intend to fulfill the associated requirements. Furthermore, the partner is expected to present a transparent framework that enables community members to monitor and assess their progress towards meeting the specified milestones. The framework should include measurable objectives and credible sources of data. -->
+1. In their proposal, the partner should clearly specify the desired tier they are applying for and provide detailed, verifiable information on how they plan to meet the associated requirements. 
 
-To post a RFC, label your post “POP-RFC - [Your Title Here]”. Prior to moving to Phase 2, give the community at least 3 days to read and comment on the RFC. Please respond to questions in the comments, and take feedback into account in the next iteration of the proposal posted in Phase 2.
-<!-- This section provides instructions on how to create an RFC (Request for Comment) post. It states that the post should be labeled with "POP-RFC - [Your Title Here]". Additionally, it is advised to allocate at least 3 days for the community to read and provide comments on the RFC. The partner is encouraged to respond to questions in the comments and consider the feedback received when creating the next version of the proposal in Phase 2. -->
+2. They must also outline a transparent framework that allows any community member to easily track and evaluate their progress towards achieving the milestones set by the partner. This framework should include measurable objectives and verifiable data sources.
+
+3. To post a RFC, label your post “POP-RFC - [Your Title Here]”. Prior to moving to Phase 2, give the community **at least 3 days** to read and comment on the RFC. Please respond to questions in the comments, and take feedback into account in the next iteration of the proposal posted in Phase 2.
+
+
+---
+### **Next Steps** 
+- ~~Phase 1: [Request for Comment][phase-1]~~
+
+- **Phase 2** - [Temperature Check][phase-2] 
+
+- **Phase 3** - [Governance Proposal][phase-3]
+
+[phase-1]: ./versioned_docs/version-Hermes/governance/process/phases/01-phase-1-request-for-comment.md
+[phase-2]: ./versioned_docs/version-Hermes/governance/process/phases/02-phase-2-temperature-check.md
+[phase-3]: ./versioned_docs/version-Hermes/governance/process/phases/03-phase-3-governance-proposal.md
