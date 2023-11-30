@@ -26,10 +26,10 @@ The purpose of the first phase of the governance process is meant to allow the c
 ### **Next Steps** 
 - ~~Phase 1: [Request for Comment][phase-1]~~
 
-- **Phase 2** - [Temperature Check][phase-2] 
+- **Phase 2**: [Temperature Check][phase-2] 
 
-- **Phase 3** - [Governance Proposal][phase-3]
+- **Phase 3**: [Governance Proposal][phase-3]
 
-[phase-1]: ./versioned_docs/version-Hermes/governance/process/phases/01-phase-1-request-for-comment.md
-[phase-2]: ./versioned_docs/version-Hermes/governance/process/phases/02-phase-2-temperature-check.md
-[phase-3]: ./versioned_docs/version-Hermes/governance/process/phases/03-phase-3-governance-proposal.md
+[phase-1]: ./request-for-comment
+[phase-2]: ./temperature-check
+[phase-3]: ./governance-proposal

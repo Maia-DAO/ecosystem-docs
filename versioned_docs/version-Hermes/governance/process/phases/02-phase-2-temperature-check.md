@@ -34,10 +34,14 @@ At the end of 5 days, the option with the majority of votes wins. Quorum must be
 
 - Phase 3: [Governance Proposal][phase-3]
 
-[phase-1]: ./versioned_docs/version-Hermes/governance/process/phases/01-phase-1-request-for-comment.md
-[phase-2]: ./versioned_docs/version-Hermes/governance/process/phases/02-phase-2-temperature-check.md
-[phase-3]: ./versioned_docs/version-Hermes/governance/process/phases/03-phase-3-governance-proposal.md
+[phase-1]: ./request-for-comment
+[phase-2]: ./temperature-check
+[phase-3]: ./governance-proposal
 ___
 
-### **Key Considerations**  <span style="color: red;">[Critical Advisory] </span> 
-Until the launch of V2, which features a full-stack built-in on-chain governance mechanism, <span style="color: red;"> proposals that pass Phase 2 do not need to continue to Phase 3</span> . They are considered passed and will be executed when migrating from V1 to V2.
+### **Key Considerations** 
+Until the launch of V2, which features a full-stack built-in on-chain governance mechanism, **proposals that pass Phase 2 do not need to continue to Phase 3** . They are considered passed and will be executed when migrating from V1 to V2.
+
+
+<!-- ### **Key Considerations**  <span style="color: red;">[Critical Advisory] </span> 
+Until the launch of V2, which features a full-stack built-in on-chain governance mechanism, <span style="color: red;"> proposals that pass Phase 2 do not need to continue to Phase 3</span> . They are considered passed and will be executed when migrating from V1 to V2. -->

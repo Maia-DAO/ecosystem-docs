@@ -47,6 +47,6 @@ Congratualtions! You've made it to the end of all three phases of the Hermes Gov
 
 If a proposal does not pass, and the participants would like to submit another proposal for an additional attempt, they must wait at least two epochs before beginning the entire process again from Phase 1.  
 
-[phase-1]: ./versioned_docs/version-Hermes/governance/process/phases/01-phase-1-request-for-comment.md
-[phase-2]: ./versioned_docs/version-Hermes/governance/process/phases/02-phase-2-temperature-check.md
-[phase-3]: ./versioned_docs/version-Hermes/governance/process/phases/03-phase-3-governance-proposal.md
+[phase-1]: ./request-for-comment
+[phase-2]: ./temperature-check
+[phase-3]: ./governance-proposal
