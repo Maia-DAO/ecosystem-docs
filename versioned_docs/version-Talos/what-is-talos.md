@@ -14,7 +14,7 @@ The protocol is implemented as a set of persistent, non-upgradable smart contrac
 
 ## You don't have to manage your liquidity alone
 
-Decentralized liquidity management strategies can become a pool together of concentrated liquidity LPs. This helps automate not only user’s positions, but can be used by DAO’s for their own LPs and to guide users to desired and optimal liquidity ranges.
+Decentralized liquidity management strategies can function as a *pool together* of concentrated liquidity LPs. This not only automates user positions but can also be employed by DAOs for their LPs, guiding users toward desired and optimal liquidity ranges.
 
 ### Types vs Strategy Templates
 
@@ -23,7 +23,7 @@ Talos positions are split into two main *Types*:
 - **Vanilla**: Represent a share of one or more UNI V3 NFT positions.
 - **Staked**: Represent a share of one or more UNI V3 NFT positions that are all staked in our Uniswap V3 Staker.
 
-*Strategy Templates* are rebalancing and reranging strategies that work with both *Types* of positions without any necessary changes.
+*Strategy Templates* encompass rebalancing and reranging strategies that work with both *Types* of positions without requiring any modifications.
 
 New *Strategy Templates* can easily be created by solidity developers. There are multiple audited examples with guides of some possible operations.
 
@@ -45,11 +45,11 @@ Talos LPs are not ERC-4626, but wrappers will be made available to allow for sea
 
 ### Permissionless Systems
 
-The second departure from traditional markets is the permissionless and immutable design of Talos. These design decisions were inspired by Ethereum's core tenets, and our commitment to the ideals of permissionless access and immutability as indispensable components of a future in which anyone in the world can access financial services without fear of discrimination or counter-party risk.
+The second deviation from traditional markets lies in the permissionless and immutable design of Talos. These decisions draw inspiration from Ethereum's core tenets, emphasizing the ideals of permissionless access and immutability as essential elements for a future where anyone worldwide can access financial services without fear of discrimination or counter-party risk.
 
-Permissionless design means that the protocol's services are entirely open for public use, with no ability to selectively restrict who can or cannot use them. Anyone can provide liquidity, or create new markets at will. This is a departure from traditional financial services, which typically restrict access based on geography, wealth status, and age.
+Permissionless design ensures the protocol's services are entirely open for public use, without the ability to selectively restrict users. Anyone can contribute liquidity or create new markets at their discretion, departing from traditional financial services that often impose restrictions based on geography, wealth status, and age.
 
-The protocol is immutable, meaning it cannot be upgraded or altered. No party can pause the contracts, reverse trade execution, or modify the protocol's behavior in any way. Talos Governance retains the right to 20% of swap fees generated from all Vanilla positions; however, this arrangement is transparent and unchangeable, known to all participants beforehand.
+The protocol's immutability means it cannot be upgraded or altered. No entity can pause contracts, reverse trade executions, or modify the protocol's behavior in any way. Talos Governance retains a 20% share of swap fees from all Vanilla positions, a transparent and unalterable arrangement known to all participants beforehand.
 
 It is important to highlight that Staked Talos positions do not incur any protocol fees on emissions. Instead, the owner of the position's boost aggregator can establish fees on earned emissions, which may be subject to change. While staked positions do not generate fees, as they are staked in [Hermes Uniswap v3 Gauges](../Hermes/overview/gauges/uni-v3), any earned swap fees from unstaked positions will be collected by the protocol and allocated as bribes, similar to the process for staked positions.
 
