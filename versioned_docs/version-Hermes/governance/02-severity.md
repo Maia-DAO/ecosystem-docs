@@ -1,4 +1,3 @@
-
 ---
 id: severity
 title: Severity
