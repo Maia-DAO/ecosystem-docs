@@ -3,16 +3,13 @@ id: overview
 title: Overview
 ---
 
-# Hermes Protocol Governance Overview
+# I. Governance Overview
 
-### **Objective** 
-Proposals for governance are categorized into five distinct levels of severity with five being the highest or greatest impact a proposal may potentially have based on the actions permitted. The actions permitted include modifying bribes and gauges to more significant changes like altering the Ulysses Pool or minting new Hermes tokens. This allows for a wide range of governance activities, tailored to the significance of each decision.
+Proposals for governance within the Hermes Protocol are systematically classified into <u>5-tiers of severity</u>, reflecting their respective levels of impact. At the pinnacle of this hierarchy is Severity 5, denoting proposals with the potential for the most substantial influence, as determined by the scope of the actions they authorize. These actions range from minor modifications (severity 1), such as adjusting the allocation of voting rights, to more consequential alterations, including changes to the Ulysses Pool or the issuance of new Hermes tokens. This stratification ensures that governance activities are appropriately scaled to the importance of each proposal, facilitating informed and effective decision-making.
 
-### **Requirements**
-Governance within the Hermes Protocol is exclusively conducted by community members who have the vote-locked version of the $HERMES token, known as veHERMES (or bHERMES-Governance Token in V2).
+Governance within the Hermes Protocol is exclusively managed by community members holding the vote-locked $HERMES token, also known as `veHERMES` (or `bHERMES-Governance` Token in V2).
 
-### **Overview**
-The Severity Levels, Minimum and Maximum Thresholds, Voting Requirements and Actions Permitted are outlined in a table format in the following chart. 
+The framework governing this process which includes,`Severity Levels`, `Minimum & Maximum Thresholds`, Voting Requirements including `Voting Period`, `Voting Delay`, `Quorum`, `Max Operations` and lastly `Actions` permitted are outlined in a table format in the following chart.
 
 | Level |  Threshold <br/> Min - Max | Voting Period | Voting Delay | Quorum | Max Operations | Actions |
 |-------|------------------------|---------------|--------------|------------|----------------|---------|
@@ -23,23 +20,35 @@ The Severity Levels, Minimum and Maximum Thresholds, Voting Requirements and Act
 | 5     | 1 - 10%                 | 2 weeks to 6 weeks | 1 week to 2 weeks | 50%          | 10 Actions | •  Add/Remove New Ulysses Root Router <br/>  • Add Destinations to Ulysses Pool <br/> •  Add/Remove LP Ulysses Token <br/> • Mint Hermes |
 ---
 
-### **Defintions**
+## A. Defintions
 
-**Level**: Indicates the severity of the proposal within the governance structure. Level 1 represents the least severe proposals, while Level 5 includes the most severe proposals.
+<u>Level</u>: Indicates the severity of the proposal within the governance structure. Level 1 represents the least severe proposals, while Level 5 includes the most severe proposals.
 
-**Min/Max Threshold**:This represents the range of voting power required to participate in the decision-making process for a proposal. The minimum threshold is the lowest percentage of total GovToken (aka bHERMES-Governance) votes needed to consider a proposal, and the maximum threshold is the highest percentage allowed.
+<u>Min/Max Threshold</u>:This represents the range of voting power required to participate in the decision-making process for a proposal. The minimum threshold is the lowest percentage of total GovToken (aka bHERMES-Governance) votes needed to consider a proposal, and the maximum threshold is the highest percentage allowed.
 
-**Voting Period**: The time frame during which votes can be cast for a proposal. This period varies depending on the severity level, ranging from as short as 24 hours to as long as 6 weeks.
+<u>Voting Period</u>: The time frame during which votes can be cast for a proposal. This period varies depending on the severity level, ranging from as short as 24 hours to as long as 6 weeks.
 
-**Voting Delay**: The time interval between the proposal's submission and the start of the voting period. This delay allows members to review and consider the proposal before voting begins.
+<u>Voting Delay</u>: The time interval between the proposal's submission and the start of the voting period. This delay allows members to review and consider the proposal before voting begins.
 
-**Quorum**: The minimum percentage of total GovToken votes required for the voting results to be considered valid. This ensures that a significant portion of the community participates in the decision-making process.
+<u>Quorum</u>: The minimum percentage of total GovToken votes required for the voting results to be considered valid. This ensures that a significant portion of the community participates in the decision-making process.
 
-**Max Operations**: The maximum number of actions or changes that can be executed under a single proposal. This limit helps maintain focus and prevents over-complication of proposals.
+<u>Max Operations</u>: The maximum number of actions or changes that can be executed under a single proposal. This limit helps maintain focus and prevents over-complication of proposals.
 
-**Actions**: Specific changes or operations that can be proposed and voted on at each severity level. These actions range from adding or removing bribes at Level 1 to more impactful decisions like minting Hermes tokens at Level 5.
+<u>Actions</u>: Specific changes or operations that can be proposed and voted on at each severity level. These actions range from adding or removing bribes at Level 1 to more impactful decisions like minting Hermes tokens at Level 5.
 
-## Next Steps in Understanding Governance
-Having outlined the fundamental aspects of governance within the Hermes Protocol, including the objective, requirements, and a brief overview of the severity levels, we now move towards a more detailed exploration. The following section will provide an in-depth analysis of each severity level, offering insights into the specific actions permitted, and the implications of these actions on the governance process.
+## B. Next Steps in Understanding Governance
 
-For a more comprehensive understanding of each severity level and its implications within the Hermes Protocol governance, please visit the next section here [**Severity Levels and Their Implications**](../02-severity.md).
+This page gives a general overview of the fundamental aspects of governance within the Hermes Protocol. This includes the objective, requirements, and a brief overview of the severity levels. The following sections provides an in-depth analysis of each severity level, offering insights into the specific actions permitted, the process in which to do so, and the implications of these actions.
+
+### 1. [**Severity Levels & Implications**][severity]
+
+### 2. [**Governance Process**][process]
+
+### 3. **Actions**
+- [Treasury Management][action-treasury]
+- [Gauge Management][action-gauge]
+
+[severity]: ../governance/02-severity.md
+[process]: ../governance/process/01-governance-process.md
+[action-treasury]: ../governance/actions/treasury/01-overview.md
+[action-gauge]: ../governance/actions/gauges/01-overview.md
