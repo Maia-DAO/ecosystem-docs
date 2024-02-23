@@ -14,6 +14,5 @@ Staking MAIA into vMAIA enables a range of benefits:
 
 - **Increase your Voting Power Accumulation**: Grow your bHERMES voting power with your vMAIA balance. Take advantage of our Boost Aggregator. Read more about [boosting](./boost).
 
-- **Governance Participation**: Vote on proposals and create new ones.
-
+- **Governance Participation**: Create or vote in existing proposals.
 Overall, vMAIA is an important part of the Maia ecosystem, allowing users to participate in the governance of the platform and earn additional rewards through staking their MAIA tokens.
