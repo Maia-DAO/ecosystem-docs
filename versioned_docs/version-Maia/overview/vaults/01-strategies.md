@@ -7,7 +7,7 @@ title: Strategies
 
 ### Hermes Synergy
 
-The Maia DAO holds a position in bHermes, which allows users to leverage the benefits of [boosting](../tokenomics/boost) to increase rewards earned in the Maia strategy vaults. This allows users to optimize their returns and enhance their overall yield farming strategy.
+Maia DAO holds a position in bHermes, which allows users to leverage the benefits of [boosting](../tokenomics/boost) to increase rewards earned in the Maia strategy vaults. This allows users to optimize their returns and enhance their overall yield farming strategy.
 
 ### Strategic Partnerships
 
@@ -20,8 +20,5 @@ Both the Hermes V2 architecture using [Uniswap V3 pools](/protocols/Hermes/overv
 
 ### Auto-Compounding Mode
 
-Maia Vaults makes use of MEV and game theory to incentivize participants to keep the vaults which enabled AUTOCOMPOUND MODE autocompounded in exchange for a small fee taken from rewards. This provides a decentralized and less-extractive approach to auto-compounding rather than charging a fee up-front. 
+Maia Vaults  AUTOCOMPOUND MODE autocompounded in exchange for a small fee taken from rewards made by the user. This provides a decentralized and less-extractive approach to auto-compounding rather than charging a fee up-front. 
 
-### Leverage
-
-mVaults can leverage their deposited principal to maximize or hedge yields while farming, enabling integrations not limited to Hermes Omnichain AMM positions.
