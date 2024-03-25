@@ -1,6 +1,6 @@
 ---
-id: overivew
-title: Overivew
+id: overview
+title: Overview
 ---
 
 # Overview: Gauge Management
