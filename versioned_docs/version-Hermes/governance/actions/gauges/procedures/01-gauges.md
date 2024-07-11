@@ -3,12 +3,26 @@ id: gauges
 title: Adding & Removing Gauges
 ---
 
-:::info
-This documentation page is currently under construction. We apologize for the inconvenience and kindly ask that you check back at a later time.
-:::
+### Context and Justification by DAO Members:
+
+Before initiating the process of adding or removing a gauge, it is imperative to provide a comprehensive justification. This involves:
+
+- **Strategic Alignment**: Clearly articulating how adding or removing the gauge will support the DAO’s long-term goals.
+- **Market Impact Analysis**: Assessing the potential impact on the liquidity pool’s performance and overall market dynamics.
+- **Risk Assessment**: Identifying and evaluating the risks associated with the action, including potential changes in yield and liquidity.
 
 
-<!-- ### [#52][Hermes Gauges Governance] Name
-Severity
-Short description
-Any relevant links or resources -->
+### Governance Process
+
+- **Phase 1**: [Request for Comment][phase-1]
+
+- **Phase 2**: [Temperature Check][phase-2] 
+
+- **Phase 3**: [Governance Proposal][phase-3]
+
+[phase-1]: ./request-for-comment
+[phase-2]: ./temperature-check
+[phase-3]: ./governance-proposal
+
+### Severity level: 2
+[Severity details](/workspaces/Maia-DAO.github.io/versioned_docs/version-Maia/governance/02-severity.md) 
