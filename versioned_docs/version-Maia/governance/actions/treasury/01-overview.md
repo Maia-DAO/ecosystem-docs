@@ -33,13 +33,4 @@ The current landscape of DeFi treasury management combines proven financial stra
 
 - [Deploying capital in a new strategy (<10% Treasury)][deploy-capital]
 
-- [Re-sizing currently open strategy/position(s)][manage-positions]
-
-- [New Bond emission or any supply change in MAIA tokens][supply]
-
-- [Request Expenses][expenses]
-
 [deploy-capital]: ./procedures/deploy
-[manage-positions]: ./procedures/manage
-[supply]: ./procedures/supply
-[expenses]: ./procedures/expenses
