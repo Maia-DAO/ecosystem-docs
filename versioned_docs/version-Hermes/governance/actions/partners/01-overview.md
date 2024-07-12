@@ -10,9 +10,7 @@ The Hermes Partner Actions are essential for managing the ***Hermes Games*** Inc
 ## Actions
 
 - [Add/Remove Partners][manage-partners]
-- [Add/Remove Partner bHermes Contracts][manage-bhermes-contracts]
 - [Add/Remove Partner Vaults][manage-partner-vaults]
 
-[manage-partners]: ./procedures/manage-partners
-[manage-bhermes-contracts]: ./procedures/manage-bhermes-contracts
-[manage-partner-vaults]: ./procedures/manage-partner-vaults
+[manage-partners]: ./procedures/partners
+[manage-partner-vaults]: ./procedures/vaults
