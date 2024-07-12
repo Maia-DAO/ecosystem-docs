@@ -5,7 +5,7 @@ title: Overivew
 
 # Overview: Hermes Gauge Management
 
-In the realm of decentralized finance, gauge management is a crucial component for optimizing liquidity and enhancing the functionality of our liquidity marketplace. The Hermes Gauge system allows for the addition and removal of gauges and the management of gauge factories to include new sources of yield.
+Gauge management is a crucial component for optimizing liquidity and enhancing the functionality of our liquidity marketplace. The Hermes Gauge system allows for the addition and removal of gauges and the management of gauge factories to include new sources of yield.
 
 ## Actions
 
