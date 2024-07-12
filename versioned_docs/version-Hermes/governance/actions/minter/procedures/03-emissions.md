@@ -28,6 +28,6 @@ By managing these actions effectively, the Hermes Minter ensures a balanced and 
 [phase-2]: ./temperature-check
 [phase-3]: ./governance-proposal
 
-### Severity level: 2
+### Severity level: 5
 
-[Severity details](/workspaces/Maia-DAO.github.io/versioned_docs/version-Maia/governance/02-severity.md)
+[Severity details](/workspaces/Maia-DAO.github.io/versioned_docs/version-Maia/governance/05-severity.md)
