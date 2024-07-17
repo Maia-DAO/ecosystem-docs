@@ -25,16 +25,12 @@ This is achieved by providing exposure to yield-bearing tokens and a set of cura
 
 Each $MAIA token is backed by a basket of blue-chip and revenue-generating assets in its treasury (e.g., sETH, stablecoins, and burnt Hermes). This backing guarantees a fair minimum value for each $MAIA token.
 
-### With $MAIA you will be able to:
+### Locking your $MAIA into vMAIA you will enable you to:
 
-1. **Lock your $MAIA into vMAIA**
-   - Vote to control a share of Maia DAO's Voting Power
-   - Earn bribes on your MAIA Voting Power
-   - Earn a share of Maia's Treasury Revenue
-
-2. **Make the best out of the upcoming Maia Vaults**
-   - Deposit to earn a share of a given vault strategy revenue and earn a boost according to your vMAIA balance.
-
+- Vote to control a share of Maia DAO's Voting Power
+- Earn bribes on your MAIA Voting Power
+- Earn a share of Maia's Treasury Revenue
+ 
 ## Where can I find more information about the ecosystem products
 
 For info about Hermes, please check out our [**Hermes docs**](/protocols/Hermes/introduction) page.
