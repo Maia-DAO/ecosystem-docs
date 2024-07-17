@@ -23,7 +23,7 @@ As a DAO we constantly push towards improving our decentralized governance struc
 
 This is achieved by providing exposure to yield-bearing tokens and a set of curated strategies. The first deployed strategies have been efficient liquidity provision and bribe collection in the Hermes Protocol.
 
-Each $MAIA token is backed by a basket of blue-chip and revenue-generating assets in its treasury (e.g., sETH, stablecoins, and burned Hermes). This backing guarantees a fair minimum value for each $MAIA token.
+Each $MAIA token is backed by a basket of blue-chip and revenue-generating assets in its treasury (e.g., sETH, stablecoins, and burnt Hermes). This backing guarantees a fair minimum value for each $MAIA token.
 
 ### With $MAIA you will be able to:
 
