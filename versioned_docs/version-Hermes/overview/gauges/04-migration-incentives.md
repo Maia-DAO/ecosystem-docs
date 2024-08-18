@@ -15,7 +15,7 @@ Learn more in-depth information about the DAO migration steps [here](https://com
 
 The rewards will be distributed according to our improved Uniswap V3 Staker version, modified from the original that was based on a Paradigm research about [Liquidity Mining on Uniswap V3](https://www.paradigm.xyz/2021/05/liquidity-mining-on-uniswap-v3). This makes the first week retroactive incentives work like the original Uniswap V3 Staker as there will be no minimum width and no boosted emissions from bHermes Boost Utility Token.
 
-To avoid the gaming of rewards by adding very little liquidity to unused gauges, if a gauge has less than 100k liquidity 
+To avoid the gaming of rewards by adding very little liquidity to unused pools, the minimum TVL for rewards calculation for each pool is 100k USD. This means that if a pool has less than 100k USD, it will not distribute all of it's rewards for that period. For example, if there is only 10k liquidity in a pool it will only receive 10% of the rewards for that duration.
 
 ## Launch Initial Gauges
 
