@@ -113,7 +113,7 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |      Uniswap V3 Pool       |  Add Liquidity Into Pool  |
 |----------------------------|--------------------|
 |    mainnetWETH / arbWETH   |    [Add Liquidity](https://app.maiadao.io/#/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0xec32aAd0e8fc6851f4bA024B33dE09607190Ce9b?chain=mainnet)        |
-|    metisWETH / arbWETH    |    [Add Liquidity](https://app.maiadao.io/#/add/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/0x86E8d85b46A5Ed5fB7b97F2AdaeAf702cA9929bC?chain=metis)       |
+|    metisWETH / arbWETH    |    [Add Liquidity](https://app.maiadao.io/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0x86E8d85b46A5Ed5fB7b97F2AdaeAf702cA9929bC)       |
 
 
 ---
