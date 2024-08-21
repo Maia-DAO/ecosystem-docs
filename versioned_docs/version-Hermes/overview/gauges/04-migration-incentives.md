@@ -147,4 +147,4 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |      Uniswap V3 Pool       |  Add Liquidity Into Pool  |
 |----------------------------|--------------------|
 |    HERMES / arbWETH        |    [Add Liquidity](https://app.maiadao.io/#/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0x00000000000451f49c692Bfc24971cAcEA2dB678?chain=arbitrum)        |
-|    MAIA / arbWETH          |    [Add Liquidity](https://app.maiadao.io/#/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0x000000000066eA454672f4733407A74B886d3c93?chain=arbitrum)       |
+|    MAIA / arbWETH          |    [Add Liquidity](https://app.maiadao.io/#/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0x00000000702749f73E5210B08b0a3D440078f888?chain=arbitrum)       |
