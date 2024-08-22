@@ -33,8 +33,7 @@ We are excited to announce the launch of our initial liquidity gauges, designed 
 |WuL1s-USDC / arbUSDC        |             30k           |
 |metisWETH / arbWETH         |             30k           |
 |metisUSDC / arbUSDC         |             25k           |
-|WuL1s-USDT                  |             25k           |
-|WuMETIS / arbWETH           |             25k           |
+|metisUSDT / arbUSDT         |             25k           |
 |HERMES / arbWETH            |             45k           |
 |MAIA / arbWETH              |             35k           |
 
@@ -63,7 +62,6 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |    WuOPs-USDC              |    [USDC from OP](https://app.maiadao.io/#/deposit?inputCurrency=0x446C123628194826110Fac2e18496a161d277b0F&chain=optimism)           |   [USDC from BASE](https://app.maiadao.io/#/deposit?inputCurrency=0xD5FAE1D23693d2f0090cD101b79892661c539366&chain=base)          |
 |    WuL1s-USDT              |    [USDT from BSC](https://app.maiadao.io/#/deposit?inputCurrency=0xd972c72fb7e2a6f8F947f6cc000Fe409Fd746137&chain=bsc)          |   [USDT from AVAX](https://app.maiadao.io/#/deposit?inputCurrency=0x0B8A98B0FD31Fc92B7dF5592a78B83aE455d2C44&chain=avax)          |
 |    WuL1s-USDC              |    [USDC from BSC](https://app.maiadao.io/#/deposit?inputCurrency=0x9F0DD7B477dE824c6b2f7EE141fC8656C6EA0582&chain=bsc)          |   [USDC from AVAX](https://app.maiadao.io/#/deposit?inputCurrency=0xa81CCd479d23529151e25808C591bd0d8556eD2d&chain=avax)          |
-|    WuMETIS                 |    [Metis from Andromeda](https://app.maiadao.io/#/deposit?inputCurrency=ETH&chain=metis)   |    [Metis from Mainnet](https://app.maiadao.io/#/deposit?inputCurrency=0x90364aA61234B85251aD943681433904c35FA5ce&chain=mainnet)     |
 
 #### 2. **Add Liquidity via Balancer:**
 - Use the Balancer protocol to provide liquidity.
@@ -74,7 +72,6 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |    WuOPs-USDC              |    [uOPs-USDC](https://balancer.fi/pools/arbitrum/v2/0xc71fae5853fa2416b37728d73b51e17a32691e45000000000000000000000598/add-liquidity)       |
 |    WuL1s-USDT              |    [uL1s-USDT](https://balancer.fi/pools/arbitrum/v2/0xdc4bbb8928e97e913ba13f6a737caa45e8070e7d00000000000000000000059e/add-liquidity)       |
 |    WuL1s-USDC              |    [uL1s-USDC](https://balancer.fi/pools/arbitrum/v2/0x18B9B9897F0C5A7F2D9424C058211C2EF218F1A300000000000000000000059C/add-liquidity)       |
-|    WuMETIS                 |    [uMETIS](https://balancer.fi/pools/arbitrum/v2/0xDDEED1A20169658C1F20F338B8158E89C78A0C2200000000000000000000059A/add-liquidity)          |
 
 #### 3. **Wrap your BPT via Hermes UI:**
 - Deposit into our Balancer Pool Token Wrapper.
@@ -85,7 +82,6 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |    WuOPs-USDC              |    [Deposit](https://app.maiadao.io/#/swap?inputCurrency=0xc71fae5853fa2416b37728d73b51e17a32691e45&outputCurrency=0x9fa578DBf15C86b1eE599aa4507251311fd6FD37&chain=arbitrum)       |
 |    WuL1s-USDT              |    [Deposit](https://app.maiadao.io/#/swap?inputCurrency=0xdc4bbb8928e97e913ba13f6a737caa45e8070e7d&outputCurrency=0x6284885cC2b1934A53E92d01BF55995314190C19&chain=arbitrum)       |
 |    WuL1s-USDC              |    [Deposit](https://app.maiadao.io/#/swap?inputCurrency=0x18b9b9897f0c5a7f2d9424c058211c2ef218f1a3&outputCurrency=0xD4FcbADA835D5A2814Db6D4521a668ab0773D3f3&chain=arbitrum)       |
-|    WuMETIS                 |    [Deposit](https://app.maiadao.io/#/swap?inputCurrency=0xdDeeD1A20169658c1F20F338b8158E89c78a0C22&outputCurrency=0x59D93dedD5Ca3526811FbcD5BcaC99743Bb47319&chain=arbitrum)          |
 
 #### 4. **Add Liquidity via HermesV2 UI:**
 - Complete the liquidity process using the HermesV2 UI.
@@ -96,8 +92,6 @@ Here's an expanded version of the generic guides that includes the extra scenari
 |    WuOPs-USDC / arbUSDC    |    [Add Liquidity](https://app.maiadao.io/#/add/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/0x9fa578DBf15C86b1eE599aa4507251311fd6FD37?chain=arbitrum)       |
 |    WuL1s-USDT / arbUSDT    |    [Add Liquidity](https://app.maiadao.io/#/add/0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9/0x6284885cC2b1934A53E92d01BF55995314190C19?chain=arbitrum)       |
 |    WuL1s-USDC / arbUSDC    |    [Add Liquidity](https://app.maiadao.io/#/add/0xaf88d065e77c8cC2239327C5EDb3A432268e5831/0xD4FcbADA835D5A2814Db6D4521a668ab0773D3f3?chain=arbitrum)       |
-|    WuMETIS / arbWETH       |    [Add Liquidity](https://app.maiadao.io/#/add/0x82aF49447D8a07e3bd95BD0d56f35241523fBab1/0x59D93dedD5Ca3526811FbcD5BcaC99743Bb47319?chain=arbitrum)          |
-
 
 ---
 
