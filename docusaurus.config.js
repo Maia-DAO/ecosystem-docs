@@ -165,6 +165,12 @@ module.exports = {
         //   className: 'persistent',
         // },
         {
+          href: '/protocols/FAQs/faq',
+          label: 'FAQs',
+          position: 'right',
+          className: 'persistent',
+        },
+        {
           href: 'https://github.com/Maia-DAO/ecosystem-docs',
           label: 'GitHub',
           position: 'right',
@@ -327,6 +333,9 @@ module.exports = {
               banner: 'none',
             },
             Contracts: {
+              banner: 'none',
+            },
+            FAQs: {
               banner: 'none',
             }
           },
