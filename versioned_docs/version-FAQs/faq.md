@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ---
 
-# 1 - What does the APR displayed mean (e.g., 7.12% → 175.65%)?
+## 1 - What does the APR displayed mean (e.g., 7.12% → 175.65%)?
 
 The APR range indicates the reward range from a [Uniswap V3 Gauge](../version-Hermes/overview/gauges/02-uni-v3-gauges.md):
 
@@ -19,7 +19,7 @@ For more information on concentrated liquidity, visit these [Uniswap Resources o
 
 ---
 
-# 2 - How Does NFT Position Boosting Work?
+## 2 - How Does NFT Position Boosting Work?
 
 When you stake your Uniswap V3 NFT position into a gauge using the HermesV2 UI, the system automatically boosts it if you have [bHERMES-Boost](../version-Hermes/overview/tokenomics/utility-tokens/02-bhermes-boost.md) tokens delegated to you. Here’s how it works:
 
@@ -30,7 +30,7 @@ Ensure you have enough [bHERMES](../version-Hermes/overview/tokenomics/01-bherme
 
 ---
 
-# 3 - How Does Burning HERMES into bHERMES work?
+## 3 - How Does Burning HERMES into bHERMES work?
 
 Burning HERMES into [bHERMES](../version-Hermes/overview/tokenomics/01-bhermes.md) is a one way irreversible process. Here’s how it works:
 
@@ -42,13 +42,13 @@ The UI automatically claims all utility tokens and delegates them for you, grant
 
 ---
 
-# 4 - What Is the bHERMES 'Burn Index'?
+## 4 - What Is the bHERMES 'Burn Index'?
 
 The [bHERMES](../version-Hermes/overview/tokenomics/01-bhermes.md) burn index dictates the amount of HERMES required to mint bHERMES. As emissions increase, the index grows, meaning that each bHERMES token will cost more HERMES to create. This provides a form of inflation protection for bHERMES holders, as their tokens become more valuable relative to the amount of HERMES needed for new mints. This mechanism is similar in effect to the original ve(3,3) rebases.
 
 ---
 
-# 5 - I Bought bHERMES, Why Can't I Boost and Vote for Gauges and Governance?
+## 5 - I Bought bHERMES, Why Can't I Boost and Vote for Gauges and Governance?
 
 After buying [bHERMES](../version-Hermes/overview/tokenomics/01-bhermes.md), you need to claim your utility tokens to access its utility tokens. Here's how:
 
@@ -60,7 +60,7 @@ The system will automatically delegate these tokens to you, making them ready fo
 
 ---
 
-# 6 - Why Can't I Transfer My bHERMES?
+## 6 - Why Can't I Transfer My bHERMES?
 
 Once you claim your utility tokens, your [bHERMES](../version-Hermes/overview/tokenomics/01-bhermes.md) becomes non-transferable. To revert this and make your bHERMES transferable, you need to forfeit the utility tokens. Here’s how:
 
@@ -72,7 +72,7 @@ Make sure to remove enough gauge votes or unstake boosted positions, as you can'
 
 ---
 
-# 7 - How Does Staking MAIA for vMAIA Work?
+## 7 - How Does Staking MAIA for vMAIA Work?
 
 Here's how you can Stake MAIA for [vMAIA](../version-Maia/overview/tokenomics/01-vMaia.md):
 
@@ -84,12 +84,12 @@ You can deposit MAIA at any time, but withdrawals are only allowed on the first 
 
 ---
 
-# 8 - What Is the MAIA 'bHERMES Rate'?
+## 8 - What Is the MAIA 'bHERMES Rate'?
 
 The bHERMES Rate represents the amount of bHERMES backing each MAIA token. This rate is designed to increase over time as more bHERMES tokens are accumulated by the DAO. MAIA can raise this rate on demand, enhancing the intrinsic value of each MAIA token. This mechanism provides ongoing value appreciation for MAIA holders accessible through staking.
 
 ---
 
-# 9 - Why Do I See More Balance in the UI Than in the Block Explorer?
+## 9 - Why Do I See More Balance in the UI Than in the Block Explorer?
 
 The additional balance you see in the UI comes from your [Virtual Account](../version-Ulysses/overview/omnichain/05-virtual-account.md), a contract managed by your externally owned account (EOA). This Virtual Account facilitates the remote management of assets. Any assets you previously owned in V1 have been migrated and deposited into this account. You can use them across the UI seamlessly, as the interaction with the Virtual Account is fully integrated and abstracted from the user experience.
