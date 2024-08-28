@@ -44,7 +44,7 @@ Uniswap V3 Gauges also allow for different fee tiers to be set for different tok
 Please note that to prevent gaming of the boost system, users can have their entire boost applied to all pools, but are only able to have 1 boosted position per pool. This is necessary to ensure fair distribution of rewards and prevent abuse of the system.
 :::
 
-Calculating boost is an important aspect of managing liquidity pools on the Uniswap V3 protocol. The boost is used to determine the rewards received by liquidity providers for their staked positions in the pool. The equation used to calculate the boost is equivalent to the boosting in Hermes V1.
+Calculating boost is an important aspect of managing liquidity pools on the Uniswap V3 protocol. The boost is used to determine the rewards received by liquidity providers for their staked positions in the pool. The equation used to calculate the boost is equivalent to the boosting in Hermes V1 and takes into account the time spent in the range and the total rewards that could have been earned during that time. This allows for a fair distribution of rewards among liquidity providers in the pool.
 
 The Uniswap V3 Staker distributes rewards based on the time spent in range. This means that the total supply used to calculate the boost of each position is the maximum reward that it could have earned during the incentive duration. The maximum is the total week's rewards if staked during the whole week.
 
@@ -54,4 +54,4 @@ $Rewards Received = min(Position Rewards, Position Rewards * 40\% + (Total Rewar
 
 The formula calculates the rewards received by a user, based on their position rewards, and their stake in the bHERMES token. The rewards received are determined by taking the minimum value between the position rewards and a combination of two other factors: the position rewards multiplied by 40%, and the total rewards for the duration staked multiplied by the user's bHERMES stake divided by the total bHERMES supply, multiplied by 60%. This formula ensures that users are rewarded for both their position in the liquidity pool and their stake in the bHERMES token, but the rewards will be capped at the position rewards.
 
-Calculating boost is an important aspect of managing liquidity pools on the Uniswap V3 protocol. The equation used to calculate the boost is equivalent to the boosting in Hermes V1 and takes into account the time spent in the range and the total rewards that could have been earned during that time. This allows for a fair distribution of rewards among liquidity providers in the pool.
+
