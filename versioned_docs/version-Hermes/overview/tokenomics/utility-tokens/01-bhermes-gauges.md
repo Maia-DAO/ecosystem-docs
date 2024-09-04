@@ -17,7 +17,7 @@ To participate in bHERMES Voting, a user must first acquire bHERMES and vote-bur
 
 - **Collect Bribes**: Some gauges may offer bribes to bHERMES holders in exchange for their voting power allocation. These bribes are deposited by protocols that are looking to rent liquidity.
 
-It's important to note that bHERMES holders can change their vote at any time and as many times they want per week. However, Bribes and fees are all distributed at the end of each epoch, every Thursday 00:00 UTC. There is a 24-hour grace period (every Wednesday 00:00 UTC) before the end of an epoch during which votes cannot be increased, only decreased.
+It's important to note that bHERMES holders can change their vote at any time and as many times they want per week. However, Bribes and fees are all distributed at the end of each epoch, every Thursday 00:00 UTC. There is a 1-hour grace period (every Wednesday 00:00 UTC) before the end of an epoch during which votes cannot be increased, only decreased.
 
 ## Delegation
 
