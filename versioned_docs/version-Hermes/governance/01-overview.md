@@ -15,8 +15,8 @@ The framework governing this process which includes,`Severity Levels`, `Minimum 
 |-------|:---------:|:-------------:|:------------:|:------:|:--------------:|---------|
 | 1     | ![0.1%](# '0.1 - 1%')  | ![3 days](# '24 hrs to 1 week')   | ![1 block](# '1 block to 1 week')   | 1%     | 10 Actions     | ADD_GAUGE; REMOVE_GAUGE; SET_MIN_WIDTH; |
 | 2     | ![0.25%](# '0.25 - 2.5%') | ![1 week](# '2 days to 2 weeks')  | ![1 block](# '1 block to 1 week')   | 2%     | 10 Actions     | ADD_PARTNER; ADD_PARTNER_VAULT; REMOVE_PARTNER; REMOVE_PARTNER_VAULT; |
-| 3     | ![0.5%](# '0.5 - 5%') | ![2 weeks](# '1 week to 3 weeks') | ![1 block](# '1 block to 1 week')   | 4%     | 10 Actions     | ADD_GAUGE_SYSTEM; REMOVE_GAUGE_SYSTEM; |
-| 4     | ![0.75%](# '0.75 - 7.5%') | ![3 weeks](# '2 weeks to 4 weeks') | ![1 block](# '1 block to 1 week')  | 8%     | 10 Actions     | TRANSFER_TOKEN_HERMES_TREASURY; APPROVE_TOKEN_HERMES_TREASURY; SET_DAO; SET_DAO_SHARE; SET_TAIL_EMISSION; ADD_ECOSYSTEM_TOKEN; SWEEP_ROOT; ADD_NEW_CHAIN; TOGGLE_BRIDGE_AGENT_FACTORY_ROOT; SWEEP_BRANCH; TOGGLE_BRIDGE_AGENT_FACTORY_BRANCH; TOGGLE_STRATEGY_TOKEN; UPDATE_STRATEGY_TOKEN; TOGGLE_PORT_STRATEGY; UPDATE_PORT_STRATEGY; |
+| 3     | ![0.5%](# '0.5 - 5%') | ![2 weeks](# '1 week to 3 weeks') | ![1 block](# '1 block to 1 week')   | 4%     | 10 Actions     | ADD_GAUGE_SYSTEM; REMOVE_GAUGE_SYSTEM; SET_DAO; SET_DAO_SHARE; SET_TAIL_EMISSION; |
+| 4     | ![0.75%](# '0.75 - 7.5%') | ![3 weeks](# '2 weeks to 4 weeks') | ![1 block](# '1 block to 1 week')  | 8%     | 10 Actions     | TRANSFER_TOKEN_HERMES_TREASURY; APPROVE_TOKEN_HERMES_TREASURY; ADD_ECOSYSTEM_TOKEN; SWEEP_ROOT; ADD_NEW_CHAIN; TOGGLE_BRIDGE_AGENT_FACTORY_ROOT; SWEEP_BRANCH; TOGGLE_BRIDGE_AGENT_FACTORY_BRANCH; TOGGLE_STRATEGY_TOKEN; UPDATE_STRATEGY_TOKEN; TOGGLE_PORT_STRATEGY; UPDATE_PORT_STRATEGY; |
 | 5     | ![1%](# '1 - 10%') | ![5 weeks](# '2 weeks to 6 weeks') | ![1 block](# '1 block to 1 week')  | 16%    | 10 Actions     | CHANGE_BRIBES_FLYWHEEL_BOOSTER; CHANGE_UTILITY_ADMIN; |
 
 ---
