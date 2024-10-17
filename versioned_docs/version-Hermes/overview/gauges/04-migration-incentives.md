@@ -68,7 +68,7 @@ Here's an expanded version of the generic guides that includes the extra scenari
 
 |   Wrapped Ulysses Token    |  Deposit into BPT using Balancer  |
 |----------------------------|--------------------|
-|    WuOPs-ETH               |    [uOPs-ETH] (https://balancer.fi/pools/arbitrum/v2/0x9ECF98B64986277D53E8C8DBFA1B48B1D4A3DF750000000000000000000005BD/add-liquidity)       |
+|    WuOPs-ETH               |    [uOPs-ETH](https://balancer.fi/pools/arbitrum/v2/0x9ECF98B64986277D53E8C8DBFA1B48B1D4A3DF750000000000000000000005BD/add-liquidity)       |
 |    WuOPs-USDC              |    [uOPs-USDC](https://balancer.fi/pools/arbitrum/v2/0xACDD57300F214E2530DB0F5283036686BB85D67C0000000000000000000005BE/add-liquidity)       |
 |    WuL1s-USDT              |    [uL1s-USDT](https://balancer.fi/pools/arbitrum/v2/0xF4D4D470C8BA20FF97FDAFC2DFA0E744A8D904670000000000000000000005BF/add-liquidity)       |
 |    WuL1s-USDC              |    [uL1s-USDC](https://balancer.fi/pools/arbitrum/v2/0x72DF281E860117DBF60400D7C5EA770D2379072C0000000000000000000005C1/add-liquidity)       |
