@@ -3,10 +3,6 @@ id: migration-incentives
 title: Migration Incentives
 ---
 
-:::warning
-This page is outdated, token addresses should be updated to match latest deployment. If you are seeing this warning it means the addresses used in the following guide have not yet been updated
-:::
-
 From August 14th to August 21st, join us for Migration Week! During this period, users can claim their migrated balances on Arbitrum. Additionally, POL has been added to the UniswapV3 MAIA/WETH pool, and all functionalities related to bridging, swapping, liquidity provision, Hermes burning, and Maia staking are available through the UI.
 
 To support liquidity during this transition, we’ll be distributing retroactive liquidity incentives at the end of the week. These incentives will be allocated proportionally based on the active liquidity provided, following the model of our Uniswap V3 Staker.
