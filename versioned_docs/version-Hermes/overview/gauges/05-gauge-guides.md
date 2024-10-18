@@ -3,10 +3,6 @@ id: gauge-guides
 title: Gauge Guides
 ---
 
-:::warning
-This page is outdated, token addresses should be updated to match latest deployment. If you are seeing this warning it means the addresses used in the following guide have not yet been updated
-:::
-
 **_Note: These guides only feature initial liquidity instructions, once liquidity is established users can zap into BPTs from one of the underlying assets via our [swap](https://app.maiadao.io/swap) page._**
 
 ## Gauges with a Wrapped Ulysses Token (e.g. WuOPs-ETH / arbWETH)
