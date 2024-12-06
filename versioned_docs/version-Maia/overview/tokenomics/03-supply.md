@@ -33,6 +33,6 @@ The liquidity providers deposit their assets into the vaults and earn yield on t
 
 Overall, the Maian ecosystem is designed to be sustainable in the long term by continuously evolving and adapting to the needs of the community and the market, while providing real yield to its participants.
 
-### Bonds
+### 4. Bonds
 
 In this phase, new bonds can only be emitted after the approval of proposals that thoroughly assess the true extent of the value added to the DAO. This approach aims to ensure that the supply expansion aligns with the value brought to the platform by new partners, protocols, or individuals. We're confident that without a clear vision of that value addition, the DAO will self-regulate its dialogue in a way that weeds off subpar suggestions.
