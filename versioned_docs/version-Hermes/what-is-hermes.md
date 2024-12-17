@@ -4,14 +4,14 @@ title: What Is Hermes?
 sidebar_position: 1
 ---
 
-[//]: # (TODO: Description of goals/mechanics of ve3,3 and main b3,3 takeaways)
-[//]: # (TODO: Explain how/why Hermes is a "Omnichain Yield and Liquidity Marketplace")
+[//]: # 'TODO: Description of goals/mechanics of ve3,3 and main b3,3 takeaways'
+[//]: # 'TODO: Explain how/why Hermes is a "Omnichain Yield and Liquidity Marketplace"'
 
 Welcome to Hermes Protocol 👋
 
-Hermes Protocol V2 is a complete revamp of V1, with the codebase having been fully re-written, packed with new and improved features, and fully audited. This major upgrade to the previous version of the protocol introduces new and improved features to enhance the user experience in the DeFi space. The protocol is decentralized and permissionless, meaning anyone can use it without the need for permission from a central authority.
+Hermes Protocol V2 is a complete overhaul of V1—rebuilt from the ground up, fully audited, and packed with powerful new features. It’s a decentralized, permissionless, omnichain yield and liquidity marketplace, designed to be community-owned and future-proof.
 
-At its core, Hermes Protocol V2 is an Omnichain yield and liquidity marketplace that is community-owned and future-proof. The protocol has been designed to improve upon key mechanics like ve(3,3) mechanics from V1 and to address some of the limitations of existing DeFi protocols.
+Designed to improve upon key mechanics like ve(3,3) mechanics from V1, Hermes V2 addresses limitations of existing DeFi protocols while enhancing user experience across the ecosystem.
 
 ### Omnichain Concentrated and Unified Liquidity
 
