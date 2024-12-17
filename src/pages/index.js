@@ -320,7 +320,7 @@ const StyledTitleImage = styled(StyledImage)`
   object-fit: cover;
   z-index: -1;
   position: absolute;
-  opacity: 0.2;
+  opacity: 0.8;
   mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
 `
 
@@ -341,8 +341,8 @@ export default function Home() {
     <Layout title={`Maia Ecosystem Docs`} description="Technical Documentation For The Maia Ecosytem">
       <StyledTitleImage
         sources={{
-          light: useBaseUrl('/img/grow.png'),
-          dark: useBaseUrl('/img/grow2.png'),
+          light: useBaseUrl('/img/background.png'),
+          dark: useBaseUrl('/img/background.png'),
         }}
       />
       <Container>
