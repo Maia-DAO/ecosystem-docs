@@ -399,7 +399,7 @@ export default function Home() {
               Explore these docs to get started integrating the Maia Ecosytem in your dApp, smart contract or project.
             </p>
             <p>
-              We do not have any guides public yet, we are working on it. In the meantime, you can check out the rest of
+              No guides are public yet. In the meantime, you can check out the rest of
               the docs.
             </p>
             <div>
