@@ -540,7 +540,7 @@ export default function Home() {
               <Discord style={{ width: '48px', height: '48px' }} />
               <div>
                 <h3>Discord</h3>
-                <p>Hop in to the #dev-chat to get realtime help.</p>
+                <p>Hop in to the Discord to get realtime help.</p>
               </div>
             </CenterCard>
           </Link>

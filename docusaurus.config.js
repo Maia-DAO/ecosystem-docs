@@ -199,7 +199,7 @@ module.exports = {
             //   href: 'https://github.com/Uniswap/uniswap-v3-periphery/blob/main/bug-bounty.md',
             // },
             {
-              label: '#dev-chat',
+              label: 'Discord',
               href: 'https://discord.gg/maiadao',
             },
             // {
