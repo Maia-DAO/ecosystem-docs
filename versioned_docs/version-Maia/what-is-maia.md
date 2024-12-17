@@ -6,8 +6,7 @@ sidebar_position: 1
 
 Welcome to Maia DAO 👋
 
-Maia is the yield powerhouse of DeFi. With a 100% fair launch via bonds $MAIA is a truly community-owned token.
-In turn, the Maian ecosystem aims to be a one-stop shop for different DeFi native financial instruments, a fully fledged trading hub currently featuring:
+Maia is the yield powerhouse of DeFi. Launched fairly via bonds, $MAIA is fully community-owned. The Maian ecosystem serves as a comprehensive DeFi hub, offering a range of financial instruments. Currently, it includes:
 - **Maia** Decentralized Strategy Vaults
 - [**Hermes**](./Hermes/introduction) Omnichain AMM and YLM (Yield and Liquidity Marketplace)
 - [**TALOS**](./Talos/introduction) Transparent Automated Liquidity Omnichain Strategies
