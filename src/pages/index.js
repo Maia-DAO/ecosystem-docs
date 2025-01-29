@@ -342,8 +342,8 @@ export default function Home() {
     <Layout title={`Maia Ecosystem Docs`} description="Technical Documentation For The Maia Ecosytem">
       <StyledTitleImage
         sources={{
-          light: useBaseUrl('/img/bg_cropped.png'),
-          dark: useBaseUrl('/img/bg_cropped.png'),
+          light: useBaseUrl('/img/bg.png'),
+          dark: useBaseUrl('/img/bg.png'),
         }}
       />
       <Container>
