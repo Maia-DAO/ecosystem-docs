@@ -128,30 +128,30 @@ module.exports = {
           position: 'left',
           className: 'persistent',
         },
-        {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Maia_active',
-        },
-        {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Hermes_active',
-        },
-        {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Talos_active',
-        },
-        {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Ulysses_active',
-        },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Maia_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Hermes_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Talos_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Ulysses_active',
+        // },
         // {
         //   label: 'Give Feedback',
         //   to: 'https://forms.gle/13XtjmkwdXQ2jMn26',
@@ -332,9 +332,9 @@ module.exports = {
             Ulysses: {
               banner: 'none',
             },
-            Contracts: {
-              banner: 'none',
-            },
+            // Contracts: {
+            //   banner: 'none',
+            // },
             FAQs: {
               banner: 'none',
             }

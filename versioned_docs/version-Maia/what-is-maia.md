@@ -6,32 +6,47 @@ sidebar_position: 1
 
 Welcome to Maia DAO 👋
 
-Maia is the yield powerhouse of DeFi. Launched fairly via bonds, $MAIA is fully community-owned. The Maian ecosystem serves as a comprehensive DeFi hub, offering a range of financial instruments. Currently, it includes:
-- **Maia** Decentralized Strategy Vaults
-- [**Hermes**](./Hermes/introduction) Omnichain AMM and YLM (Yield and Liquidity Marketplace)
-- [**TALOS**](./Talos/introduction) Transparent Automated Liquidity Omnichain Strategies
-- [**Ulysses**](./Ulysses/introduction) Omnichain Liquidity and Interoperability Protocol
+Maia is the **yield powerhouse of DeFi**, designed to streamline your BurntHermes experience, enhance yield opportunities, and drive ecosystem sustainability.
 
-In order to sustainably bootstrap our surrounding ecosystem, Maia plans to continue onboarding long-term partnerships with protocols that ultimately add value to both our users and partners.
+## 🌍 The Maia Ecosystem
 
-## What is the point of $MAIA?
+Maia was fairly launched via bonds and is fully community-owned. As a comprehensive DeFi hub, it offers a suite of financial instruments that optimize yield and liquidity.
 
-Maia has significant control over bHermes and has developed a framework for enhanced yield strategies, simplifying your BurntHermes experience, maximizing your yields and contributing to ecosystem sustainability.
+The ecosystem currently includes:
 
-$MAIA when staked as [vMAIA](./overview/tokenomics/vMaia) is a utility and governance token that drives the coordination mechanisms behind the whole Maian ecosystem. 
+- **Maia** - Yield Powerhouse.
+- [**Hermes**](./Hermes/introduction) - Omnichain AMM and YLM (Yield and Liquidity Marketplace).
+- [**TALOS**](./Talos/introduction) - Transparent Automated Liquidity Omnichain Strategies.
+- [**Ulysses**](./Ulysses/introduction) - Omnichain Liquidity and Interoperability Protocol.
 
-Each [vMAIA](./overview/tokenomics/vMaia) token, grants you voting power for gauge allocations and governance decisions from a basket of burnt Hermes. This ratio can only increase over time, supported by the revenue generated through [**Maia Boosted Strategies**](/protocols/overview/tokenomics/strategies) .
+## 🔑 Key Features
 
-### Locking your $MAIA into vMAIA you will enable you to:
+### Boosted Yield Strategies
 
-- Vote to control a share of Maia DAO's Voting Power
-- Earn bribes on your MAIA Voting Power
-- Earn a share of Maia's Treasury Revenue
- 
-## Where can I find more information about the ecosystem products
+Playing a central role in the Maia Ecosystem, Maia holds significant control over bHermes and provides a framework for [Boosted Yield Strategies](./overview/tokenomics/04-strategies.md), optimizing returns across the ecosystem.
 
-For info about Hermes, please check out our [**Hermes docs**](/protocols/Hermes/introduction) page.
+### Maia Staking
 
-For info about Talos, please check out our [**Talos docs**](/protocols/Talos/introduction) page.
+When staked as [vMAIA](./overview/tokenomics/vMaia), $MAIA serves as both a **utility and governance token**, driving key coordination mechanisms across the ecosystem.
 
-For info about Ulysses, please check out our [**Ulysses docs**](/protocols/Ulysses/introduction) page.
+#### Voting Power
+
+Control a share of Maia DAO's Voting Power, influence gauge allocations and governance decisions.
+
+#### Bribe Rewards
+
+Earn bribes based on your voting power allocations.
+
+### Ever-Increasing Utility Ratio
+
+Each [vMAIA](./overview/tokenomics/vMaia) token grants you gauge voting power and governance voting power from a basket of Burnt Hermes. This ratio can only increase over time, supported by the revenue generated through [**Maia Boosted Strategies**](/protocols/overview/tokenomics/strategies).
+
+## Where can I find more information?
+
+For more details, visit:
+
+- [**Hermes docs**](/protocols/Hermes/introduction) page.
+
+- [**Talos docs**](../Talos/introduction) page.
+
+- [**Ulysses docs**](../Ulysses/introduction) page.

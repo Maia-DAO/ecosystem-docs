@@ -339,7 +339,7 @@ const HideMedium = styled.div`
 
 export default function Home() {
   return (
-    <Layout title={`Maia Ecosystem Docs`} description="Technical Documentation For The Maia Ecosytem">
+    <Layout title={`Maia Ecosystem Docs`} description="Documentation For The Maia Ecosytem">
       <StyledTitleImage
         sources={{
           light: useBaseUrl('/img/bg.png'),
