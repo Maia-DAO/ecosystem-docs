@@ -128,6 +128,18 @@ module.exports = {
           position: 'left',
           className: 'persistent',
         },
+        {
+          to: '/protocols/Audits/audits',
+          label: 'Audits',
+          position: 'right',
+          className: 'persistent',
+        },
+        {
+          to: '/protocols/Transparency/transparency',
+          label: 'Transparency',
+          position: 'right',
+          className: 'persistent',
+        },
         // {
         //   to: '/protocols/Contracts/introduction',
         //   label: 'Contracts',
@@ -335,6 +347,12 @@ module.exports = {
             // Contracts: {
             //   banner: 'none',
             // },
+            Transparency: {
+              banner: 'none',
+            },
+            Audits: {
+              banner: 'none',
+            },
             FAQs: {
               banner: 'none',
             }
