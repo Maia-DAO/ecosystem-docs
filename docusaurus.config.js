@@ -140,6 +140,12 @@ module.exports = {
           position: 'right',
           className: 'persistent',
         },
+        {
+          to: '/protocols/Branding/branding',
+          label: 'Branding',
+          position: 'right',
+          className: 'persistent',
+        },
         // {
         //   to: '/protocols/Contracts/introduction',
         //   label: 'Contracts',
