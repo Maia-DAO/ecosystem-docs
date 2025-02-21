@@ -4,13 +4,13 @@ title: What Is Maia?
 sidebar_position: 1
 ---
 
-Welcome to Maia DAO 👋
+Welcome to Maia 👋
 
-Maia is the **yield powerhouse of DeFi**, designed to streamline your BurntHermes experience, enhance yield opportunities, and drive ecosystem sustainability.
+Maia is the **yield powerhouse of DeFi**, designed to streamline your bHermes experience, enhance yield opportunities, and drive ecosystem sustainability.
 
-## 🌍 The Maia Ecosystem
+## 🌍 The Maia DAO Ecosystem
 
-Maia was fairly launched via bonds and is fully community-owned. As a comprehensive DeFi hub, it offers a suite of financial instruments that optimize yield and liquidity.
+Maia DAO was launched fairly through bonds and is fully community-owned. It has built a comprehensive DeFi hub with a suite of onchain financial tools designed to optimize yield, liquidity and interoperability.
 
 The ecosystem currently includes:
 
