@@ -93,3 +93,9 @@ The bHERMES Rate represents the amount of bHERMES backing each MAIA token. This 
 ## 9 - Why Do I See More Balance in the UI Than in the Block Explorer?
 
 The additional balance you see in the UI comes from your [Virtual Account](../version-Ulysses/overview/omnichain/05-virtual-account.md), a contract managed by your externally owned account (EOA). This Virtual Account facilitates the remote management of assets. Any assets you previously owned in V1 have been migrated and deposited into this account. You can use them across the UI seamlessly, as the interaction with the Virtual Account is fully integrated and abstracted from the user experience.
+
+---
+
+## 10 - What are these verified badges next to strategies mean?
+
+The verified badge indicates that the strategy was created by a known entity. Some of the initial verified strategies were introduced by the team as part of the kickstart process, and Maia Boosted strategies also qualify as verified strategies.
