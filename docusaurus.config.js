@@ -129,29 +129,47 @@ module.exports = {
           className: 'persistent',
         },
         {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Maia_active',
+          to: '/protocols/Audits/audits',
+          label: 'Audits',
+          position: 'right',
+          className: 'persistent',
         },
         {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Hermes_active',
+          to: '/protocols/Transparency/transparency',
+          label: 'Transparency',
+          position: 'right',
+          className: 'persistent',
         },
         {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Talos_active',
+          to: '/protocols/Branding/branding',
+          label: 'Branding',
+          position: 'right',
+          className: 'persistent',
         },
-        {
-          to: '/protocols/Contracts/introduction',
-          label: 'Contracts',
-          position: 'left',
-          className: 'Ulysses_active',
-        },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Maia_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Hermes_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Talos_active',
+        // },
+        // {
+        //   to: '/protocols/Contracts/introduction',
+        //   label: 'Contracts',
+        //   position: 'left',
+        //   className: 'Ulysses_active',
+        // },
         // {
         //   label: 'Give Feedback',
         //   to: 'https://forms.gle/13XtjmkwdXQ2jMn26',
@@ -199,7 +217,7 @@ module.exports = {
             //   href: 'https://github.com/Uniswap/uniswap-v3-periphery/blob/main/bug-bounty.md',
             // },
             {
-              label: '#dev-chat',
+              label: 'Discord',
               href: 'https://discord.gg/maiadao',
             },
             // {
@@ -332,7 +350,13 @@ module.exports = {
             Ulysses: {
               banner: 'none',
             },
-            Contracts: {
+            // Contracts: {
+            //   banner: 'none',
+            // },
+            Transparency: {
+              banner: 'none',
+            },
+            Audits: {
               banner: 'none',
             },
             FAQs: {

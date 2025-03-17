@@ -28,36 +28,36 @@ export const actions = [
     href: '#',
     icon: InformationCircleIcon,
     to: './protocols/introduction',
-    text: `Learn about Maia and what are Boost Aggregators and Decentralized Strategy Vaults.`,
+    text: `Learn about Maia and what are Boost Aggregators and Partner Boosted Strategies.`,
   },
   {
     title: 'What is Hermes',
     href: '#',
     icon: InformationCircleIcon,
     to: './protocols/Hermes/introduction',
-    text: `Learn about Hermes and what is Concentrated Liquidity and a Yield and Liquidity Marketplace.`,
+    text: `Explore Hermes and what is Concentrated Liquidity and a Yield and Liquidity Marketplace.`,
   },
   {
     title: 'What is Talos',
     href: '#',
     icon: InformationCircleIcon,
     to: './protocols/Talos/introduction',
-    text: `Learn about Talos and what is Automated Liquidity Management for Uniswap V3.`,
+    text: `Dive into Talos and what is Automated Liquidity Management for Uniswap V3.`,
   },
   {
     title: 'What is Ulysses',
     href: '#',
     icon: InformationCircleIcon,
     to: './protocols/Ulysses/introduction',
-    text: `Learn about Ulysses and what is an Omnichain Virtual Environment and Unified Liquidity.`,
+    text: `Discover Ulysses and what is an Omnichain Virtual Environment and Unified Liquidity.`,
   },
-    // {
-    //   title: 'Smart contract overview',
-    //   href: '#',
-    //   icon: BookOpenIcon,
-    //   to: './protocols/reference/smart-contracts',
-    //   text: `Learn about the architecture of the Maia Ecosystem smart contracts made up of the Core and Periphery libraries.`,
-    // },
+  // {
+  //   title: 'Smart contract overview',
+  //   href: '#',
+  //   icon: BookOpenIcon,
+  //   to: './protocols/reference/smart-contracts',
+  //   text: `Learn about the architecture of the Maia Ecosystem smart contracts made up of the Core and Periphery libraries.`,
+  // },
   // {
   //   title: 'Maia Ecosystem SDK',
   //   href: '#',
@@ -321,6 +321,7 @@ const StyledTitleImage = styled(StyledImage)`
   z-index: -1;
   position: absolute;
   opacity: 0.2;
+  filter: blur(5px);
   mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
 `
 
@@ -338,11 +339,11 @@ const HideMedium = styled.div`
 
 export default function Home() {
   return (
-    <Layout title={`Maia Ecosystem Docs`} description="Technical Documentation For The Maia Ecosytem">
+    <Layout title={`Maia Ecosystem Docs`} description="Documentation For The Maia Ecosytem">
       <StyledTitleImage
         sources={{
-          light: useBaseUrl('/img/grow.png'),
-          dark: useBaseUrl('/img/grow2.png'),
+          light: useBaseUrl('/img/bg.png'),
+          dark: useBaseUrl('/img/bg.png'),
         }}
       />
       <Container>
@@ -399,7 +400,7 @@ export default function Home() {
               Explore these docs to get started integrating the Maia Ecosytem in your dApp, smart contract or project.
             </p>
             <p>
-              We do not have any guides public yet, we are working on it. In the meantime, you can check out the rest of
+              No guides are public yet. In the meantime, you can check out the rest of
               the docs.
             </p>
             <div>
@@ -540,7 +541,7 @@ export default function Home() {
               <Discord style={{ width: '48px', height: '48px' }} />
               <div>
                 <h3>Discord</h3>
-                <p>Hop in to the #dev-chat to get realtime help.</p>
+                <p>Hop in to the Discord to get realtime help.</p>
               </div>
             </CenterCard>
           </Link>

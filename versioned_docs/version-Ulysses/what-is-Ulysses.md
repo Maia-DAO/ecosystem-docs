@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Welcome to Ulysses Protocol 👋
 
-**Ulysses Protocol** is a decentralized and permissionless 'Omnichain Liquidity Protocol' owned by the community. Our innovative solution is designed to tackle the challenges presented by an increasingly fragmented liquidity landscape in DeFi, ensuring seamless interoperaility and capital efficient cross-chain asset deployment.
+**Ulysses Protocol** is a decentralized and permissionless 'Omnichain Liquidity Protocol' owned by the community. Our innovative solution is designed to tackle the challenges presented by an increasingly fragmented liquidity landscape in DeFi, ensuring seamless interoperability and capital efficient cross-chain asset deployment.
 
 ## Key Features:
 
