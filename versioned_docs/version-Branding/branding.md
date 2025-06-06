@@ -1,4 +1,5 @@
 ---
+id: branding
 title: MaiaDAO Brand Assets
 sidebar_position: 1
 ---

@@ -100,6 +100,6 @@ _Designed to synchronize departments and eliminate silos_
 | Meeting             | Agenda                                                           |
 | ------------------- | ---------------------------------------------------------------- |
 | **Monday Kick-Off** | - Set weekly KPIs<br/>- Priority ranking for the week            |
-| **Tuesday BD Sync** | - Review BD pipeline progress<br/>- Align partnership priorities |
 | **Wednesday Sync**  | - Blocker resolution<br/>- Mid-course corrections                |
+| **Thursday BD Sync**| - Review BD pipeline progress<br/>- Align partnership priorities |
 | **Friday Wrap-Up**  | - Retrospective on KPIs<br/>- Preview next week's milestones     |
