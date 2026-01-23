@@ -86,12 +86,12 @@ module.exports = {
           position: 'left',
           className: 'Talos_active',
         },
-        {
-          to: '/protocols/Ulysses/introduction',
-          label: 'Ulysses',
-          position: 'left',
-          className: 'Ulysses_active',
-        },
+        // {
+        //   to: '/protocols/Ulysses/introduction',
+        //   label: 'Ulysses',
+        //   position: 'left',
+        //   className: 'Ulysses_active',
+        // },
         // {
         //   to: '/sdk/introduction',
         //   label: 'SDK',

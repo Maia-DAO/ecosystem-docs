@@ -3,9 +3,6 @@ id: uni-v3
 title: Uniswap V3 Gauges
 ---
 
-[//]: # (TODO:  Add examples)
-[//]: # (TODO:  Link how Talos helps or users can take advantage of it's staked positions)
-
 Uniswap V3 [Gauges](./introduction) are a new tool for liquidity mining on the Uniswap V3 protocol. They utilize an improved version of the [Uniswap V3 Staker](https://docs.uniswap.org/contracts/v3/guides/liquidity-mining/overview), which is optimized for layer 2 by reducing calldata. This allows for faster and cheaper transactions while still maintaining the integrity of the liquidity pool.
 
 ## Liquidity Mining
@@ -52,6 +49,109 @@ The equation used to calculate the boost is as follows:
 
 $Rewards Received = min(Position Rewards, Position Rewards * 40\% + (Total Rewards For Duration Staked * User bHERMES / Total bHERMES Supply) * 60\%)$
 
-The formula calculates the rewards received by a user, based on their position rewards, and their stake in the bHERMES token. The rewards received are determined by taking the minimum value between the position rewards and a combination of two other factors: the position rewards multiplied by 40%, and the total rewards for the duration staked multiplied by the user's bHERMES stake divided by the total bHERMES supply, multiplied by 60%. This formula ensures that users are rewarded for both their position in the liquidity pool and their stake in the bHERMES token, but the rewards will be capped at the position rewards.
+### Understanding the Formula
 
+| Term | Description |
+|------|-------------|
+| **Position Rewards** | Maximum rewards earnable based on your liquidity and time in range |
+| **Total Rewards For Duration Staked** | Total gauge rewards distributed during your staking period |
+| **User bHERMES** | Your bHERMES Boost balance |
+| **Total bHERMES Supply** | Total bHERMES Boost supply across all users |
 
+### How It Works
+
+1. **Base Rewards (40%)**: Everyone receives at least 40% of their position rewards regardless of bHERMES holdings
+2. **Boost Rewards (60%)**: The remaining 60% is distributed based on your share of bHERMES
+3. **Cap**: Total rewards cannot exceed your position rewards (prevents over-boosting)
+
+### Example Calculation
+
+**Scenario**: You have 1% of pool liquidity, staked for a full week
+- Weekly gauge rewards: 10,000 HERMES
+- Your position rewards: 100 HERMES (1% of total)
+- Your bHERMES: 500,000
+- Total bHERMES: 10,000,000 (you hold 5%)
+
+**Calculation**:
+```
+Boosted Rewards = min(100, 100 * 0.4 + (100 * 5%) * 0.6)
+               = min(100, 40 + 3)
+               = min(100, 43)
+               = 43 HERMES
+```
+
+To achieve maximum boost (100 HERMES), you would need bHERMES proportional to your liquidity share.
+
+## Calculating APRs
+
+This section explains how APRs are calculated in the UI for Uniswap V3 Gauges. Displayed APRs are estimates that can change based on price movements and active liquidity changes.
+
+### APR Range Display
+
+The UI shows two APR values:
+- **Minimum APR**: Expected return with a full-range position (lowest capital efficiency)
+- **Maximum APR**: Expected return with a minimum-width position (highest capital efficiency)
+
+### Calculation Method
+
+The APR calculation follows these steps:
+
+#### Step 1: Calculate Active Tick Liquidity
+
+First, determine how much liquidity (in USD) exists in the currently active tick:
+
+```
+Active Liquidity (USD) = Token A in active tick × Price A + Token B in active tick × Price B
+```
+
+This is calculated by simulating swaps to measure the liquidity depth in the current tick for both tokens.
+
+**Source**: [calculateLiquidityData.ts](https://github.com/Maia-DAO/sdks/blob/main/sdks/hermes-v2-sdk/src/utils/calculateLiquidityData.ts#L5)
+
+#### Step 2: Calculate Capital Efficiency
+
+Capital efficiency determines how much of your deposited liquidity is active in the current tick:
+
+```
+Capital Efficiency = 1 / (1 - (Price A / Price B) ^ 0.25)
+```
+
+**Note**: Each tick represents approximately 0.01% (1.0001x) price change. A minimum width of 60 ticks equals ~0.6% price range.
+
+#### Step 3: Calculate APR
+
+```
+APR = (Weekly HERMES Emissions × HERMES Price × 52) / Liquidity in Position
+```
+
+### Example APR Calculation
+
+**Given**:
+- Pool: USDC/USDT
+- Tick Spacing: 1 tick
+- Weekly emissions to gauge: 1,000 HERMES
+- HERMES price: $0.50
+- Your deposit: $10,000
+- Position range: 10 ticks
+- Your bHermesBoost: 0
+
+**Calculation**:
+```
+Your Effective Active Liquidity = $10,000 / 10 = $1,000 contribution to active tick
+Your Share of Emissions = 1,000 × ($1,000 / Total Active Liquidity)
+Weekly Rewards (USD) = Your Share × $0.50
+APR = (Weekly Rewards × 52) / $10,000
+```
+
+### Important Considerations
+
+- APRs assume your position stays in range 100% of the time
+- Actual returns depend on price volatility and time in range
+- Higher capital efficiency = higher APR but higher risk of going out of range
+- Consider using [Talos strategies](/docs/Talos/overview/strategies/rebalance) to automate position management
+
+### Reference Implementation
+
+For the complete calculation logic, see the Hermes V2 SDK:
+- [TVL calculation](https://github.com/Maia-DAO/sdks/blob/main/sdks/hermes-v2-sdk/src/utils/tvl.ts)
+- [Liquidity data calculation](https://github.com/Maia-DAO/sdks/blob/main/sdks/hermes-v2-sdk/src/utils/calculateLiquidityData.ts)

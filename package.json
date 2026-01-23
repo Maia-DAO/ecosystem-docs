@@ -10,7 +10,8 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve",
-    "clear": "docusaurus clear"
+    "clear": "docusaurus clear",
+    "update-contracts": "node scripts/update-contract-docs.mjs"
   },
   "dependencies": {
     "@algolia/autocomplete-preset-algolia": "^1.1.0",
@@ -35,6 +36,9 @@
     "react-dom": "^16.8.4",
     "rehype-katex": "5",
     "remark-math": "3"
+  },
+  "devDependencies": {
+    "maia-core-sdk": "1.0.78"
   },
   "browserslist": {
     "production": [
