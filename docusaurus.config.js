@@ -296,15 +296,15 @@ module.exports = {
               href: 'https://medium.com/@maiaDAO',
             },
             {
-              label: 'Maia\'s Twitter',
+              label: "Maia's Twitter",
               href: 'https://twitter.com/MaiaDAOEco',
             },
             {
-              label: 'Hermes\' Twitter',
+              label: "Hermes' Twitter",
               href: 'https://twitter.com/HermesOmnichain',
             },
             {
-              label: 'Talos\' Twitter',
+              label: "Talos' Twitter",
               href: 'https://twitter.com/TalosOmnichain',
             },
           ],
@@ -356,12 +356,15 @@ module.exports = {
             Transparency: {
               banner: 'none',
             },
+            Branding: {
+              banner: 'none',
+            },
             Audits: {
               banner: 'none',
             },
             FAQs: {
               banner: 'none',
-            }
+            },
           },
         },
         theme: {
