@@ -3,37 +3,121 @@ id: rebalance
 title: Rebalance
 ---
 
-[//]: # (TODO: what is rebalancing)
-[//]: # (TODO: rebalancing parameters, how they affect when a rebalancing happens)
-[//]: # (TODO: add example)
+# Rebalance Strategy
 
-## Uniswap V3 NFT Position Rebalancing Wrapper
+The Rebalance Strategy automatically adjusts Uniswap V3 positions by both repositioning the price range AND swapping tokens to maintain a 50/50 balance, maximizing fee generation and minimizing impermanent loss.
 
-This wrapper allows for automatic rebalancing of Uniswap V3 NFT positions according to specified conditions. The wrapper will automatically re-allocate funds to maintain a 50/50 ratio between the two NFTs in the position.
+## What is Rebalancing?
 
-### Usage
+Rebalancing is the process of repositioning a Uniswap V3 position to center it around the current price while also swapping tokens to restore a 50/50 ratio. When triggered, rebalancing:
+1. **Adjusts the price range** to center around the current market price
+2. **Swaps tokens** to achieve a balanced 50/50 allocation
 
-To use the wrapper, simply wrap your Uniswap V3 NFT position in the wrapper contract. Once wrapped, the position will be automatically rebalanced according to the specified conditions.
+This ensures your position is always in range and earning fees efficiently.
 
-### Conditions for Rebalancing
+### Why Rebalance?
 
-The wrapper will automatically rebalance the position when any of the following conditions are met:
+```
+Price Moves Up → Position becomes heavy in Token B
+                          ↓
+              Rebalance: Sell some Token B for Token A
+                          ↓
+              Position restored to 50/50 ratio
+```
 
-- The ratio between the two NFTs in the position deviates from 50/50 by more than a certain threshold (specified when wrapping the position)
-- A specified time interval has elapsed (also specified when wrapping the position)
-- A specified event occurs on-chain (can be specified when wrapping the position)
+- **Maximize Fee Capture**: Balanced positions earn fees more efficiently
+- **Reduce Impermanent Loss**: Regular rebalancing can mitigate IL over time
+- **Maintain Exposure**: Keep desired 50/50 allocation to both assets
 
-### Advantages
+## Rebalancing Parameters
 
-- Maintains a balanced portfolio of NFTs, reducing risk from over-exposure to a single NFT
-- Automates the rebalancing process, removing the need for manual intervention
-- Allows for customization of rebalancing conditions to suit individual investment strategies
+### Deviation Threshold
 
-### Potential Drawbacks
+The maximum allowed deviation from the target ratio before triggering a rebalance.
 
-- Gas cost for frequent rebalancing.
-- Rebalancing might cause a loss of liquidity in the position.
+| Parameter | Description | Typical Range |
+|-----------|-------------|---------------|
+| `deviationThreshold` | % deviation from lower/upper tick that triggers rebalance | 5% - 20% |
 
-### Conclusion
+**Example**: With a 10% threshold, rebalancing triggers when the position reaches 60/40 or 40/60.
 
-The Uniswap V3 NFT Position Rebalancing Wrapper provides a convenient and automated way to maintain a balanced portfolio of NFTs on Uniswap V3. By specifying custom rebalancing conditions, users can tailor the wrapper to suit their individual investment strategies. However, it's important to consider the potential drawbacks and be mindful of the gas cost and possible liquidity loss.
+### Slippage Tolerance
+
+Maximum acceptable slippage during rebalance swaps.
+
+| Parameter | Description | Typical Range |
+|-----------|-------------|---------------|
+| `maxSlippage` | Maximum % slippage for swap execution | 0.5% - 2% |
+
+## Example Scenario
+
+### Initial Position
+- **Pool**: ETH/USDC
+- **Deposit**: 1 ETH + 2,000 USDC (ETH price = $2,000)
+- **Ratio**: 50/50
+- **Deviation Threshold**: 10%
+
+### After Price Movement
+- **ETH Price**: Increases to $2,500
+- **Position Value**: ~0.89 ETH + 2,236 USDC
+- **New Ratio**: ~47/53 (ETH/USDC by value)
+
+### Rebalance Trigger
+- Deviation: 6% (below threshold)
+- No rebalance yet
+
+### Further Price Movement
+- **ETH Price**: Increases to $3,000
+- **Position Value**: ~0.82 ETH + 2,449 USDC
+- **New Ratio**: ~42/58 (ETH/USDC by value)
+
+### Rebalance Executed
+- Deviation: 16% (exceeds 10% threshold)
+- **Action**: Sell USDC, buy ETH to restore 50/50
+- **Result**: ~0.91 ETH + 2,273 USDC
+
+## Strategy Configuration
+
+When deploying a Talos Rebalance Strategy, consider:
+
+### Conservative Settings
+```
+Deviation Threshold: 15-20%
+Slippage: 0.5%
+```
+- Lower gas costs
+- Suitable for stable pairs
+- Less frequent transactions
+
+### Aggressive Settings
+```
+Deviation Threshold: 5-10%
+Slippage: 1-2%
+```
+- Tighter position management
+- Better for volatile pairs
+- Higher gas costs
+
+## Advantages
+
+- **Automated Management**: No manual intervention required
+- **Customizable**: Parameters can be tuned to match risk tolerance
+- **Gas Efficient**: Only rebalances when necessary
+- **Composable**: Works with Hermes gauges for additional rewards
+
+## Considerations
+
+- **Gas Costs**: Each rebalance incurs gas fees - factor this into expected returns
+- **Slippage**: Large positions may experience significant slippage during rebalancing
+- **Market Conditions**: Extreme volatility may cause frequent rebalances
+- **Impermanent Loss**: Rebalancing realizes IL by swapping tokens, making it permanent
+
+## Comparison with Rerange
+
+| Feature | Rebalance | Rerange |
+|---------|-----------|---------|
+| Adjusts token ratio | Yes (swaps to 50/50) | No |
+| Adjusts price range | Yes | Yes |
+| Keeps position in range | Always | Not guaranteed |
+| Best for | Maintaining balanced exposure | Adjusting range width/bounds |
+| Typical trigger | Deviation from 50/50 | Price near range edge |

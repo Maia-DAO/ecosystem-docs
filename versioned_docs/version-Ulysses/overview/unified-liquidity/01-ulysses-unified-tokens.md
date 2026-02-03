@@ -5,6 +5,10 @@ title: Ulysses Unified Tokens
 
 [//]: # (TODO: Add visuals examples)
 
+:::warning
+The use of unified tokens has been deprecated following the November 2025 Balancer V2 Composable Stable Pools exploit, no protocol funds were lost.
+:::
+
 Ulysses Unified Tokens represent a breakthrough in accessing liquidity across multiple blockchains. These tokens allow users to engage with a liquidity pool from diverse chains with ease and flexibility. This documentation provides an in-depth understanding of Ulysses Unified Tokens, their design, benefits, and potential applications.
 
 Ulysses Unified Tokens enable users to tap into liquidity pools from multiple chains through a singular, unified token. These tokens act as wrappers for Arbitrum's [Balancer's Composable Composable Stable Pools](https://docs.balancer.fi/concepts/pools/composable-stable.html), allowing their seamless operation in any decentralized application (dApp) across various networks.
@@ -29,9 +33,7 @@ Hermes Governance, a core decision-making body within Ulysses, determines the di
 
 ### Trading and Liquidity Provision
 
-Users can harness the power of Ulysses Unified Tokens for both trading and offering liquidity to other pools. For example, imagine trading your Ulysses Unified Token for another asset on the Binance Smart Chain using Uniswap V3. Additionally, these tokens can be used to introduce liquidity to an Arbitrum pool directly from Optimism.
-
-Users can harness the power of Ulysses Unified Tokens for both trading and offering liquidity to other pools. For instance, users can swap or add liquidity with their Ulysses Unified Token using Arbitrum's Uniswap V3 from Optimism, or any other chain.
+Users can harness the power of Ulysses Unified Tokens for both trading and offering liquidity to other pools. For example, you can trade your Ulysses Unified Token for another asset on the Binance Smart Chain using Uniswap V3. Additionally, these tokens can be used to introduce liquidity to an Arbitrum pool directly from Optimism or any other supported chain.
 
 ### Building Blocks for Other Applications
 
@@ -39,6 +41,4 @@ Ulysses Unified Tokens are not just for trading. They can underpin other applica
 
 ## Summary and Key Takeaways
 
-Ulysses Unified Tokens are a pioneering token solution, crafted to give users a single-window access to liquidity pools spread over multiple chains. They bring to the table flexibility, user control, and ease in asset value tracking. These tokens find applications in trading, liquidity provisioning, and as core components for other applications like lending platforms or stablecoin issuance. They epitomize the future of digital assets, aiming to increase capital efficiency by curtailing fragmented liquidity.
-
-Ulysses Unified Tokens are an innovative token type that enables users to access liquidity pools from multiple chains through a single, unified token. They offer flexibility, control, and simplified asset value tracking for users. These tokens can be used for trading, adding liquidity, and as building blocks for other applications, such as lending and stablecoin issuance. By allowing users to manage digital assets across various chains, Ulysses Unified Tokens help increase capital efficiency by reducing fragmented liquidity.
+Ulysses Unified Tokens are a pioneering token solution, crafted to give users single-point access to liquidity pools spread over multiple chains. They bring flexibility, user control, and ease in asset value tracking. These tokens find applications in trading, liquidity provisioning, and as core components for other applications like lending platforms or stablecoin issuance. They represent the future of digital assets, aiming to increase capital efficiency by reducing fragmented liquidity across chains.

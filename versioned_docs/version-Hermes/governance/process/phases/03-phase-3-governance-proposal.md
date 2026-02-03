@@ -17,15 +17,11 @@ The objective of Phase 3, which represents the final step of the governance proc
 
 - Quorum: 12.5M bHERMES
 
-- Form: [TBD]
-
 ### **How To Create an On-Chain Governance Proposal**
 
-1. Incorporate any last iterations to your proposal based on feedback prior to posting. 
+1. Incorporate any last iterations to your proposal based on feedback prior to posting.
 
-2. Create a topic in the [TBD] titled “POP - Governance Proposal — [Your Title Here]” and link to previous forum posts and the Partnering On-boarding Proposal Temperature Check Snapshot poll. 
-
-3. Create your proposal. This can be done either through an interface (on [TBD]) or through writing the calldata for more complicated proposal logic. This calldata will be executed if and when the proposal passes. If writing the calldata yourself, please review the logic with a qualified Hermes community member prior to posting the proposal. 
+2. Create your proposal. This can be done either through an interface (on **[[Governance Interface](https://app.maiadao.io/governance/create-proposal)]**) or through writing the calldata for more complicated proposal logic. This calldata will be executed if and when the proposal passes. If writing the calldata yourself, please review the logic with a qualified Hermes community member prior to posting the proposal. 
 
 4. Ensure that at least 2.5 million bHERMES is delegated to your address in order to submit a proposal, or find a delegate who has enough delegated bHERMES to meet the proposal threshold to propose on your behalf. 
 
@@ -43,7 +39,7 @@ ___
 
 - ~~Phase 3: [Governance Proposal][phase-3]~~
 
-Congratualtions! You've made it to the end of all three phases of the Hermes Governance Process. Ok, so now what? Now we await the votes to finalize and we can gauge whether or not the proposal will pass while meeting quorum, or not pass. 
+Congratulations! You've made it to the end of all three phases of the Hermes Governance Process. Ok, so now what? Now we await the votes to finalize and we can gauge whether or not the proposal will pass while meeting quorum, or not pass. 
 
 If a proposal does not pass, and the participants would like to submit another proposal for an additional attempt, they must wait at least two epochs before beginning the entire process again from Phase 1.  
 

@@ -4,6 +4,25 @@ title: What Is Ulysses?
 sidebar_position: 1
 ---
 
+:::warning Ulysses Protocol Deprecated - Withdraw Only
+
+**Ulysses Protocol has been deprecated in favor of native cross-chain standards. Only withdrawals are supported.**
+
+Since Ulysses launched, the Maia Ecosystem has shipped and matured the **Meta-Bridge**, a native cross-chain product supporting modern token standards and protocol-owned bridging flows. The broader cross-chain market has consolidated around sovereign, native standards (such as **LayerZero OFTs** and **xERC20s**) that allow protocols to retain full control over their assets, messaging, and upgrade paths.
+
+Because the Meta-Bridge already fulfills this role natively and is fully supported by existing UI and incentives, continuing to direct resources toward Ulysses is no longer the most efficient use of protocol resources.
+
+**If you have funds in Ulysses, please withdraw them:**
+
+- **[Ulysses Withdraw](https://app.maiadao.io/ulysses/withdraw)** - Withdraw from Ulysses pools
+- **[Virtual Account Withdraw](https://app.maiadao.io/virtual/withdraw)** - Withdraw from Virtual Accounts
+
+The protocol remains fully live (it cannot be paused), but Hermes gauges connected to Ulysses have been deprecated and active development has been discontinued.
+
+For support, join the [Maia DAO Discord](https://discord.gg/maiadao).
+
+:::
+
 Welcome to Ulysses Protocol 👋
 
 **Ulysses Protocol** is a decentralized and permissionless 'Omnichain Liquidity Protocol' owned by the community. Our innovative solution is designed to tackle the challenges presented by an increasingly fragmented liquidity landscape in DeFi, ensuring seamless interoperability and capital efficient cross-chain asset deployment.
