@@ -20,15 +20,11 @@ The objective of Phase 3, which represents the final step of the governance proc
 
 - Quorum: 35% vMaia
 
-- Form: **[Governance Forum Link TBD]**
-
 ### **How To Create an On-Chain Governance Proposal**
 
 1. Incorporate any last iterations to your proposal based on feedback prior to posting.
 
-2. Create a topic in the **[Governance Forum TBD]** titled "POP - Governance Proposal — [Your Title Here]" and link to previous forum posts and the Partnering On-boarding Proposal Temperature Check Snapshot poll.
-
-3. Create your proposal. This can be done either through an interface (on **[Governance Interface TBD]**) or through writing the calldata for more complicated proposal logic. This calldata will be executed if and when the proposal passes. If writing the calldata yourself, please review the logic with a qualified Maia community member prior to posting the proposal.
+2. Create your proposal. This can be done either through an interface (on **[[Governance Interface](https://app.maiadao.io/governance/create-proposal)]**) or through writing the calldata for more complicated proposal logic. This calldata will be executed if and when the proposal passes. If writing the calldata yourself, please review the logic with a qualified Maia community member prior to posting the proposal.
 
 4. Ensure that at least 2.5 million vMaia is delegated to your address in order to submit a proposal, or find a delegate who has enough delegated vMaia to meet the proposal threshold to propose on your behalf.
 

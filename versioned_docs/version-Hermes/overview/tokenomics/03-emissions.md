@@ -5,7 +5,7 @@ title: Emissions
 
 # HERMES Emissions
 
-HERMES has an inflationary supply, and its emissions are the primary driver of yield generation within the Hermes Protocol. The emissions mechanism is designed to direct inflation toward revenue-generating activities rather than simply increasing locked value.
+HERMES has an inflationary supply, and its emissions are the primary driver of platform utility within the Hermes Protocol. The emissions mechanism is designed to direct inflation toward revenue-generating activities rather than simply increasing locked value.
 
 ## Emission Schedule
 

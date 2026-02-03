@@ -19,9 +19,9 @@ This phase is designed to gauge community sentiment and signal readiness for the
 
 1. Incorporate the community feedback from the RFC phase into the proposal. 
 
-2. Create and post this version of the proposal in the [Governance Forum](https://commonwealth.im/hermes-omnichain/discussions) with the following title “POP-TC - [Your Title Here]”. Include a link to the POP-RFC post. You will update the post to include a link to the Snapshot poll after you’ve posted that. 
+2. Create and post this version of the proposal in the [Governance Forum](https://commonwealth.im/hermes-omnichain/discussions) with the following title [HIP-NUMBER] TC - [Your Title Here]”. Include a link to the RFC post. You will update the post to include a link to the Snapshot poll after you’ve posted that. 
 
-3. Create a [Snapshot poll](https://snapshot.org/#/hermesprotocol.eth/). The voting options should consist of those which have gained support in the POP-RFC Phase. This poll can be either binary or multiple choice but must include a “Nay” option. Set the poll duration to 5 days. Include a link to the Forum Partnering On-boarding Proposal Temperature Check post. 
+3. Create a [Snapshot poll](https://snapshot.org/#/hermesprotocol.eth/). The voting options should consist of those which have gained support in the RFC Phase. This poll can be either binary or multiple choice but must include a “Nay” option. Set the poll duration to 5 days. Include a link to the Forum Partnering On-boarding Proposal Temperature Check post. 
 
 4. Update the Forum post with a link to the Snapshot Poll. 
 

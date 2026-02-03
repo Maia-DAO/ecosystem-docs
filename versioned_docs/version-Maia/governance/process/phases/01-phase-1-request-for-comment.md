@@ -19,7 +19,7 @@ The purpose of the first phase of the governance process is meant to allow the c
 
 2. They must also outline a transparent framework that allows any community member to easily track and evaluate their progress towards achieving the milestones set by the partner. This framework should include measurable objectives and verifiable data sources.
 
-3. To post a RFC, label your post “POP-RFC - [Your Title Here]”. Prior to moving to Phase 2, give the community **at least 3 days** to read and comment on the RFC. Please respond to questions in the comments, and take feedback into account in the next iteration of the proposal posted in Phase 2.
+3. To post a RFC, label your post “[MIP-NUMBER] RFC - [Your Title Here]”. Prior to moving to Phase 2, give the community **at least 3 days** to read and comment on the RFC. Please respond to questions in the comments, and take feedback into account in the next iteration of the proposal posted in Phase 2.
 
 
 ---

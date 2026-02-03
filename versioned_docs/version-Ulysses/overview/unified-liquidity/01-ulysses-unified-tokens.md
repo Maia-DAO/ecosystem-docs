@@ -5,6 +5,10 @@ title: Ulysses Unified Tokens
 
 [//]: # (TODO: Add visuals examples)
 
+:::warning
+The use of unified tokens has been deprecated following the November 2025 Balancer V2 Composable Stable Pools exploit, no protocol funds were lost.
+:::
+
 Ulysses Unified Tokens represent a breakthrough in accessing liquidity across multiple blockchains. These tokens allow users to engage with a liquidity pool from diverse chains with ease and flexibility. This documentation provides an in-depth understanding of Ulysses Unified Tokens, their design, benefits, and potential applications.
 
 Ulysses Unified Tokens enable users to tap into liquidity pools from multiple chains through a singular, unified token. These tokens act as wrappers for Arbitrum's [Balancer's Composable Composable Stable Pools](https://docs.balancer.fi/concepts/pools/composable-stable.html), allowing their seamless operation in any decentralized application (dApp) across various networks.
