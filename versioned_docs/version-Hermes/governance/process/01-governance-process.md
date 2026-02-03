@@ -7,7 +7,7 @@ title: Governance Process
 
 To understand the governance process for Maia DAO Ecosystem, imagine a hypothetical project `Protocol XYZ` seeking approval to incorporate a gauge for their token `$XYZ`. This action is synonymous with '**whitelisting a token**' or '**adding a gauge** to their Liquidity Pool (LP)'.
 
-In order for `Protocol XYZ` to whitelist their token `$XYZ`, it will require approval from veHERMES (or bHERMES in V2) with majority voting in favor to add a new gauge. This ensures that $HERMES emissions are distributed exclusively to Liquidity Pools which have garnered consensus approval from bHERMES (aka 'Stakeholders' or 'Voters and in V2 could be referred to as 'Burners' -- all refers to the same participant who holds the bHERMES token).
+In order for `Protocol XYZ` to whitelist their token `$XYZ`, it will require approval from bHERMES with majority voting in favor to add a new gauge. This ensures that $HERMES emissions are distributed exclusively to Liquidity Pools which have garnered consensus approval from bHERMES (aka 'Stakeholders' or 'Voters and in V2 could be referred to as 'Burners' -- all refers to the same participant who holds the bHERMES token).
 
 # 3 Phases
 

@@ -38,7 +38,7 @@ In order to prevent gaming of the boost system and ensure fair distribution of r
 
 ## Maximum Boost = 2.5 x [No Boost]
 
-To achieve the maximum boost of 2.5x, a user must hold the <span class="green-text">same % share of **bHermes Boost** to their **liquidity** staked in gauge</span>. This occurs because if you have the same % Liquidity Pool as you have % veHERMES, then: $\frac{w_i}{W} = \frac{b}{S}$
+To achieve the maximum boost of 2.5x, a user must hold the <span class="green-text">same % share of **bHermes Boost** to their **liquidity** staked in gauge</span>. This occurs because if you have the same % Liquidity Pool as you have % bHERMES, then: $\frac{w_i}{W} = \frac{b}{S}$
 
 We can simplify our equation from:
 

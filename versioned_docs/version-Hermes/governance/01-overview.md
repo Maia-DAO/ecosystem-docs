@@ -7,7 +7,7 @@ title: Overview
 
 Proposals for governance within the Hermes Protocol are systematically classified into <u>5-tiers of severity</u>, reflecting their respective levels of impact. At the pinnacle of this hierarchy is Severity 5, denoting proposals with the potential for the most substantial influence, as determined by the scope of the actions they authorize. These actions range from minor modifications (severity 1), such as adjusting the allocation of voting rights, to more consequential alterations, including changes to the Ulysses Pool or the issuance of new Hermes tokens. This stratification ensures that governance activities are appropriately scaled to the importance of each proposal, facilitating informed and effective decision-making.
 
-Governance within the Hermes Protocol is exclusively managed by community members holding the vote-locked $HERMES token, also known as `veHERMES` (or `bHERMES-Governance` Token in V2).
+Governance within the Hermes Protocol is exclusively managed by community members holding the vote-locked $HERMES token, also known as `bHERMES-Governance`.
 
 The framework governing this process which includes,`Severity Levels`, `Minimum & Maximum Thresholds`, Voting Requirements including `Voting Period`, `Voting Delay`, `Quorum`, `Max Operations` and lastly `Actions` permitted are outlined in a table format in the following chart.
 
