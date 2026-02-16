@@ -13,6 +13,7 @@ module.exports = {
   projectName: 'ecosystem-docs', // Usually your repo name.
   deploymentBranch: 'main',
   trailingSlash: false,
+  clientModules: [require.resolve('./src/theme/scrollToHash.js')],
   markdown: {
     mermaid: true,
   },
