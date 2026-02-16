@@ -99,3 +99,15 @@ The additional balance you see in the UI comes from your [Virtual Account](../ve
 ## 10 - What do the verified badges next to strategies mean?
 
 The verified badge indicates that the strategy was created by a known entity. Some of the initial verified strategies were introduced by the team as part of the kickstart process, and Maia Boosted strategies also qualify as verified strategies.
+
+--
+
+## 11 - What are the legacy protocol websites and how do I remove my old assets?
+
+If you have assets on older versions of Maia DAO protocols, you can access them through the following legacy websites:
+
+**Hermes V1** - https://hermes.maiadao.io  
+Actions available: Unstake tokens and withdraw liquidity
+
+**Maia V1** - https://v1.maiadao.io/  
+Actions available: Claim old rewards
